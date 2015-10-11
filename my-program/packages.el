@@ -15,7 +15,6 @@
 (setq my-program-packages
     '(
       ;; package names go here
-      clean-aindent-mode
       ws-butler
       git-timemachine
       zeal-at-point
@@ -29,13 +28,6 @@
 
 ;; For each package, define a function my-program/init-<package-name>
 ;;
-;; 清理自动产生的无用缩进
-(defun my-program/init-clean-aindent-mode ()
-  "Initialize my package"
-  (use-package clean-aindent-mode
-    :config
-    (add-hook 'prog-mode-hook 'clean-aindent-mode)))
-
 ;; ws-butler helps managing whitespace on every line of code written or edited, in an unobtrusive, help you write clean code without noisy whitespace effortlessly. 
 (defun my-program/init-ws-butler ()
   "Initialize my package"

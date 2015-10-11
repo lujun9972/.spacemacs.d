@@ -15,7 +15,6 @@
 (setq my-edit-packages
     '(
       ;; package names go here
-      undo-tree
       wgrep
       ))
 
@@ -24,13 +23,6 @@
 
 ;; For each package, define a function my-edit/init-<package-name>
 ;;
-;; 设置undo-tree,C-/为undo C-?为redo
-(defun my-edit/init-undo-tree ()
-  "Initialize my package"
-  (use-package undo-tree
-    :config
-    (global-undo-tree-mode 1)))
-
 ;; 使用wgrep可以直接修改grep buffer,并将修改映射回原文件
 (defun my-edit/init-wgrep ()
   "Initialize my package"

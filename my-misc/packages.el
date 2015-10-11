@@ -16,9 +16,7 @@
     '(
       ;; package names go here
       uniquify
-      ido
       smex
-      desktop
       switch-window
       tabbar
       keyfreq
@@ -34,16 +32,9 @@
 
 ;; For each package, define a function my-misc/init-<package-name>
 ;;
-;;使用目录名来区分同名buffer
-(defun my-misc/init-uniquify ()
-  (use-package uniquify
-    :config
-    (setq uniquify-buffer-name-style 'forward)
-    (setq uniquify-after-kill-buffer-p t)
-    (setq uniquify-ignore-buffers-re "^\\*")))
 
 ;; 开启ido-mode
-(defun my-misc/init-ido ()
+(defun my-misc/post-init-ido ()
   (use-package ido
     :config
     (ido-mode 'both)
@@ -90,7 +81,7 @@
            ("C-x x" . smex)
            ("M-X" . smex-major-mode-commands))))
 
-(defun my-misc/init-desktop ()
+(defun my-misc/post-init-desktop ()
   (use-package desktop
     :config
     (setq desktop-path '("."))
