@@ -1,0 +1,13 @@
+(define-key ctl-x-map "\C-j" 'dired-jump) ; 通过 C-x C-j 跳转到当前目录的 Dired
+;; (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window))
+;; (define-key dired-mode-map "\C-x\M-o" 'dired-omit-mode)
+;; (define-key dired-mode-map "*O" 'dired-mark-omitted)
+;; (define-key dired-mode-map "\M-(" 'dired-mark-sexp)
+;; (define-key dired-mode-map "*(" 'dired-mark-sexp)
+;; (define-key dired-mode-map "*." 'dired-mark-extension)
+;; (define-key dired-mode-map "\M-!" 'dired-smart-shell-command)
+;; (define-key dired-mode-map "\M-G" 'dired-goto-subdir)
+;; (define-key dired-mode-map "F" 'dired-do-find-marked-files)
+;; (define-key dired-mode-map "Y"  'dired-do-relsymlink)
+;; (define-key dired-mode-map "%Y" 'dired-do-relsymlink-regexp)
+;; (define-key dired-mode-map "V" 'dired-do-run-mail)
