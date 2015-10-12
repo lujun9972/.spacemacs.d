@@ -17,7 +17,7 @@
       ;; package names go here
       emms
       w3m
-      org2blog
+      ;; org2blog
       sx
       ))
 

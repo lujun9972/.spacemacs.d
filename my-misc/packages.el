@@ -15,8 +15,9 @@
 (setq my-misc-packages
     '(
       ;; package names go here
-      uniquify
+      (ido :location built-in)
       smex
+      (desktop :location built-in)
       switch-window
       tabbar
       keyfreq
