@@ -1,4 +1,5 @@
 (use-package dired
+  :defer t
   :init
   (require 'dired-x)
   :config
@@ -35,7 +36,8 @@
    dired-x-hands-off-my-keys nil ;使用dired-x-find-file系列命令替代find-file命令,替代后,使用C-u C-x C-f会自动用光标所在的文本作为猜测的文件名
    )
   (use-package wdired
-      :config
-      (setq wdired-allow-to-change-permissions t)   ; allow to edit permission bits
-      (setq wdired-allow-to-redirect-links)     ; allow to edit symlinks
-      ))
+    :defer t
+    :config
+    (setq wdired-allow-to-change-permissions t)   ; allow to edit permission bits
+    (setq wdired-allow-to-redirect-links)     ; allow to edit symlinks
+    ))

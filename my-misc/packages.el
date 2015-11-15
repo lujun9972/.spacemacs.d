@@ -98,6 +98,7 @@
 (defun my-misc/init-switch-window ()
   "Initialize my package"
   (use-package switch-window
+    :defer t
     :config
     (setq switch-window-shortcut-style 'alphabet)
     :bind
@@ -191,14 +192,17 @@
 
 (defun my-misc/init-dictionary ()
   (use-package dictionary
-    :config
+    :defer t
+    :init
     (global-set-key [mouse-3] 'dictionary-mouse-popup-matching-words)
     (global-set-key [(control c)(d)] 'dictionary-lookup-definition)
     (global-set-key [(control c)(s)] 'dictionary-search)
     (global-set-key [(control c)(m)] 'dictionary-match-words)
+    :config
     ;; choose a dictionary server
     (setq dictionary-server "localhost")))
 
 ;; showkey可以显示操作的按及运行的函数
 (defun my-misc/init-showkey ()
-  (use-package showkey))
+  (use-package showkey
+    :defer t))

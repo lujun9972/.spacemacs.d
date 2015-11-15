@@ -26,7 +26,8 @@
 ;; 使用wgrep可以直接修改grep buffer,并将修改映射回原文件
 (defun my-edit/init-wgrep ()
   "Initialize my package"
-  (use-package wgrep))
+  (use-package wgrep
+    :defer t))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

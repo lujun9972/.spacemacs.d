@@ -29,6 +29,7 @@
 (defun my-life/init-emms ()
   "Initialize my package"
   (use-package emms
+    :defer t
     :config
     (require 'emms-setup)
     (emms-all) ;(emms-standard)  
@@ -116,6 +117,7 @@
     ))
 (defun my-life/init-org2blog ()
   (use-package org2blog
+    :defer t
     :config
     (require 'org2blog-autoloads)
 
@@ -161,7 +163,8 @@
     (setq org2blog/wp-buffer-format-function 'org2blog/wp-format-buffer-with-author)))
 
 (defun my-life/init-sx ()
-  (use-package sx))
+  (use-package sx
+    :defer  t))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

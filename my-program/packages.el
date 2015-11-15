@@ -21,6 +21,7 @@
       lispy
       gist
       smart-compile
+      elog
       ))
 
 ;; List of packages to exclude.
@@ -162,6 +163,9 @@
     (add-to-list 'smart-compile-alist
                  '("mbcharge\.h$" . "plink cnaps2@10.8.6.10 \". ~/.profile;cd app/mb;make\""))
     ))
+
+(defun my-program/init-elog ()
+  (use-package elog))
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
