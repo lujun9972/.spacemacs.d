@@ -22,6 +22,7 @@
       gist
       smart-compile
       elog
+      code-library
       ))
 
 ;; List of packages to exclude.
@@ -166,6 +167,9 @@
 
 (defun my-program/init-elog ()
   (use-package elog))
+
+(defun my-program/init-code-library ()
+  (use-package code-library))
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package

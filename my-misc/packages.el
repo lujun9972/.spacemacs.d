@@ -26,6 +26,7 @@
       ibuffer-vc
       dictionary
       showkey
+      dmenu
       ))
 
 ;; List of packages to exclude.
@@ -205,4 +206,8 @@
 ;; showkey可以显示操作的按及运行的函数
 (defun my-misc/init-showkey ()
   (use-package showkey
+    :defer t))
+
+(defun my-misc/init-dmenu ()
+  (use-package dmenu
     :defer t))

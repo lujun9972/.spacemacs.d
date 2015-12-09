@@ -19,6 +19,7 @@
       w3m
       ;; org2blog
       sx
+      baidu-life
       ))
 
 ;; List of packages to exclude.
@@ -164,6 +165,10 @@
 
 (defun my-life/init-sx ()
   (use-package sx
+    :defer  t))
+
+(defun my-life/init-baidu-life ()
+  (use-package baidu-life
     :defer  t))
 ;;
 ;; Often the body of an initialize function uses `use-package'
