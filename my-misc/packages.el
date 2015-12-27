@@ -27,6 +27,8 @@
       dictionary
       showkey
       dmenu
+      clean-buffers
+      verify-url
       ))
 
 ;; List of packages to exclude.
@@ -210,4 +212,15 @@
 
 (defun my-misc/init-dmenu ()
   (use-package dmenu
-    :defer t))
+    :defer t
+    :bind ("s-r" . dmenu)))
+
+(defun my-misc/init-clean-buffers ()
+  (use-package clean-buffers
+    :config
+    (clean-buffers-turn-on-auto-clean-buffers)
+    ))
+
+(defun my-misc/init-verify-url ()
+  (use-package verify-url
+    ))

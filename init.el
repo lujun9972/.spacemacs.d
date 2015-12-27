@@ -341,7 +341,7 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org2blog w3m emms diff-hl gist yasnippet projectile smart-compile flymake-cppcheck dos lua-mode deferred lispy zeal-at-point ws-butler wgrep switch-window sunrise-x-w32-addons sunrise-x-tree sunrise-x-tabs sunrise-x-popviewer sunrise-x-modeline sunrise-x-loop sunrise-x-checkpoints sunrise-x-buttons sr-speedbar smex slime showkey redshank paredit markdown-mode magit keyfreq info+ idomenu ido-ubiquitous ibuffer-vc git-timemachine ggtags fullframe evil discover-my-major discover dired-sort dired+ dictionary deft clean-aindent-mode bbdb auto-complete)))
+    (org-eww ob-browser org-gnome org-iv org-ehtml org2blog w3m emms diff-hl gist yasnippet projectile smart-compile flymake-cppcheck dos lua-mode deferred lispy zeal-at-point ws-butler wgrep switch-window sunrise-x-w32-addons sunrise-x-tree sunrise-x-tabs sunrise-x-popviewer sunrise-x-modeline sunrise-x-loop sunrise-x-checkpoints sunrise-x-buttons sr-speedbar smex slime showkey redshank paredit markdown-mode magit keyfreq info+ idomenu ido-ubiquitous ibuffer-vc git-timemachine ggtags fullframe evil discover-my-major discover dired-sort dired+ dictionary deft clean-aindent-mode bbdb auto-complete)))
  '(safe-local-variable-values
    (quote
     ((eval when

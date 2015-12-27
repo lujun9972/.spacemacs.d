@@ -16,6 +16,7 @@
     '(
       ;; package names go here
       wgrep
+      org-eww
       ))
 
 ;; List of packages to exclude.
@@ -27,6 +28,11 @@
 (defun my-edit/init-wgrep ()
   "Initialize my package"
   (use-package wgrep
+    :defer t))
+
+(defun my-edit/init-org-eww ()
+  "Initialize my package"
+  (use-package org-eww
     :defer t))
 ;;
 ;; Often the body of an initialize function uses `use-package'

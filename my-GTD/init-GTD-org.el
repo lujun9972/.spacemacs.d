@@ -1044,7 +1044,7 @@ PATH should be a topic that can be thrown at the ssh client"
 
 ;; 设置org笔记时的缩进
 ;; (setq org-description-max-ident 5)
-(require 'org-realtime-preview)         ;写笔记时,可以开启实时预览
+;; (require 'org-realtime-preview)         ;写笔记时,可以开启实时预览
 (require 'org-helper)
 
 (require 'org-mobile)

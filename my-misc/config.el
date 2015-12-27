@@ -25,8 +25,3 @@
                                           ("~/trunk/" "cnaps2" "10.8.6.10" "")
                                           ("d:/workcvs/cnaps2/server/trunk/" "cnaps2" "10.8.6.10" "")
                                           ("d:/workcvs/ibps/ibps" "ibpsusr" "10.8.6.10" ""))))
-(use-package clean-buffers
-  :config
-  ;; (run-with-idle-timer 5 t #'kill-useless-buffers) ;自动清理超过无用的buffer
-  (run-with-timer 0 5 #'kill-useless-buffers) ;自动清理超过无用的buffer
-  )
