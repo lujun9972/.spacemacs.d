@@ -27,6 +27,7 @@
       dictionary
       showkey
       dmenu
+      start-menu
       clean-buffers
       verify-url
       ))
@@ -223,4 +224,8 @@
 
 (defun my-misc/init-verify-url ()
   (use-package verify-url
+    ))
+
+(defun my-misc/init-start-menu ()
+  (use-package start-menu
     ))
