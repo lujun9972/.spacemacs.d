@@ -228,4 +228,7 @@
 
 (defun my-misc/init-start-menu ()
   (use-package start-menu
-    ))
+    :config
+    (start-menu-enable)
+    (global-set-key (kbd "<mouse-2>") 'start-menu-popup)
+    (evil-local-set-key 'normal (kbd "<mouse-2>") 'start-menu-popup)))
