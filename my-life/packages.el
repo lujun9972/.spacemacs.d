@@ -20,6 +20,7 @@
       ;; org2blog
       sx
       baidu-life
+      yahoo-weather
       ))
 
 ;; List of packages to exclude.
@@ -172,6 +173,10 @@
     :defer t
     :config
     (setq baidu-life-api-key "fd96cfa5d662e295b9e6d8a32cd8182e")))
+
+(defun my-life/init-yahoo-weather ()
+  (use-package sx
+    :defer  t))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'
