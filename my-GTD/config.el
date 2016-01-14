@@ -64,5 +64,5 @@
   (add-hook 'diary-hook 'appt-make-list)
   (setq appt-issue-message t))
 
-(level-require "init-GTD-org")
+;(org-babel-load-file "init-GTD-org.org")
 ;(org-babel-load-file "init-GTD-bbdb.org")
