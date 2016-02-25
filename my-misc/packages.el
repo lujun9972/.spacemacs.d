@@ -18,7 +18,6 @@
       (ido :location built-in)
       smex
       (desktop :location built-in)
-      switch-window
       tabbar
       keyfreq
       sr-speedbar
@@ -97,16 +96,6 @@
     (toggle-save-place-globally 1)			;保存各buffer的光标位置
     (savehist-mode t)						;保存minibuffer的history
     ))
-
-;; 使用switch-window插件,使得C-x o在多个window时提示你要跳转到哪个window
-(defun my-misc/init-switch-window ()
-  "Initialize my package"
-  (use-package switch-window
-    :defer t
-    :config
-    (setq switch-window-shortcut-style 'alphabet)
-    :bind
-    ("C-x o" . switch-window)))
 
 (defun my-misc/init-tabbar ()
   "Initialize my package"
