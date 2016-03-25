@@ -29,6 +29,7 @@
       start-menu
       clean-buffers
       verify-url
+      org2issue
       ))
 
 ;; List of packages to exclude.
@@ -213,6 +214,10 @@
 
 (defun my-misc/init-verify-url ()
   (use-package verify-url
+    ))
+
+(defun my-misc/init-org2issue ()
+  (use-package org2issue
     ))
 
 (defun my-misc/init-start-menu ()
