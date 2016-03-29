@@ -586,7 +586,7 @@ A prefix arg forces clock in of the default task."
 (setq org-publish-project-alist
       `(("my_note"
                :base-directory ,MY-NOTE-PATH ;导出的源代码路径
-               :publishing-directory ,(filter-valid-file "d:/www/my_note" "/cygdrive/d/www/my_note" "/var/www/my_note") ;导出的目的代码路径
+               :publishing-directory "/var/www/my_note" ;导出的目的代码路径
                :recursive t
                :table-of-contents nil
                :base-extension "org"    ;只导出.org文件
@@ -604,7 +604,7 @@ A prefix arg forces clock in of the default task."
                )
               ("my_gtd"
                :base-directory ,MY-GTD-PATH
-               :publishing-directory ,(filter-valid-file "d:/www/my_gtd" "/cygdrive/d/www/my_gtd" "/var/www/my_gtd") ;导出的目的代码路径
+               :publishing-directory "/var/www/my_gtd";导出的目的代码路径
                :recursive nil
                :section-numbers nil
                :table-of-contents nil

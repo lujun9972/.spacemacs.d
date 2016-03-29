@@ -1,11 +1,15 @@
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
+(defconst MY-LISP-PATH "~/MyLisp")
+(defconst CODE-LIBRARY-PATH  "~/CodeLibrary/elisp.org")
+(defconst MY-GTD-PATH "~/我的GTD")
+(defconst MY-NOTE-PATH "~/我的笔记")
 
 ;; 加载相关辅助函数
 (add-to-list 'load-path MY-LISP-PATH)
-(dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
-  (require (intern (file-name-base helper-package))))
+;; (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
+;;   (require (intern (file-name-base helper-package))))
 
 (defun dotspacemacs/layers ()
  "Configuration Layers declaration.
@@ -69,7 +73,8 @@
            erc-encoding-coding-alist '(("#linuxfire" . chinese-iso-8bit))
            erc-ignore-list nil)
       version-control
-      ;; org
+      (org :variables
+           org-enable-github-support t)
       (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -88,7 +93,7 @@
   ;; wrapped in a layer. If you need some configuration for these
   ;; packages, then consider creating a layer. You can also put the
   ;; configuration in `dotspacemacs/user-config'.
-  dotspacemacs-additional-packages '(config-parser)
+  dotspacemacs-additional-packages '(config-parser simple-httpd eredis ob-redis package-utils docker-tramp docker dockerfile-mode)
   ;; A list of packages and/or extensions that will not be install and loaded.
   dotspacemacs-excluded-packages '()
   ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -304,7 +309,42 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (config-parser yahoo-weather sx baidu-life verify-url tabbar start-menu org-eww elog dmenu code-library clean-buffers org2blog w3m emms diff-hl gist yasnippet projectile smart-compile flymake-cppcheck dos lua-mode deferred lispy zeal-at-point ws-butler wgrep switch-window sr-speedbar smex slime showkey redshank paredit markdown-mode magit keyfreq info+ idomenu ido-ubiquitous ibuffer-vc git-timemachine ggtags fullframe evil discover-my-major discover dired-sort dired+ dictionary deft clean-aindent-mode bbdb auto-complete))))
+    (org2issue ox-gfm company-anaconda anaconda-mode powerline hydra swiper smartparens tle pythonic avy packed with-editor helm helm-core async f s dash dockerfile-mode magit-popup docker docker-tramp package-utils eredis simple-httpd ob-redis redis revive auto-pause toc-org org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets htmlize gnuplot xterm-color window-numbering volatile-highlights vi-tilde-fringe sql-indent spaceline smooth-scrolling shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode popwin pip-requirements persp-mode pcre2el paradox page-break-lines pacmacs open-junk-file neotree multi-term move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative leuven-theme indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus elisp-slime-nav disaster define-word cython-mode company-statistics company-quickhelp company-emoji company-c-headers company cmake-mode clang-format buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game quelpa package-build use-package which-key bind-key bind-map config-parser yahoo-weather sx baidu-life verify-url tabbar start-menu org-eww elog dmenu code-library clean-buffers org2blog w3m emms diff-hl gist yasnippet projectile smart-compile flymake-cppcheck dos lua-mode deferred lispy zeal-at-point ws-butler wgrep switch-window sr-speedbar smex slime showkey redshank paredit markdown-mode magit keyfreq info+ idomenu ido-ubiquitous ibuffer-vc git-timemachine ggtags fullframe evil discover-my-major discover dired-sort dired+ dictionary deft clean-aindent-mode bbdb auto-complete)))
+ '(safe-local-variable-values
+   (quote
+    ((eval when
+           (and
+            (buffer-file-name)
+            (file-regular-p
+             (buffer-file-name))
+            (string-match-p "^[^.]"
+                            (buffer-file-name)))
+           (emacs-lisp-mode)
+           (when
+               (fboundp
+                (quote flycheck-mode))
+             (flycheck-mode -1))
+           (unless
+               (featurep
+                (quote package-build))
+             (let
+                 ((load-path
+                   (cons ".." load-path)))
+               (require
+                (quote package-build))))
+           (package-build-minor-mode)
+           (set
+            (make-local-variable
+             (quote package-build-working-dir))
+            (expand-file-name "../working/"))
+           (set
+            (make-local-variable
+             (quote package-build-archive-dir))
+            (expand-file-name "../packages/"))
+           (set
+            (make-local-variable
+             (quote package-build-recipes-dir))
+            default-directory))))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -313,4 +353,4 @@
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
