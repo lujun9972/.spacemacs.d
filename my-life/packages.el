@@ -21,6 +21,8 @@
       sx
       baidu-life
       yahoo-weather
+      ego
+      org2issue
       ))
 
 ;; List of packages to exclude.
@@ -175,6 +177,14 @@
     (setq baidu-life-api-key "fd96cfa5d662e295b9e6d8a32cd8182e")))
 
 (defun my-life/init-yahoo-weather ()
+  (use-package sx
+    :defer  t))
+
+(defun my-life/init-ego ()
+  (use-package sx
+    :defer  t))
+
+(defun my-life/init-org2issue ()
   (use-package sx
     :defer  t))
 
