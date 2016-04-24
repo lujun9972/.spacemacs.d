@@ -45,7 +45,6 @@
   (use-package zeal-at-point
     :config
     (global-set-key "\C-ch" 'zeal-at-point)
-    (add-to-list 'exec-path (filter-valid-file "C:/Program Files/Zeal" "/cygdrive/c/Program Files/Zeal/"))
     ;; (add-to-list 'zeal-at-point-mode-alist '(perl-mode . "perl"))
     ;; (add-hook 'rinari-minor-mode-hook
     ;;    (lambda () (setq zeal-at-point-docset "rails")))

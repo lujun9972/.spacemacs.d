@@ -65,7 +65,8 @@ values."
            erc-encoding-coding-alist '(("#linuxfire" . chinese-iso-8bit))
            erc-ignore-list nil)
       version-control
-      ;; org
+      (org :variables
+           org-enable-github-support t)
       (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -284,6 +285,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (defconst MY-LISP-PATH "~/MyLisp")
+  (defconst CODE-LIBRARY-PATH  "~/CodeLibrary/elisp.org")
+  (defconst MY-GTD-PATH "~/我的GTD")
+  (defconst MY-NOTE-PATH "~/我的笔记")
   ;; 加载相关辅助函数
   (add-to-list 'load-path MY-LISP-PATH)
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
@@ -316,4 +321,4 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
