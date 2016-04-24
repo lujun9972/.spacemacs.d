@@ -43,7 +43,6 @@ values."
       python
       sql
       gnus
-      ;; erc
       (erc :variables
            erc-nick "lujun9972"  		;设置昵称
            erc-user-full-name "lujunwei" ;设置全称
@@ -91,7 +90,7 @@ values."
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
-   dotspacemacs-delete-orphan-packages t))
+   dotspacemacs-delete-orphan-packages nil))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -321,4 +320,4 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))

@@ -21,8 +21,8 @@
       sx
       baidu-life
       yahoo-weather
-      ego
-      org2issue
+      ;; ego
+      ;; org2issue
       ))
 
 ;; List of packages to exclude.
@@ -181,11 +181,11 @@
     :defer  t))
 
 (defun my-life/init-ego ()
-  (use-package sx
+  (use-package ego
     :defer  t))
 
 (defun my-life/init-org2issue ()
-  (use-package sx
+  (use-package org2issue
     :defer  t))
 
 ;;
