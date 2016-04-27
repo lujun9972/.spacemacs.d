@@ -185,8 +185,8 @@
     :defer  t))
 
 (defun my-life/init-org2issue ()
-  (use-package org2issue
-    :defer  t))
+  (with-eval-after-load 'org (use-package org2issue
+                               :defer  t)))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'

@@ -1,3 +1,4 @@
+
 ; Enable habit tracking (and a bunch of other modules)
 (mapc (lambda (pkg)
         (require pkg nil t))
@@ -604,7 +605,7 @@ A prefix arg forces clock in of the default task."
                )
               ("my_gtd"
                :base-directory ,MY-GTD-PATH
-               :publishing-directory "/var/www/my_gtd";导出的目的代码路径
+               :publishing-directory "/var/www/my_gtd" ;导出的目的代码路径
                :recursive nil
                :section-numbers nil
                :table-of-contents nil

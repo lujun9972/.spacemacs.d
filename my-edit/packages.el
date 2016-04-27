@@ -32,8 +32,8 @@
 
 (defun my-edit/init-org-eww ()
   "Initialize my package"
-  (eval-after-load 'org (use-package org-eww
-                          )))
+  (with-eval-after-load 'org (use-package org-eww
+                               )))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
