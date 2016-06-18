@@ -304,22 +304,3 @@ you should place your code here."
   (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-org.org")
   ;; (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-bbdb.org")
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (simple-httpd org2blog w3m emms diff-hl gist yasnippet projectile smart-compile flymake-cppcheck dos lua-mode deferred lispy zeal-at-point ws-butler wgrep switch-window sr-speedbar smex slime showkey redshank paredit markdown-mode magit keyfreq info+ idomenu ido-ubiquitous ibuffer-vc git-timemachine ggtags fullframe evil discover-my-major discover dired-sort dired+ dictionary deft clean-aindent-mode bbdb auto-complete))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
