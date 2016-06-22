@@ -35,7 +35,7 @@ values."
       games
       emoji
       emacs-lisp
-      ;; git
+      git
       markdown
       ;; clojure
       c-c++
@@ -63,7 +63,6 @@ values."
            erc-track-position-in-mode-line 'before-modes
            erc-encoding-coding-alist '(("#linuxfire" . chinese-iso-8bit))
            erc-ignore-list nil)
-      version-control
       ;; (org :variables
       ;;      org-enable-github-support t)
       (shell :variables
