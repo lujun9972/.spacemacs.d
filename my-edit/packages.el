@@ -16,7 +16,7 @@
     '(
       ;; package names go here
       wgrep
-      ;; org-eww
+      org-eww
       ))
 
 ;; List of packages to exclude.
