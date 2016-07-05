@@ -18,7 +18,8 @@
       (ido :location built-in)
       smex
       (desktop :location built-in)
-      tabbar
+      ;; tabbar
+      uimage
       keyfreq
       sr-speedbar
       ibuffer
@@ -119,6 +120,10 @@
           (tabbar-buffer-groups))))
 
     (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)))
+
+(defun my-misc/init-uimage ()
+  (use-package smex
+    :ensure t))
 
 ;; 配置keyfreq用来记录按键频率,使用keyfre-show查看
 (defun my-misc/init-keyfreq ()
