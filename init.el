@@ -31,14 +31,15 @@ values."
        deft-directory MY-NOTE-PATH)
       ;; finance
       gtags
-      ;; semantic
+      semantic
       games
       emoji
       emacs-lisp
       git
       markdown
       ;; clojure
-      c-c++
+      (c-c++ :variables
+             c-c++-enable-clang-support t)
       ;; ruby
       python
       sql
@@ -72,9 +73,9 @@ values."
       version-control
       my-display
       my-misc
-      my-edit
+      ;; my-edit
       my-GTD
-      my-file
+      ;; my-file
       my-eshell
       my-program
       my-life
@@ -83,7 +84,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(request)
+   dotspacemacs-additional-packages '(request json-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -291,7 +292,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-to-list 'load-path MY-LISP-PATH)
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
     (require (intern (file-name-base helper-package))))
-  )
+  (setq configuration-layer--elpa-archives
+        '(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
+          ("org-cn"   . "http://elpa.zilongshanren.com/org/")
+          ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/"))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
