@@ -16,7 +16,7 @@
     '(
       ;; package names go here
       (ido :location built-in)
-      smex
+      ;; smex
       (desktop :location built-in)
       ;; tabbar
       uimage
@@ -77,14 +77,14 @@
       :config
       (ido-ubiquitous-mode t)))
 
-(defun my-misc/init-smex ()
-  (use-package smex
-    :ensure t
-    :config
-    (smex-initialize)
-    :bind (("M-x" . smex)
-           ("C-x x" . smex)
-           ("M-X" . smex-major-mode-commands))))
+;; (defun my-misc/init-smex ()
+;;   (use-package smex
+;;     :ensure t
+;;     :config
+;;     (smex-initialize)
+;;     :bind (("M-x" . smex)
+;;            ("C-x x" . smex)
+;;            ("M-X" . smex-major-mode-commands))))
 
 (defun my-misc/post-init-desktop ()
   (use-package desktop
@@ -122,7 +122,7 @@
     (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)))
 
 (defun my-misc/init-uimage ()
-  (use-package smex
+  (use-package uimage
     :ensure t))
 
 ;; 配置keyfreq用来记录按键频率,使用keyfre-show查看
