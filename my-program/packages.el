@@ -15,8 +15,8 @@
 (setq my-program-packages
     '(
       ;; package names go here
-      ws-butler
-      git-timemachine
+      ;; ws-butler
+      ;; git-timemachine
       zeal-at-point
       lispy
       gist
@@ -31,14 +31,14 @@
 ;; For each package, define a function my-program/init-<package-name>
 ;;
 ;; ws-butler helps managing whitespace on every line of code written or edited, in an unobtrusive, help you write clean code without noisy whitespace effortlessly. 
-(defun my-program/init-ws-butler ()
-  "Initialize my package"
-  (use-package ws-butler
-    :config
-    (add-hook 'c-mode-common-hook 'ws-butler-mode)))
+;; (defun my-program/init-ws-butler ()
+;;   "Initialize my package"
+;;   (use-package ws-butler
+;;     :config
+;;     (add-hook 'c-mode-common-hook 'ws-butler-mode)))
 
-(defun my-program/init-git-timemachine ()
-  (use-package git-timemachine))
+;; (defun my-program/init-git-timemachine ()
+;;   (use-package git-timemachine))
 
 ;; 使用zeal查看docset
 (defun my-program/init-zeal-at-point ()
