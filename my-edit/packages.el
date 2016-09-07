@@ -16,7 +16,7 @@
     '(
       ;; package names go here
       wgrep
-      org-eww
+      org-preview-html
       ))
 
 ;; List of packages to exclude.
@@ -30,9 +30,9 @@
   (use-package wgrep
     :defer t))
 
-(defun my-edit/init-org-eww ()
+(defun my-edit/init-org-preview-html ()
   "Initialize my package"
-  (with-eval-after-load 'org (use-package org-eww
+  (with-eval-after-load 'org (use-package org-preview-html
                                )))
 ;;
 ;; Often the body of an initialize function uses `use-package'
