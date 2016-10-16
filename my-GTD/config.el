@@ -41,7 +41,7 @@
                              (holiday-fixed 10 1 "国庆节")
                              (holiday-fixed 12 25 "圣诞节"))))
 
-(use-package diary
+(use-package diary-lib
   :config
   ;;在mode-line显示时间
   (setq display-time-24hr-format t)

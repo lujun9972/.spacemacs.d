@@ -1,4 +1,3 @@
-
 ; Enable habit tracking (and a bunch of other modules)
 (mapc (lambda (pkg)
         (require pkg nil t))
@@ -652,7 +651,7 @@ A prefix arg forces clock in of the default task."
  '((emacs-lisp . t)
    (dot . t)
    (ditaa . t)
-   (R . t)
+   ;; (R . t)
    (python . t)
    (ruby . t)
    (gnuplot . t)
