@@ -651,7 +651,7 @@ A prefix arg forces clock in of the default task."
  '((emacs-lisp . t)
    (dot . t)
    (ditaa . t)
-   ;; (R . t)
+   (R . t)
    (python . t)
    (ruby . t)
    (gnuplot . t)
