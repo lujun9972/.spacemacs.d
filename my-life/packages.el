@@ -201,34 +201,49 @@
                  ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
                  :ignore-file-name-regexp "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
                  :web-server-docroot "~/webRoot/emacs-document.github.io" ; 本地测试的目录
-                 :web-server-port 5432); 本地测试的端口
-
+                 :web-server-port 5432) ; 本地测试的端口
+                 ("lujun9972.github.com" ; 站点工程的名字
+                  :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
+                  :site-domain "http://lujun9972.github.io/" ; 站点的网址
+                  :site-main-title "暗无天日" ; 站点的标题
+                  :site-sub-title "=============>随便谢谢" ; 站点的副标题
+                  ;; :repository-org-branch "master"
+                  ;; :repository-html-branch "gh-pages"
+                  :theme (default) ; 使用的主题
+                  :summary (("years" :year :updates 10) ("authors" :authors) ("tags" :tags)) ; 导航栏的设置，有 category 和 summary 两种
+                  :source-browse-url ("Github" "https://github.com/lujun9972/lujun9972.github.com") ; 你的工程源代码所在的位置
+                  :personal-disqus-shortname "暗日" ; 使用 disqus 评论功能的话，它的短名称
+                  :personal-duoshuo-shortname "暗日" ; 使用 多说 评论功能的话，它的短名称
+                  ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
+                  :ignore-file-name-regexp "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
+                  :web-server-docroot "~/webRoot/lujun9972.github.io" ; 本地测试的目录
+                  :web-server-port 5432)
                  ;; 你可以在此添加更多的站点设置
-               )))))
+                 )))))
 
 (defun my-life/init-org2issue ()
   (with-eval-after-load 'org (use-package org2issue
                                :defer  t)))
 (defun my-life/init-newsticker ()
   (use-package newsticker
-  :init
-  (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index) 
-  :config
-  (add-to-list 'newsticker-url-list '("planet emacs" "http://planet.emacsen.org/atom.xml" nil nil nil)) ;添加planet emacs的RSS
+    :init
+    (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index) 
+    :config
+    (add-to-list 'newsticker-url-list '("planet emacs" "http://planet.emacsen.org/atom.xml" nil nil nil)) ;添加planet emacs的RSS
                                         ;(add-to-list 'newsticker-url-list '("陈斌的博客" "http://blog.binchen.org/?feed=rss2" nil nil nil)) ;添加planet emacs的RSS
-  (add-to-list 'newsticker-url-list '("Emacs Redux" "http://emacsredux.com/atom.xml" nil nil nil))
-  (add-to-list 'newsticker-url-list '("lunaryorn" "http://www.lunaryorn.com/feed.atom" nil nil nil))
-  (add-to-list 'newsticker-url-list '("endlessParentheses" "http://endlessparentheses.com/atom.xml" nil nil nil))
-  ;; (add-to-list 'newsticker-url-list '("包昊军的博客" "http://baohaojun.github.io/atom.xml" nil nil nil))
-  ;; (add-to-list 'newsticker-url-list '("Xudifsd" "http://xudifsd.org/blog/feed/" nil nil nil))
-  (add-to-list 'newsticker-url-list '("A programmer's site" "http://shenfeng.me/atom.xml" nil nil nil))
-  (add-to-list 'newsticker-url-list '("liutos" "http://liutos.github.io/atom.xml" nil nil nil))
-  (add-to-list 'newsticker-url-list '("null programe" "http://nullprogram.com/feed/" nil nil nil))
+    (add-to-list 'newsticker-url-list '("Emacs Redux" "http://emacsredux.com/atom.xml" nil nil nil))
+    (add-to-list 'newsticker-url-list '("lunaryorn" "http://www.lunaryorn.com/feed.atom" nil nil nil))
+    (add-to-list 'newsticker-url-list '("endlessParentheses" "http://endlessparentheses.com/atom.xml" nil nil nil))
+    ;; (add-to-list 'newsticker-url-list '("包昊军的博客" "http://baohaojun.github.io/atom.xml" nil nil nil))
+    ;; (add-to-list 'newsticker-url-list '("Xudifsd" "http://xudifsd.org/blog/feed/" nil nil nil))
+    (add-to-list 'newsticker-url-list '("A programmer's site" "http://shenfeng.me/atom.xml" nil nil nil))
+    (add-to-list 'newsticker-url-list '("liutos" "http://liutos.github.io/atom.xml" nil nil nil))
+    (add-to-list 'newsticker-url-list '("null programe" "http://nullprogram.com/feed/" nil nil nil))
 
-  ;; (add-to-list 'newsticker-url-list '("Scott Young" "http://feeds.feedburner.com/scotthyoung/HAHx" nil nil nil)) 
-  (setq newsticker-html-renderer 'w3m-region)           ;使用w3m来格式化html
-  (setq newsticker-automatically-mark-items-as-old nil) ;不自动将item设置为已读
-  (setq newsticker-show-all-news-elements t)))
+    ;; (add-to-list 'newsticker-url-list '("Scott Young" "http://feeds.feedburner.com/scotthyoung/HAHx" nil nil nil)) 
+    (setq newsticker-html-renderer 'w3m-region)           ;使用w3m来格式化html
+    (setq newsticker-automatically-mark-items-as-old nil) ;不自动将item设置为已读
+    (setq newsticker-show-all-news-elements t)))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

@@ -31,7 +31,7 @@ values."
        deft-directory MY-NOTE-PATH)
       ;; finance
       gtags
-      semantic
+      ;; semantic
       games
       emoji
       emacs-lisp
