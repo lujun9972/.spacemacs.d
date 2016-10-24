@@ -18,7 +18,9 @@
         org-rmail
         org-vm
         org-wl
-        org-w3m))
+        org-w3m
+        org-eww
+        ox-md))
 
 (let ((keys (quote (("r" "org-remember" "") ("l" "org-store-link" "") ("c" "org-capture" "") ("a" "org-agenda" "") ("b" "org-iswitchb" "") ("<f11>" "org-clock-goto" "f11:跳转到正在计时的任务") ("" "" "")))))
 (mapc (lambda (key)
@@ -651,7 +653,7 @@ A prefix arg forces clock in of the default task."
  '((emacs-lisp . t)
    (dot . t)
    (ditaa . t)
-   (R . t)
+   ;; (R . t)
    (python . t)
    (ruby . t)
    (gnuplot . t)
@@ -1037,9 +1039,10 @@ PATH should be a topic that can be thrown at the ssh client"
   (when (equal "org" (file-name-extension buffer-file-name))
     (insert (concat "#+TITLE: "(file-name-base buffer-file-name)) "\n")
     (insert "#+AUTHOR: " user-login-name "\n")
-    (insert "#+CATEGORY: "  (get-category-from-path buffer-file-name)"\n")
+    (insert "#+TAGS: "  (get-category-from-path buffer-file-name)"\n")
     (insert "#+DATE: " (format-time-string "[%Y-%m-%d %a %H:%M]" (current-time)) "\n")
-    (insert "#+OPTIONS: ^:{}")))
+    (insert "#+LANGUAGE:  zh-CN")
+    (insert "#+OPTIONS:  H:6 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:nil")))
 (add-to-list 'find-file-not-found-hooks 'new-org-file-init)
 
 ;; 设置org笔记时的缩进
