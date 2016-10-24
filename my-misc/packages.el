@@ -67,9 +67,7 @@
                    (not (file-remote-p file))
                    (y-or-n-p-with-timeout "是否使用sudo方式打开当前文件" 10 "n"))
           (find-alternate-file (concat "/sudo::" file)))))
-    (advice-add 'ido-find-file :after #'alternate-current-file-as-root))
-  ;; 加载ido-pinyin,支持拼音匹配中文
-  (use-package ido-pinyin))
+    (advice-add 'ido-find-file :after #'alternate-current-file-as-root)))
 
 (defun my-misc/init-ido-ubiquitous ()
     (use-package ido-ubiquitous
