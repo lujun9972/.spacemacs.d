@@ -202,6 +202,22 @@
                  :ignore-file-name-regexp "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
                  :web-server-docroot "~/webRoot/emacs-document.github.io" ; 本地测试的目录
                  :web-server-port 5432) ; 本地测试的端口
+                 ("Emacs公众号文章" ; 站点工程的名字
+                 :repository-directory "~/github/emacsist" ; 站点的本地目录
+                 :site-domain "http://emacs-china.github.io/emacsist" ; 站点的网址
+                 :site-main-title "Emacs公众号文章" ; 站点的标题
+                 :site-sub-title "=============>欢迎来稿" ; 站点的副标题
+                 :repository-org-branch "master"
+                 :repository-html-branch "gh-pages"
+                 :theme (default) ; 使用的主题
+                 :summary (("years" :year :updates 10) ("authors" :authors) ("tags" :tags)) ; 导航栏的设置，有 category 和 summary 两种
+                 :source-browse-url ("Github" "https://github.com/lujun9972/emacs-document") ; 你的工程源代码所在的位置
+                 :personal-disqus-shortname "emacsist" ; 使用 disqus 评论功能的话，它的短名称
+                 :personal-duoshuo-shortname "emacsist" ; 使用 多说 评论功能的话，它的短名称
+                 ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
+                 :ignore-file-name-regexp "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
+                 :web-server-docroot "~/webRoot/emacs-china.github.io/emacsist" ; 本地测试的目录
+                 :web-server-port 5432)
                  ("lujun9972.github.com" ; 站点工程的名字
                   :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
                   :site-domain "http://lujun9972.github.io/" ; 站点的网址
