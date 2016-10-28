@@ -25,7 +25,6 @@ values."
      ;; ----------------------------------------------------------------
       auto-completion
       better-defaults
-      smex
       (deft :variables
        deft-recursive t
        deft-directory MY-NOTE-PATH)
