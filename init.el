@@ -18,6 +18,9 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     lua
+     html
+     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -25,6 +28,7 @@ values."
      ;; ----------------------------------------------------------------
       auto-completion
       better-defaults
+      smex
       (deft :variables
        deft-recursive t
        deft-directory MY-NOTE-PATH)
@@ -306,3 +310,19 @@ you should place your code here."
   (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-org.org")
   ;; (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-bbdb.org")
   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol t)
+ '(package-selected-packages
+   (quote
+    (lua-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yaml-mode org-plus-contrib zeal-at-point yapfify yahoo-weather xterm-color ws-butler window-numbering which-key w3m volatile-highlights vi-tilde-fringe verify-url uuidgen use-package uimage typit toc-org sx start-menu sql-indent spacemacs-theme spaceline smex smeargle smart-compile showkey shell-pop restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox pacmacs orgit org2issue org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode lispy linum-relative link-hint keyfreq json-mode info+ indent-guide ido-vertical-mode ibuffer-vc hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fullframe flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emms elog elisp-slime-nav ego dumb-jump dmenu disaster diff-hl dictionary deft define-word cython-mode company-statistics company-emoji company-c-headers company-anaconda column-enforce-mode code-library cmake-mode clean-buffers clean-aindent-mode clang-format baidu-life auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-link ace-jump-helm-line ac-ispell 2048-game)))
+ '(save-place-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
