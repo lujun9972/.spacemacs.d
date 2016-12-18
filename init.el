@@ -18,6 +18,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     lua
+     html
      yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -26,6 +28,7 @@ values."
      ;; ----------------------------------------------------------------
       auto-completion
       better-defaults
+      smex
       (deft :variables
        deft-recursive t
        deft-directory MY-NOTE-PATH)
