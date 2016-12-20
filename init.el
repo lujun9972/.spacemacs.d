@@ -73,7 +73,6 @@ values."
       (shell :variables
              shell-default-shell 'eshell
              shell-enable-smart-eshell t
-             eshell-visual-commands `("musicbox" "w3m" "calcurse" ,@eshell-visual-commands)
              shell-default-term-shell "/bin/bash"
              shell-default-height 30
              shell-default-position 'bottom)
