@@ -291,10 +291,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (defconst MY-LISP-PATH "~/MyLisp")
+  (defconst MY-LISP-PATH "~/MyLisp/")
   (defconst CODE-LIBRARY-PATH  "~/CodeLibrary/elisp.org")
-  (defconst MY-GTD-PATH "~/我的GTD")
-  (defconst MY-NOTE-PATH "~/我的笔记")
+  (defconst MY-GTD-PATH "~/我的GTD/")
+  (defconst MY-NOTE-PATH "~/我的笔记/")
   ;; 加载相关辅助函数
   (add-to-list 'load-path MY-LISP-PATH)
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
@@ -313,4 +313,6 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-org.org")
   ;; (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-bbdb.org")
+  (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
+  (load custom-file)
   )
