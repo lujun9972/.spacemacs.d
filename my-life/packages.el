@@ -26,7 +26,8 @@
       (newsticker :location local)
       (mdx-dictionary :location (recipe
                                  :fetcher github
-                                 :repo "lujun9972/mdx-dictionary.el"))
+                                 :repo "lujun9972/mdx-dictionary.el"
+                                 :files ("*")))
       ))
 
 ;; List of packages to exclude.
@@ -266,7 +267,23 @@
 
 (defun my-life/init-mdx-dictionary ()
   (use-package mdx-dictionary
-    :defer  t))
+    :defer  t
+    :config
+    (defun mdx-dictionary--save-to-anki (content)
+      (let* ((word (word-at-point))
+             (sentence (replace-regexp-in-string "[\r\n]+" " " (or (sentence-at-point)
+                                                                   (thing-at-point 'line)))) ;去掉句子中的断行
+             (sentence (replace-regexp-in-string (regexp-quote word)
+                                                 (lambda (word)
+                                                   (format "<b>%s</b>" word))
+                                                 sentence)) ;高亮句子中的单词
+             (content (replace-regexp-in-string "[\r\n]+" "<br>" content)))
+        (with-temp-file "~/mdx-dictionary-for-anki.txt"
+          (insert-file-contents "~/mdx-dictionary-for-anki.txt")
+          (insert (format "%s|%s|%s\n" word content sentence)))))
+
+    (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)
+    ))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
