@@ -24,6 +24,9 @@
       ego
       org2issue
       (newsticker :location local)
+      (mdx-dictionary :location (recipe
+                                 :fetcher github
+                                 :repo "lujun9972/mdx-dictionary.el"))
       ))
 
 ;; List of packages to exclude.
@@ -178,7 +181,7 @@
     (setq baidu-life-api-key "fd96cfa5d662e295b9e6d8a32cd8182e")))
 
 (defun my-life/init-yahoo-weather ()
-  (use-package sx
+  (use-package yahoo-weather
     :defer  t))
 
 (defun my-life/init-ego ()
@@ -260,6 +263,10 @@
     (setq newsticker-html-renderer 'w3m-region)           ;使用w3m来格式化html
     (setq newsticker-automatically-mark-items-as-old nil) ;不自动将item设置为已读
     (setq newsticker-show-all-news-elements t)))
+
+(defun my-life/init-mdx-dictionary ()
+  (use-package mdx-dictionary
+    :defer  t))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
