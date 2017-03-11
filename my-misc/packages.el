@@ -30,6 +30,9 @@
       start-menu
       clean-buffers
       verify-url
+      (pocket-mode :location (recipe
+                              :fetcher github
+                              :repo "lujun9972/pocket-mode"))
       ))
 
 ;; List of packages to exclude.
@@ -224,3 +227,10 @@
     (start-menu-enable)
     (global-set-key (kbd "<mouse-2>") 'start-menu-popup)
     (evil-local-set-key 'normal (kbd "<mouse-2>") 'start-menu-popup)))
+(defun my-misc/init-pocket-mode ()
+  (use-package pocket-mode
+    :defer  t
+    :config
+    (setq pocket-items-per-page 20)
+    (eval-after-load 'pocket-mode
+      '(require 'url2org))))
