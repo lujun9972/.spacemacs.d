@@ -142,7 +142,7 @@ values."
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
    dotspacemacs-startup-recent-list-size 5
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'elisp-mode-mode
+   dotspacemacs-scratch-mode 'emacs-lisp-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -318,3 +318,17 @@ you should place your code here."
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
   (load custom-file)
   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (pocket-mode zeal-at-point yapfify yaml-mode yahoo-weather xterm-color ws-butler window-numbering which-key web-mode w3m volatile-highlights vi-tilde-fringe verify-url uuidgen use-package uimage typit toc-org tagedit sx start-menu sql-indent spacemacs-theme spaceline smex smeargle smart-compile slim-mode showkey shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox pacmacs orgit org2issue org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode mdx-dictionary markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum live-py-mode lispy linum-relative link-hint less-css-mode keyfreq json-mode info+ indent-guide ido-vertical-mode ibuffer-vc hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fullframe flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emms emmet-mode elog elisp-slime-nav ego dumb-jump dmenu disaster diff-hl dictionary deft define-word cython-mode company-web company-statistics company-emoji company-c-headers company-anaconda column-enforce-mode code-library cmake-mode clean-buffers clean-aindent-mode clang-format baidu-life auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-link ace-jump-helm-line ac-ispell 2048-game))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
