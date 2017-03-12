@@ -231,6 +231,6 @@
   (use-package pocket-mode
     :defer  t
     :config
-    (setq pocket-items-per-page 20)
+    (setq pocket-items-per-page 30)
     (eval-after-load 'pocket-mode
       '(require 'url2org))))
