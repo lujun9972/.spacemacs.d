@@ -277,9 +277,11 @@
                                                  (lambda (word)
                                                    (format "<b>%s</b>" word))
                                                  sentence)) ;高亮句子中的单词
-             (content (replace-regexp-in-string "[\r\n]+" "<br>" content)))
-        (with-temp-file "~/mdx-dictionary-for-anki.txt"
-          (insert-file-contents "~/mdx-dictionary-for-anki.txt")
+             (content (replace-regexp-in-string "[\r\n]+" "<br>" content))
+             (anki-file  "~/mdx-dictionary-for-anki.txt"))
+        (with-temp-file anki-file
+          (when (file-readable-p anki-file)
+            (insert-file-contents anki-file))
           (insert (format "%s|%s|%s\n" word content sentence)))))
 
     (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)
