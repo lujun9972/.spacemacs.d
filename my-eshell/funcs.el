@@ -16,39 +16,7 @@
   "Quickly jump to previous directories."
   (eshell/cd (ido-completing-read "Jump to directory: "
                                   (delete-dups (ring-elements eshell-last-dir-ring)))))
-;; 定义eshell/r使用ido方式选择eshell历史
-(defun eshell/r ()
-  "use ido-style to read  eshell-history"
-  (interactive)
-  (let* ((index 0)
-         (peng-ido-eshell-list nil)
-         (end (point))
-         (beg (save-excursion (eshell-bol) (point)))
-         (input (buffer-substring beg end)))
-    (while (<= index eshell-history-size)
-      (add-to-list 'peng-ido-eshell-list (eshell-get-history index))
-      (setq index (1+ index)))
-    (setq peng-ido-eshell-list (delete-dups (reverse peng-ido-eshell-list)))
-    (if (equal input "")
-        (insert (ido-completing-read "Eshell-history: " peng-ido-eshell-list))
-      (goto-char beg)
-      (kill-line)
-      (insert (ido-completing-read "Eshell-history: " peng-ido-eshell-list
-                                   nil
-                                   nil
-                                   input)))))
 
-;; 定义eshell/c使用ido方式选择cd某个bookmark中的目录
-(defun eshell/c ()
-  "Quickly jump to bookmark directories."
-  (require 'bookmark)
-  (let* ((directory-bookmarks (remove-if-not (lambda (bookmark)
-                                               (file-directory-p (bookmark-get-filename bookmark))) bookmark-alist))
-         (directory-bookmark-names (mapcar #'car directory-bookmarks))
-         (directory-bookmark-name (ido-completing-read "Jump to directory: "
-                                                       (delete-dups directory-bookmark-names)))
-         (directory-bookmark-directory (bookmark-get-filename directory-bookmark-name)))
-    (eshell/cd directory-bookmark-directory)))
 
 ;; 定义eshell/open使用操作系统默认设置打开文件
 (defun eshell/open (&rest args)
@@ -63,3 +31,53 @@
                  (let ((process-connection-type nil))
                    (start-process "" nil "xdg-open" file))) (eshell-flatten-list (reverse args))))
         (t (error "暂不支持该类型的操作系统%s" system-type))))
+
+
+
+;; 与bookmark的整合
+(require 'bookmark)
+(require 'cl-lib)
+
+(defun eshell/marks ()
+  (bookmark-maybe-load-default-file)
+  (let* ((bookmarks (bookmark-maybe-sort-alist))
+         (directory-bookmarks (cl-remove-if-not (lambda (bookmark)
+                                               (file-directory-p (bookmark-get-filename bookmark)))
+                                             bookmarks))
+         (show-bookmark-fn (lambda (bookmark)
+                             (let ((name (bookmark-name-from-full-record bookmark))
+                                   (filename (bookmark-get-filename bookmark)))
+                               (format "%s	->	%s" name filename)))))
+    (mapconcat show-bookmark-fn directory-bookmarks "\n")))
+
+(defun eshell/jump (bookmark-name)
+  (bookmark-maybe-load-default-file)
+  (let ((filename (bookmark-get-filename bookmark-name)))
+    (if (file-directory-p filename)
+        (eshell/cd filename)
+      (error "%s is not a directory" bookmark-name))))
+
+(defun pcmpl-bookmark-names (&optional name)
+  "Return a list of directory bookmark names"
+  (bookmark-maybe-load-default-file)
+  (let* ((name (or name ""))
+         (bookmarks (bookmark-maybe-sort-alist))
+         (directory-bookmarks (cl-remove-if-not (lambda (bookmark)
+                                               (file-directory-p (bookmark-get-filename bookmark)))
+                                             bookmarks))
+         (bookmark-names (mapcar #'bookmark-name-from-full-record directory-bookmarks)))
+    (cl-remove-if-not (lambda (bookmark-name)
+                     (string-prefix-p name bookmark-name))
+                   bookmark-names)))
+
+(defun pcomplete/jump ()
+  "completion for `jump'"
+  (while
+      (pcomplete-here
+       (pcmpl-bookmark-names (pcomplete-arg 'last)))))
+
+(defun eshell/mark (&optional bookmark-name no-overwrite)
+  (let ((buffer-file-name default-directory))
+    (bookmark-set bookmark-name no-overwrite)))
+
+(defalias 'eshell/unmark 'bookmark-delete)
