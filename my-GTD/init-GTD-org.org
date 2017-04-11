@@ -1134,7 +1134,7 @@ orgstruct++-mode is enabled in Gnus message buffers to aid in creating structure
 #+BEGIN_SRC emacs-lisp
   (add-hook 'message-mode-hook 'orgstruct++-mode 'append)
   (add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
-  (add-hook 'message-mode-hook 'bbdb-mail-aliases 'append)
+  ;; (add-hook 'message-mode-hook 'bbdb-define-all-aliases 'append)
   (add-hook 'message-mode-hook 'orgtbl-mode 'append)
   ;; (add-hook 'message-mode-hook 'turn-on-flyspell 'append)
   (add-hook 'message-mode-hook

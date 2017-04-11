@@ -28,6 +28,9 @@
                                  :fetcher github
                                  :repo "lujun9972/mdx-dictionary.el"
                                  :files ("*")))
+      (wangyi-music-mode :location (recipe
+                                 :fetcher github
+                                 :repo "zhengyuli/WangyiMusic"))
       ))
 
 ;; List of packages to exclude.
@@ -285,6 +288,10 @@
           (insert (format "%s|%s|%s\n" word content sentence)))))
 
     (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)
+    ))
+(defun my-life/init-wangyi-music-mode ()
+  (use-package wangyi-music-mode
+    :defer  t
     ))
 ;;
 ;; Often the body of an initialize function uses `use-package'

@@ -690,7 +690,7 @@ A prefix arg forces clock in of the default task."
 
 (add-hook 'message-mode-hook 'orgstruct++-mode 'append)
 (add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
-(add-hook 'message-mode-hook 'bbdb-define-all-aliases 'append)
+;; (add-hook 'message-mode-hook 'bbdb-define-all-aliases 'append)
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
 ;; (add-hook 'message-mode-hook 'turn-on-flyspell 'append)
 (add-hook 'message-mode-hook
@@ -1041,8 +1041,8 @@ PATH should be a topic that can be thrown at the ssh client"
     (insert "#+AUTHOR: " user-login-name "\n")
     (insert "#+TAGS: "  (get-category-from-path buffer-file-name)"\n")
     (insert "#+DATE: " (format-time-string "[%Y-%m-%d %a %H:%M]" (current-time)) "\n")
-    (insert "#+LANGUAGE:  zh-CN")
-    (insert "#+OPTIONS:  H:6 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:nil")))
+    (insert "#+LANGUAGE:  zh-CN\n")
+    (insert "#+OPTIONS:  H:6 num:nil toc:t \\n:nil ::t |:t ^:nil -:nil f:t *:t <:nil")))
 (add-to-list 'find-file-not-found-hooks 'new-org-file-init)
 
 ;; 设置org笔记时的缩进
