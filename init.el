@@ -62,6 +62,7 @@ values."
               )
             nnml-directory "~/mail"
             message-directory "~/mail"
+            smtpmail-stream-type 'starttls
             send-mail-function 'smtpmail-send-it)
       (erc :variables
            erc-nick "lujun9972"  		;设置昵称
@@ -83,6 +84,7 @@ values."
            erc-track-position-in-mode-line 'before-modes
            erc-encoding-coding-alist '(("#linuxfire" . chinese-iso-8bit))
            erc-ignore-list nil)
+      (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/feeds.org"))
       ;; (org :variables
       ;;      org-enable-github-support t)
       (shell :variables

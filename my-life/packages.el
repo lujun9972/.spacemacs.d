@@ -25,7 +25,7 @@
       org2issue
       ;; dictionary
       podcaster
-      (newsticker :location local)
+      ;; (newsticker :location local)
       (mdx-dictionary :location (recipe
                                  :fetcher github
                                  :repo "lujun9972/mdx-dictionary.el"
