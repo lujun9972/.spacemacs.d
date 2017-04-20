@@ -30,7 +30,7 @@
                                  :files ("*")))
       (wangyi-music-mode :location (recipe
                                  :fetcher github
-                                 :repo "zhengyuli/WangyiMusic"))
+                                 :repo "lujun9972/WangyiMusic"))
       ))
 
 ;; List of packages to exclude.

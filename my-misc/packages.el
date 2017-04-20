@@ -232,5 +232,6 @@
     :defer  t
     :config
     (setq pocket-items-per-page 30)
+    (setq pocket-auto-refresh t)
     (eval-after-load 'pocket-mode
       '(require 'url2org))))
