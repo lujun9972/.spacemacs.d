@@ -71,7 +71,7 @@ values."
            ;; erc-port "6667"  
 
            erc-autojoin-channels-alist	;设置自动登录的频道
-           '(("freenode.net" "ubuntu-cn")  
+           '(("freenode.net" "#archlinux-cn")  
              ("oftc.net" "#emacs-cn"))  
 
            erc-keywords '("emacs" "lisp") ;高亮消息中的关键字
