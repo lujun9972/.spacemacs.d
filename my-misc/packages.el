@@ -24,7 +24,6 @@
       sr-speedbar
       ibuffer
       ibuffer-vc
-      dictionary
       showkey
       dmenu
       start-menu
@@ -189,17 +188,7 @@
 (defun my-misc/init-ibuffer-vc ()
   (use-package ibuffer-vc))
 
-(defun my-misc/init-dictionary ()
-  (use-package dictionary
-    :defer t
-    :init
-    (global-set-key [mouse-3] 'dictionary-mouse-popup-matching-words)
-    (global-set-key [(control c)(d)] 'dictionary-lookup-definition)
-    (global-set-key [(control c)(s)] 'dictionary-search)
-    (global-set-key [(control c)(m)] 'dictionary-match-words)
-    :config
-    ;; choose a dictionary server
-    (setq dictionary-server "localhost")))
+
 
 ;; showkey可以显示操作的按及运行的函数
 (defun my-misc/init-showkey ()

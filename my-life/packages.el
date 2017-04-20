@@ -23,11 +23,14 @@
       yahoo-weather
       ego
       org2issue
+      ;; dictionary
+      podcaster
       (newsticker :location local)
       (mdx-dictionary :location (recipe
                                  :fetcher github
                                  :repo "lujun9972/mdx-dictionary.el"
                                  :files ("*")))
+
       (wangyi-music-mode :location (recipe
                                  :fetcher github
                                  :repo "zhengyuli/WangyiMusic"))
@@ -287,10 +290,27 @@
             (insert-file-contents anki-file))
           (insert (format "%s|%s|%s\n" word content sentence)))))
 
-    (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)
-    ))
+    (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)))
+
+(defun my-life/init-dictionary ()
+  (use-package dictionary
+    :defer t
+    :init
+    (global-set-key [mouse-3] 'dictionary-mouse-popup-matching-words)
+    (global-set-key [(control c)(d)] 'dictionary-lookup-definition)
+    (global-set-key [(control c)(s)] 'dictionary-search)
+    (global-set-key [(control c)(m)] 'dictionary-match-words)
+    :config
+    ;; choose a dictionary server
+    (setq dictionary-server "localhost")))
+
 (defun my-life/init-wangyi-music-mode ()
   (use-package wangyi-music-mode
+    :defer  t
+    ))
+
+(defun my-life/init-podcaster ()
+  (use-package podcaster
     :defer  t
     ))
 ;;
