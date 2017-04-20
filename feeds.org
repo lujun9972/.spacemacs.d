@@ -1,0 +1,27 @@
+#+TITLE: feeds
+#+AUTHOR: lujun9972
+#+TAGS: .spacemacs.d
+#+DATE: [2017-04-20 四 14:35]
+#+LANGUAGE:  zh-CN
+#+OPTIONS:  H:6 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:nil
+
+* Blogs                                                              :elfeed:
+** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
+** http://git-annex.branchable.com/design/assistant/blog/index.rss :mustread:
+** http://feeds.feedburner.com/InformationIsBeautiful
+** http://feeds.feedburner.com/scotthyoung/HAHx
+** 博客
+*** http://shenfeng.me/atom.xml
+*** http://liutos.github.io/atom.xml
+*** [[http://blog.binchen.org/?feed=rss2][陈斌的博客]] 
+*** [[http://feeds.feedburner.com/ruanyifeng][阮一峰的网络日志]]
+*** [[http://sspai.com/feed][少数派]]
+** Emacs                                                    :emacs:mustread:
+*** http://www.terminally-incoherent.com/blog/feed
+*** http://nullprogram.com/feed
+*** http://endlessparentheses.com/atom.xml 
+*** [[http://www.lunaryorn.com/feed.atom][lunaryorn]]
+*** entry-title: \(emacs\|org-mode\)
+*** http://planet.emacsen.org/atom.xml
+** Python                                                 :mustread:python:
+*** http://planet.python.org/rss10.xml 

@@ -47,7 +47,23 @@ values."
       lua
       python
       sql
-      gnus
+      (gnus :variables
+            gnus-secondary-select-methods
+            '( ;; (nnimap "gmail"
+              ;;         (nnimap-address
+              ;;          "imap.gmail.com")
+              ;;         (nnimap-server-port 993)
+              ;;         (nnimap-stream ssl))
+              (nnimap "sina"
+                      (nnimap-address
+                       "imap.sina.com.cn")
+                      (nnimap-server-port 993)
+                      (nnimap-stream ssl))
+              )
+            nnml-directory "~/mail"
+            message-directory "~/mail"
+            smtpmail-stream-type 'starttls
+            send-mail-function 'smtpmail-send-it)
       (erc :variables
            erc-nick "lujun9972"  		;设置昵称
            erc-user-full-name "lujunwei" ;设置全称
@@ -56,7 +72,7 @@ values."
            ;; erc-port "6667"  
 
            erc-autojoin-channels-alist	;设置自动登录的频道
-           '(("freenode.net" "ubuntu-cn")  
+           '(("freenode.net" "#archlinux-cn")  
              ("oftc.net" "#emacs-cn"))  
 
            erc-keywords '("emacs" "lisp") ;高亮消息中的关键字
@@ -68,6 +84,7 @@ values."
            erc-track-position-in-mode-line 'before-modes
            erc-encoding-coding-alist '(("#linuxfire" . chinese-iso-8bit))
            erc-ignore-list nil)
+      (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/feeds.org"))
       ;; (org :variables
       ;;      org-enable-github-support t)
       (shell :variables
