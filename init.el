@@ -47,7 +47,22 @@ values."
       lua
       python
       sql
-      gnus
+      (gnus :variables
+            gnus-secondary-select-methods
+            '( ;; (nnimap "gmail"
+              ;;         (nnimap-address
+              ;;          "imap.gmail.com")
+              ;;         (nnimap-server-port 993)
+              ;;         (nnimap-stream ssl))
+              (nnimap "sina"
+                      (nnimap-address
+                       "imap.sina.com.cn")
+                      (nnimap-server-port 993)
+                      (nnimap-stream ssl))
+              )
+            nnml-directory "~/mail"
+            message-directory "~/mail"
+            send-mail-function 'smtpmail-send-it)
       (erc :variables
            erc-nick "lujun9972"  		;设置昵称
            erc-user-full-name "lujunwei" ;设置全称
