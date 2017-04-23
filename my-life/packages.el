@@ -103,23 +103,31 @@
   (use-package w3m
     :config
     (setq w3m-use-favicon nil) 
-    ;; 设置w3m主页
-    (setq w3m-home-page "http://www.baidu.com")     
-    ;; 默认显示图片
-    (setq w3m-default-display-inline-images t)
+    (setq w3m-home-page "http://www.baidu.com") ;; 设置w3m主页
+    (setq w3m-default-save-directory "~/Download") ;设置默认的保存目录
+    (setq w3m-default-display-inline-images t) ;; 默认显示图片
     (setq w3m-default-toggle-inline-images t)
-    ;; 使用cookies
-    (setq w3m-use-cookies t)
-    ;;设定w3m运行的参数，分别为使用cookie和使用框架  
-    (setq w3m-command-arguments '("-cookie" "-F"))      
-    ;; 使用w3m作为默认浏览器
-    (setq browse-url-browser-function 'w3m-browse-url)  
-    (setq w3m-view-this-url-new-session-in-background t)
-    ;;显示图标
-    (setq w3m-show-graphic-icons-in-header-line t)      
+    (setq w3m-toggle-inline-images-permanently t)           ;继续保持当前buffer的图像状态
+    (setq w3m-use-cookies t) ;; 使用cookies
+    (setq w3m-command-arguments '("-cookie" "-F")) ;;设定w3m运行的参数，分别为使用cookie和使用框架  
+    (setq browse-url-browser-function 'w3m-browse-url) ;; 使用w3m作为默认浏览器
+    (setq w3m-use-header-line-title t)                      ;显示标题
+    (setq w3m-cookie-accept-bad-cookies t)                  ;接收 BAD cookie
+    (setq w3m-show-graphic-icons-in-header-line t) ;;显示图标
     (setq w3m-show-graphic-icons-in-mode-line t) 
-    ;;C-c C-p 打开，这个好用               
-    (setq w3m-view-this-url-new-session-in-background t)
+    (setq w3m-view-this-url-new-session-in-background t)    ;后台打开连接
+    (setq w3m-new-session-in-background t)                  ;后台建立新任务
+    (setq w3m-session-time-format "%Y-%m-%d %A %H:%M")      ;上次浏览记录的时间显示格式
+    (setq w3m-favicon-use-cache-file t)                     ;使用网站图标的缓存文件
+    (setq w3m-keep-arrived-urls 50000)                      ;浏览历史记录的最大值
+    (setq w3m-keep-cache-size 1000)                         ;缓存的大小
+    (setq w3m-edit-function (quote find-file-other-window)) ;在其他窗口编辑当前页面
+    (setq w3m-session-automatic-save t)                     ;退出时自动保存
+    (setq w3m-session-deleted-save nil)                     ;关闭一个标签时不保存
+    (setq w3m-use-filter t)                                 ;开启过滤
+    (setq w3m-fb-mode t)                                    ;让标签和创建它的FRAME关联
+    (setq w3m-session-load-crashed-sessions t)              ;默认加载崩溃的对话
+    (w3m-fb-mode 1)                                         ;可以显示FRAME
     (defun remove-w3m-output-garbages ()                
       "去掉w3m输出的垃圾."                                
       (interactive)                                      
@@ -271,6 +279,9 @@
     ;; (add-to-list 'newsticker-url-list '("Scott Young" "http://feeds.feedburner.com/scotthyoung/HAHx" nil nil nil)) 
     (setq newsticker-html-renderer 'w3m-region)           ;使用w3m来格式化html
     (setq newsticker-automatically-mark-items-as-old nil) ;不自动将item设置为已读
+    (setq newsticker-automatically-mark-visited-items-as-old t) ;自动标记已经访问过的项目
+    (setq newsticker-retrieval-interval 600)
+    (setq newsticker-retrieval-method 'intern)
     (setq newsticker-show-all-news-elements t)))
 
 (defun my-life/init-mdx-dictionary ()
