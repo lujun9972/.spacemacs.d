@@ -21,7 +21,7 @@
       ;; tabbar
       uimage
       keyfreq
-      sr-speedbar
+      ;; sr-speedbar
       ibuffer
       ibuffer-vc
       showkey
