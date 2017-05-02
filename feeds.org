@@ -24,4 +24,4 @@
 *** entry-title: \(emacs\|org-mode\)
 *** http://planet.emacsen.org/atom.xml
 ** Python                                                 :mustread:python:
-*** http://planet.python.org/rss10.xml 
+# *** http://planet.python.org/rss10.xml 
