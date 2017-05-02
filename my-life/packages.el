@@ -288,6 +288,7 @@
   (use-package mdx-dictionary
     :defer  t
     :config
+    (setq mdx-dictionary-server-args '("-i"))
     (defun mdx-dictionary--save-to-anki (content)
       (let* ((word (word-at-point))
              (sentence (replace-regexp-in-string "[\r\n]+" " " (or (sentence-at-point)
