@@ -47,6 +47,7 @@ values."
       lua
       python
       sql
+      ansible
       (gnus :variables
             gnus-secondary-select-methods
             '( ;; (nnimap "gmail"
@@ -330,8 +331,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-org.org")
-  ;; (org-babel-load-file "~/.spacemacs.d/my-GTD/init-GTD-bbdb.org")
+  (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-org.org")
+  ;; (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-bbdb.org")
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
   (load custom-file)
   )
