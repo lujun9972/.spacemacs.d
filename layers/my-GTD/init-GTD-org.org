@@ -1039,38 +1039,39 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
    #+END_SRC
 * org-babel配置
   #+BEGIN_SRC emacs-lisp
-    (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+        (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
-    ;; Make babel results blocks lowercase
-    ;; (setq org-babel-results-keyword "results")
+        ;; Make babel results blocks lowercase
+        ;; (setq org-babel-results-keyword "results")
 
-    (defun bh/display-inline-images ()
-      (condition-case nil
-          (org-display-inline-images)
-        (error nil)))
+        (defun bh/display-inline-images ()
+          (condition-case nil
+              (org-display-inline-images)
+            (error nil)))
 
-    ;; 设置可以load的代码块
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (dot . t)
-       (ditaa . t)
-       ;; (R . t)
-       (python . t)
-       (ruby . t)
-       (gnuplot . t)
-       (clojure . t)
-       (sh . t)
-       (ledger . t)
-       (org . t)
-       (plantuml . t)
-       (latex . t)))
+        ;; 设置可以load的代码块
+        (org-babel-do-load-languages
+         'org-babel-load-languages
+         '((emacs-lisp . t)
+           (dot . t)
+           (ditaa . t)
+           ;; (R . t)
+           (python . t)
+           (ruby . t)
+           (gnuplot . t)
+           (clojure . t)
+           (sh . t)
+           (ledger . t)
+           (org . t)
+           (plantuml . t)
+           (latex . t)
+           (elasticsearch . t)))
 
-    ;; C-c C-c执行代码块时,不需要确认
-    (setq org-confirm-babel-evaluate nil)
+        ;; C-c C-c执行代码块时,不需要确认
+        (setq org-confirm-babel-evaluate nil)
 
-    ;; 当使用C-c'编辑sqC代码块时,使用c++ mode
-    (add-to-list 'org-src-lang-modes '("sqC" . c++))
+        ;; 当使用C-c'编辑sqC代码块时,使用c++ mode
+        (add-to-list 'org-src-lang-modes '("sqC" . c++))
 
   #+END_SRC
 

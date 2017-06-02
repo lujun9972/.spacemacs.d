@@ -32,6 +32,7 @@
       (pocket-mode :location (recipe
                               :fetcher github
                               :repo "lujun9972/pocket-mode"))
+      es-mode
       ))
 
 ;; List of packages to exclude.
@@ -224,3 +225,9 @@
     (setq pocket-auto-refresh t)
     (eval-after-load 'pocket-mode
       '(require 'url2org))))
+
+(defun my-misc/init-es-mode ()
+  (use-package es-mode
+    :defer  t
+    :config
+    (setq es-always-pretty-print t)))
