@@ -31,6 +31,7 @@
 
 (defconst reading-packages
   '(interleave
+    pdf-tools
     )
   "The list of Lisp packages required by the reading layer.
 
@@ -59,8 +60,11 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun reading-init-interleave ()
-  )
+(defun reading/init-interleave ()
+  (use-package interleave))
+
+(defun reading/init-pdf-tools ()
+  (use-package pdf-tools))
 
 
 ;;; packages.el ends here
