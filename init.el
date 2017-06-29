@@ -96,6 +96,7 @@ values."
              shell-default-position 'bottom)
       syntax-checking
       version-control
+      latex
       my-display
       my-misc
       ;; my-edit
