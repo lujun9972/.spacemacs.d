@@ -289,8 +289,9 @@
     :defer  t
     :config
     (setq mdx-dictionary-server-args '("-i"))
-    (defun mdx-dictionary--save-to-anki (content)
-      (let* ((word (word-at-point))
+    (defun mdx-dictionary--save-to-anki (query content)
+      (let* ((word (or (and (use-region-p) (buffer-substring-no-properties (region-beginning) (region-end)))
+                       (word-at-point)))
              (sentence (replace-regexp-in-string "[\r\n]+" " " (or (sentence-at-point)
                                                                    (thing-at-point 'line)))) ;去掉句子中的断行
              (sentence (replace-regexp-in-string (regexp-quote word)
@@ -302,7 +303,7 @@
         (with-temp-file anki-file
           (when (file-readable-p anki-file)
             (insert-file-contents anki-file))
-          (insert (format "%s|%s|%s\n" word content sentence)))))
+          (insert (format "%s|%s|%s\n" query content sentence)))))
 
     (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)))
 
