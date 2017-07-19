@@ -64,7 +64,12 @@ Each entry is either:
   (use-package interleave))
 
 (defun reading/init-pdf-tools ()
-  (use-package pdf-tools))
+  (use-package pdf-tools
+    :mode ("\\.pdf\\'" . pdf-view-mode)
+    :bind (:map pdf-view-mode-map
+                ("j" . pdf-view-next-line-or-next-page)
+                ("k" . pdf-view-previous-line-or-previous-page)
+                ("K" . image-kill-buffer))))
 
 
 ;;; packages.el ends here
