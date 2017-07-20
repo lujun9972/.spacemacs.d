@@ -69,7 +69,8 @@ Each entry is either:
     :bind (:map pdf-view-mode-map
                 ("j" . pdf-view-next-line-or-next-page)
                 ("k" . pdf-view-previous-line-or-previous-page)
-                ("K" . image-kill-buffer))))
+                ("K" . image-kill-buffer)
+                ("G" . pdf-view-goto-page))))
 
 
 ;;; packages.el ends here
