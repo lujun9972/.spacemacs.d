@@ -61,7 +61,11 @@ Each entry is either:
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
 (defun reading/init-interleave ()
-  (use-package interleave))
+  (use-package interleave
+    :config
+    (setq interleave-org-notes-dir-list
+          (append interleave-org-notes-dir-list
+                  (delete-if-not #'file-directory-p (directory-files-recursively MY-NOTE-PATH "" t))))))
 
 (defun reading/init-pdf-tools ()
   (use-package pdf-tools
