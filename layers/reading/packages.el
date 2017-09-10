@@ -31,7 +31,7 @@
 
 (defconst reading-packages
   '(interleave
-    pdf-tools
+    ;; pdf-tools
     )
   "The list of Lisp packages required by the reading layer.
 
