@@ -40,7 +40,6 @@ values."
       ;; clojure
       (c-c++ :variables
              c-c++-enable-clang-support t)
-      ;; ruby
       lua
       python
       sql
@@ -98,11 +97,12 @@ values."
       my-misc
       ;; my-edit
       my-GTD
-      ;; my-file
+      my-file
       my-eshell
       my-program
       my-life
       reading
+      pdf-tools
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -334,3 +334,4 @@ you should place your code here."
   ;; (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-bbdb.org")
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
   (load custom-file)
+  )
