@@ -18,9 +18,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     lua
-     html
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -337,4 +334,3 @@ you should place your code here."
   ;; (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-bbdb.org")
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
   (load custom-file)
-  )
