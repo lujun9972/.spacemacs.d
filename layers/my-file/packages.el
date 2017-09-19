@@ -35,14 +35,16 @@
   (setq dired-guess-shell-alist-user
         (list
          (list "\\.pdf$" "Foxit Reader")
-         (list "\\.rm$" "smplayer")
-         (list "\\.rmvb$" "smplayer")
-         (list "\\.avi$" "smplayer")
-         (list "\\.asf$" "smplayer")
-         (list "\\.wmv$" "smplayer")
+         (list "\\.rm$" "mpv")
+         (list "\\.rmvb$" "mpv")
+         (list "\\.avi$" "mpv")
+         (list "\\.asf$" "mpv")
+         (list "\\.wmv$" "mpv")
+         (list "\\.flv$" "mpv")
+         (list "\\.mpg$" "mpv")
          (list "\\.htm$" "w3m")
          (list "\\.html$" "w3m")
-         (list "\\.mpg$" "smplayer")))
+         ))
   ;; 默认情况下,在Dired中打开其他目录,会打开一个新的Dired Buffer. 通过启用dired-find-alternate-file函数会用新的Dired Buffer代替老的Dired Buffer)
   (put 'dired-find-alternate-file 'disabled nil)
   ;; 自动刷新Dired-mode
@@ -60,7 +62,7 @@
    dired-recursive-copies 'always         ; "always" means no asking
    dired-recursive-deletes 'top           ; "top" means ask once for top level directory
    dired-listing-switches "-lha"          ; human-readable listing
-   delete-by-moving-to-trash t            ; 删除时放入回收站中 
+   delete-by-moving-to-trash nil          ; 删除时不放入回收站中 
    dired-x-hands-off-my-keys nil ;使用dired-x-find-file系列命令替代find-file命令,替代后,使用C-u C-x C-f会自动用光标所在的文本作为猜测的文件名
    )
   (use-package wdired

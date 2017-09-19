@@ -18,9 +18,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     lua
-     html
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -43,7 +40,6 @@ values."
       ;; clojure
       (c-c++ :variables
              c-c++-enable-clang-support t)
-      ;; ruby
       lua
       python
       sql
@@ -101,11 +97,12 @@ values."
       my-misc
       ;; my-edit
       my-GTD
-      ;; my-file
+      my-file
       my-eshell
       my-program
       my-life
       reading
+      pdf-tools
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
