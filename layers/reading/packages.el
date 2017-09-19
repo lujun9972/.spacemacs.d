@@ -31,7 +31,8 @@
 
 (defconst reading-packages
   '(interleave
-    pdf-tools
+    ;; pdf-tools
+    ereader
     )
   "The list of Lisp packages required by the reading layer.
 
@@ -64,8 +65,8 @@ Each entry is either:
   (use-package interleave
     :config
     (setq interleave-org-notes-dir-list
-          (append interleave-org-notes-dir-list
-                  (delete-if-not #'file-directory-p (directory-files-recursively MY-NOTE-PATH "" t))))))
+          (cons MY-NOTE-PATH
+                (delete-if-not #'file-directory-p (directory-files-recursively MY-NOTE-PATH "" t))))))
 
 (defun reading/init-pdf-tools ()
   (use-package pdf-tools
@@ -76,5 +77,8 @@ Each entry is either:
                 ("K" . image-kill-buffer)
                 ("G" . pdf-view-goto-page))))
 
+(defun reading/init-ereader ()
+  (use-package ereader
+    ))
 
 ;;; packages.el ends here
