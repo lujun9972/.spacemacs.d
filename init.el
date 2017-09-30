@@ -43,7 +43,8 @@ values."
       lua
       python
       sql
-      ansible
+      ess
+      ;; ansible
       (gnus :variables
             gnus-secondary-select-methods
             '( ;; (nnimap "gmail"
