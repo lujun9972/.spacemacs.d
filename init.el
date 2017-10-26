@@ -126,7 +126,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(request json-mode pocket-api)
+   dotspacemacs-additional-packages '(request json-mode all-the-icons-dired)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -339,7 +339,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/"))))
+          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")
+          ("marmalade-cn"   . "http://elpa.emacs-china.org/marmalade/"))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
