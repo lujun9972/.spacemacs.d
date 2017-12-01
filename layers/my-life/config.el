@@ -11,4 +11,5 @@
 (add-hook 'text-mode-hook 'goto-address-mode)
 ;;默认链接网络浏览器打开  
 (setq browse-url-generic-program (executable-find "firefox")  
-      browse-url-browser-function 'w3m-browse-url)  
+      ;; browse-url-browser-function 'w3m-browse-url
+      )  
