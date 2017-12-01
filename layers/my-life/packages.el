@@ -19,7 +19,6 @@
       w3m
       ;; org2blog
       sx
-      baidu-life
       yahoo-weather
       ego
       org2issue
@@ -190,12 +189,6 @@
 (defun my-life/init-sx ()
   (use-package sx
     :defer  t))
-
-(defun my-life/init-baidu-life ()
-  (use-package baidu-life
-    :defer t
-    :config
-    (setq baidu-life-api-key "fd96cfa5d662e295b9e6d8a32cd8182e")))
 
 (defun my-life/init-yahoo-weather ()
   (use-package yahoo-weather
