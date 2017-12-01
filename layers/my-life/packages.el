@@ -102,19 +102,19 @@
 (defun my-life/init-w3m ()
   (use-package w3m
     :config
-    (setq w3m-use-favicon nil) 
+    (setq w3m-use-favicon nil)
     (setq w3m-home-page "http://www.baidu.com") ;; 设置w3m主页
     (setq w3m-default-save-directory "~/Download") ;设置默认的保存目录
     (setq w3m-default-display-inline-images t) ;; 默认显示图片
     (setq w3m-default-toggle-inline-images t)
     (setq w3m-toggle-inline-images-permanently t)           ;继续保持当前buffer的图像状态
     (setq w3m-use-cookies t) ;; 使用cookies
-    (setq w3m-command-arguments '("-cookie" "-F")) ;;设定w3m运行的参数，分别为使用cookie和使用框架  
-    (setq browse-url-browser-function 'w3m-browse-url) ;; 使用w3m作为默认浏览器
+    (setq w3m-command-arguments '("-cookie" "-F")) ;;设定w3m运行的参数，分别为使用cookie和使用框架
+    ;; (setq browse-url-browser-function 'w3m-browse-url) ;; 使用w3m作为默认浏览器
     (setq w3m-use-header-line-title t)                      ;显示标题
     (setq w3m-cookie-accept-bad-cookies t)                  ;接收 BAD cookie
     (setq w3m-show-graphic-icons-in-header-line t) ;;显示图标
-    (setq w3m-show-graphic-icons-in-mode-line t) 
+    (setq w3m-show-graphic-icons-in-mode-line t)
     (setq w3m-view-this-url-new-session-in-background t)    ;后台打开连接
     (setq w3m-new-session-in-background t)                  ;后台建立新任务
     (setq w3m-session-time-format "%Y-%m-%d %A %H:%M")      ;上次浏览记录的时间显示格式
@@ -128,15 +128,15 @@
     (setq w3m-fb-mode t)                                    ;让标签和创建它的FRAME关联
     (setq w3m-session-load-crashed-sessions t)              ;默认加载崩溃的对话
     (w3m-fb-mode 1)                                         ;可以显示FRAME
-    (defun remove-w3m-output-garbages ()                
-      "去掉w3m输出的垃圾."                                
-      (interactive)                                      
-      (let ((buffer-read-only))                          
-        (setf (point) (point-min))                          
-        (while (re-search-forward "[\200-\240]" nil t)      
-          (replace-match " "))                                
-        (set-buffer-multibyte t))                          
-      (set-buffer-modified-p nil))                        
+    (defun remove-w3m-output-garbages ()
+      "去掉w3m输出的垃圾."
+      (interactive)
+      (let ((buffer-read-only))
+        (setf (point) (point-min))
+        (while (re-search-forward "[\200-\240]" nil t)
+          (replace-match " "))
+        (set-buffer-multibyte t))
+      (set-buffer-modified-p nil))
     (add-hook 'w3m-fontify-after-hook
               'remove-w3m-output-garbages)
     ))
@@ -263,7 +263,7 @@
 (defun my-life/init-newsticker ()
   (use-package newsticker
     :init
-    (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index) 
+    (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index)
     :config
     (add-to-list 'newsticker-url-list '("planet emacs" "http://planet.emacsen.org/atom.xml" nil nil nil)) ;添加planet emacs的RSS
                                         ;(add-to-list 'newsticker-url-list '("陈斌的博客" "http://blog.binchen.org/?feed=rss2" nil nil nil)) ;添加planet emacs的RSS
@@ -276,7 +276,7 @@
     (add-to-list 'newsticker-url-list '("liutos" "http://liutos.github.io/atom.xml" nil nil nil))
     (add-to-list 'newsticker-url-list '("null programe" "http://nullprogram.com/feed/" nil nil nil))
 
-    ;; (add-to-list 'newsticker-url-list '("Scott Young" "http://feeds.feedburner.com/scotthyoung/HAHx" nil nil nil)) 
+    ;; (add-to-list 'newsticker-url-list '("Scott Young" "http://feeds.feedburner.com/scotthyoung/HAHx" nil nil nil))
     (setq newsticker-html-renderer 'w3m-region)           ;使用w3m来格式化html
     (setq newsticker-automatically-mark-items-as-old nil) ;不自动将item设置为已读
     (setq newsticker-automatically-mark-visited-items-as-old t) ;自动标记已经访问过的项目
