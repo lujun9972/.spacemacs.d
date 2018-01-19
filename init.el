@@ -44,6 +44,7 @@ values."
       python
       sql
       ess
+      plantuml 
       ;; ansible
       ;; (gnus :variables
       ;;       gnus-secondary-select-methods
@@ -349,11 +350,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar")
   (require 'helm-bookmark)              ;fix #9549 
   (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-org.org")
   ;; (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-bbdb.org")
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
   (load custom-file)
   )
-
-
