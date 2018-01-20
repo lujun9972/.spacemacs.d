@@ -23,7 +23,8 @@
           org-wl
           org-w3m
           org-eww
-          ox-md))
+          ox-md
+          ob-shell))
 #+END_SRC
 * 定义快捷键
   #+NAME: key-bindings
@@ -1060,7 +1061,7 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
            (ruby . t)
            (gnuplot . t)
            (clojure . t)
-           (sh . t)
+           (shell . t)
            (ledger . t)
            (org . t)
            (plantuml . t)
