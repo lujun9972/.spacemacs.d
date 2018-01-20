@@ -201,7 +201,7 @@
       (ego-add-to-alist 'ego-project-config-alist
                `(("emacs-document" ; 站点工程的名字
                  :repository-directory "~/github/emacs-document" ; 站点的本地目录
-                 :site-domain "http://lujun9972.github.io/emacs-document" ; 站点的网址
+                 :site-domain "https://lujun9972.github.io/emacs-document" ; 站点的网址
                  :site-main-title "EMACS-DOCUMENT" ; 站点的标题
                  :site-sub-title "=============>集思广益" ; 站点的副标题
                  :repository-org-branch "master"
@@ -217,7 +217,7 @@
                  :web-server-port 5432) ; 本地测试的端口
                  ("Emacs公众号文章" ; 站点工程的名字
                  :repository-directory "~/github/emacsist" ; 站点的本地目录
-                 :site-domain "http://emacs-china.github.io/emacsist" ; 站点的网址
+                 :site-domain "https://emacs-china.github.io/emacsist" ; 站点的网址
                  :site-main-title "Emacs公众号文章" ; 站点的标题
                  :site-sub-title "=============>欢迎来稿" ; 站点的副标题
                  :repository-org-branch "master"
@@ -233,7 +233,7 @@
                  :web-server-port 5432)
                  ("lujun9972.github.com" ; 站点工程的名字
                   :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
-                  :site-domain "http://lujun9972.github.io/" ; 站点的网址
+                  :site-domain "https://lujun9972.github.io/" ; 站点的网址
                   :site-main-title "暗无天日" ; 站点的标题
                   :site-sub-title "=============>随便,谢谢" ; 站点的副标题
                   ;; :repository-org-branch "master"
