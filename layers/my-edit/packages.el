@@ -17,6 +17,7 @@
       ;; package names go here
       wgrep
       org-preview-html
+      edit-server
       ))
 
 ;; List of packages to exclude.
@@ -34,6 +35,15 @@
   "Initialize my package"
   (with-eval-after-load 'org (use-package org-preview-html
                                )))
+
+(defun my-edit/init-edit-server ()
+  "Initialize my package"
+  (use-package edit-server
+    :ensure t
+    :init (setq edit-server-url-major-mode-alist '(("github\\.com" . gfm-mode)
+                                                   ("redmine" . textile-mode))
+                edit-server-default-major-mode 'markdown-mode)
+    :config (edit-server-start)))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

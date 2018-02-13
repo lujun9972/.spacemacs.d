@@ -114,7 +114,7 @@ values."
       ;;latex
       my-display
       my-misc
-      ;; my-edit
+      my-edit
       my-GTD
       my-file
       my-eshell
