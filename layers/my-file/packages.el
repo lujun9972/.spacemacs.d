@@ -16,7 +16,6 @@
     '(
       ;; package names go here
       (dired :location local)
-      dired+
       dired-sort
       ))
 
@@ -52,8 +51,9 @@
   (setq auto-revert-verbose nil)
   (add-hook 'dired-mode-hook 'auto-revert-mode)
   ;; 隐藏某些文件
-  (setq dired-omit-files "^\\..*$\\|^\\.$")
-  (dired-omit-mode 1)                     ;在dired中可以通过C-x M-o开切换是否隐藏显示
+  ;; (setq dired-omit-files "^\\..*$\\|^\\.$")
+  ;; (dired-omit-mode 1)
+                                        ;在dired中可以通过C-x M-o开切换是否隐藏显示
   ;; if it is not Windows, use the following listing switches
   (when (not (eq system-type 'windows-nt))
     (setq dired-listing-switches "-lha --group-directories-first"))
@@ -69,16 +69,10 @@
     :defer t
     :config
     (setq wdired-allow-to-change-permissions t)   ; allow to edit permission bits
-    (setq wdired-allow-to-redirect-links)     ; allow to edit symlinks
+    (setq wdired-allow-to-redirect-links nil)     ; allow to edit symlinks
     )))
 
-(defun my-file/init-dired+ ()
-  (use-package dired+
-    :defer t
-    :config
-    (setq-default diredp-hide-details-initially-flag nil)
-    (when (fboundp 'global-dired-hide-details-mode)
-      (global-dired-hide-details-mode -1))))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

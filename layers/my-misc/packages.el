@@ -24,7 +24,7 @@
       ;; sr-speedbar
       ibuffer
       ibuffer-vc
-      showkey
+      ;; showkey
       dmenu
       start-menu
       clean-buffers
