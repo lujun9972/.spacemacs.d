@@ -128,7 +128,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(request json-mode all-the-icons-dired edit-indirect anki-editor)
+   dotspacemacs-additional-packages '(request json-mode all-the-icons-dired edit-indirect anki-editor md4rd)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -339,16 +339,16 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
     (require (intern (file-name-base helper-package))))
   (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")
-          ("marmalade-cn"   . "http://elpa.emacs-china.org/marmalade/"))))
+        '(("melpa-cn" . "/media/emacs_plugins/melpa/")
+          ("org-cn"   . "/media/emacs_plugins/org/")
+          ("gnu-cn"   . "/media/emacs_plugins/gnu/")
+          ("marmalade-cn"   . "/media/emacs_plugins//marmalade/"))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
-This is the place where most of your configurations should be done. Unless it is
+
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar")
