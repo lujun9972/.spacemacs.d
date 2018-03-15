@@ -21,6 +21,7 @@
       sx
       yahoo-weather
       ego
+      org2web
       org2issue
       ;; dictionary
       podcaster
@@ -33,6 +34,9 @@
       (wangyi-music-mode :location (recipe
                                  :fetcher github
                                  :repo "lujun9972/WangyiMusic"))
+      (csdn-api :location (recipe
+                                 :fetcher github
+                                 :repo "lujun9972/csdn-api.el"))
       ))
 
 ;; List of packages to exclude.
@@ -240,7 +244,7 @@
                   :site-sub-title "=============>随便,谢谢" ; 站点的副标题
                   ;; :repository-org-branch "master"
                   ;; :repository-html-branch "gh-pages"
-                  :theme (default) ; 使用的主题
+                  :theme (worg) ; 使用的主题
                   :summary (("years" :year :updates 10) ("authors" :authors) ("tags" :tags)) ; 导航栏的设置，有 category 和 summary 两种
                   :source-browse-url ("Github" "https://github.com/lujun9972/lujun9972.github.com") ; 你的工程源代码所在的位置
                   :personal-disqus-shortname "lujun9972" ; 使用 disqus 评论功能的话，它的短名称
@@ -252,6 +256,25 @@
                   :web-server-port 5432)
                  ;; 你可以在此添加更多的站点设置
                  )))))
+
+(defun my-life/init-org2web ()
+  (with-eval-after-load 'org
+    (use-package org2web
+      :config
+      (org2web-add-project
+       '("lujun9972.github.com" ; 站点工程的名字
+         :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
+         :remote (git "https://github.com/lujun9972/lujun9972.github.com.git" "master")
+         ;; you can use `rclone` with `:remote (rclone "remote-name" "/remote/path/location")` instead.
+         :site-domain "https://lujun9972.github.io/" ; 站点的网址
+         :site-main-title "暗无天日"      ; 站点的标题
+         :site-sub-title "=============>随便,谢谢" ; 站点的副标题
+         :theme (worg)
+         :source-browse-url ("Github" "https://github.com/lujun9972/lujun9972.github.com") ; 你的工程源代码所在的位置
+         ;; :personal-avatar "/media/img/horse.jpg"
+         :personal-disqus-shortname "lujun9972" ; 使用 disqus 评论功能的话，它的短名称
+         :web-server-docroot "~/webRoot/lujun9972.github.io" ; 本地测试的目录
+         :web-server-port 7654)))))
 
 (defun my-life/init-org2issue ()
   (with-eval-after-load 'org (use-package org2issue
@@ -317,6 +340,11 @@
 
 (defun my-life/init-wangyi-music-mode ()
   (use-package wangyi-music-mode
+    :defer  t
+    ))
+
+(defun my-life/init-csdn-api ()
+  (use-package csdn-api
     :defer  t
     ))
 
