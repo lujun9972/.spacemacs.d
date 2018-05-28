@@ -216,7 +216,7 @@
                  :personal-disqus-shortname "emacs-document" ; 使用 disqus 评论功能的话，它的短名称
                  ;; :personal-duoshuo-shortname "emacs-document" ; 使用 多说 评论功能的话，它的短名称
                  ;; ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
-                 ;; :ignore-file-name-regexp
+                 :ignore-file-name-regexp
                  "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
                  :web-server-docroot "~/webRoot/emacs-document.github.io" ; 本地测试的目录
                  :web-server-port 5432) ; 本地测试的端口
@@ -233,7 +233,7 @@
                  :personal-disqus-shortname "emacsist" ; 使用 disqus 评论功能的话，它的短名称
                  ;; :personal-duoshuo-shortname "emacsist" ; 使用 多说 评论功能的话，它的短名称
                  ;; ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
-                 ;; :ignore-file-name-regexp
+                 :ignore-file-name-regexp
                  "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
                  :web-server-docroot "~/webRoot/emacs-china.github.io/emacsist" ; 本地测试的目录
                  :web-server-port 5432)
@@ -250,7 +250,7 @@
                   :personal-disqus-shortname "lujun9972" ; 使用 disqus 评论功能的话，它的短名称
                   ;; :personal-duoshuo-shortname "暗日" ; 使用 多说 评论功能的话，它的短名称
                   ;; ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
-                  ;; :ignore-file-name-regexp
+                  :ignore-file-name-regexp
                   "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
                   :web-server-docroot "~/webRoot/lujun9972.github.io" ; 本地测试的目录
                   :web-server-port 5432)
