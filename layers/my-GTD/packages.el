@@ -67,11 +67,11 @@
   (setq view-calendar-holidays-initially nil) 
                                         ; 打开calendar的时候不显示一堆节日 
   ;; 去掉不关心的节日，设定自己在意的节日，在 calendar 上用 h 显示节日
-  (setq christian-holidays nil)
-  (setq hebrew-holidays nil)
-  (setq islamic-holidays nil)
-  (setq solar-holidays nil)
-  (setq general-holidays '((holiday-fixed 1 1 "元旦")
+  (setq holiday-christian-holidays nil)
+  (setq holiday-hebrew-holidays nil)
+  (setq holiday-islamic-holidays nil)
+  (setq holiday-solar-holidays nil)
+  (setq holiday-other-holidays '((holiday-fixed 1 1 "元旦")
                            (holiday-fixed 2 10 "我的生日")
                            (holiday-fixed 2 14 "情人节")
                            (holiday-fixed 3 14 "白色情人节")
