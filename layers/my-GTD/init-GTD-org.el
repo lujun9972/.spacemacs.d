@@ -20,7 +20,8 @@
         org-wl
         org-w3m
         org-eww
-        ox-md))
+        ox-md
+        ob-shell))
 
 (let ((keys (quote (("r" "org-remember" "") ("l" "org-store-link" "") ("c" "org-capture" "") ("a" "org-agenda" "") ("b" "org-iswitchb" "") ("<f11>" "org-clock-goto" "f11:跳转到正在计时的任务") ("" "" "")))))
 (mapc (lambda (key)
@@ -658,11 +659,12 @@ A prefix arg forces clock in of the default task."
    (ruby . t)
    (gnuplot . t)
    (clojure . t)
-   (sh . t)
+   (shell . t)
    (ledger . t)
    (org . t)
    (plantuml . t)
-   (latex . t)))
+   (latex . t)
+   (elasticsearch . t)))
 
 ;; C-c C-c执行代码块时,不需要确认
 (setq org-confirm-babel-evaluate nil)

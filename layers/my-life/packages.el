@@ -67,7 +67,7 @@
           emms-lyrics-display-format "%s"
           emms-playing-time-display-format "%s")
 
-    (setq emms-player-list '(emms-player-mpg321 emms-player-mpv emms-player-mplayer)
+    (setq emms-player-list '(emms-player-mpv emms-player-mpg321 emms-player-mplayer)
           emms-player-mplayer-command-name "mplayer"
           emms-player-mplayer-parameters '("-slave")
           emms-player-mpg321-command-name "mpg123")
