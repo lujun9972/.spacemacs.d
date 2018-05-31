@@ -337,7 +337,8 @@
 
 (defun my-life/init-netease-music ()
   (use-package netease-music
-    :defer  t
+    :config
+    (setq netease-music-player "mpv")
     ))
 
 (defun my-life/init-csdn-api ()
