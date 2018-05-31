@@ -30,13 +30,10 @@
                                  :fetcher github
                                  :repo "lujun9972/mdx-dictionary.el"
                                  :files ("*")))
-
-      (wangyi-music-mode :location (recipe
-                                 :fetcher github
-                                 :repo "lujun9972/WangyiMusic"))
+      netease-music
       (csdn-api :location (recipe
-                                 :fetcher github
-                                 :repo "lujun9972/csdn-api.el"))
+                           :fetcher github
+                           :repo "lujun9972/csdn-api.el"))
       ))
 
 ;; List of packages to exclude.
@@ -338,9 +335,10 @@
     ;; choose a dictionary server
     (setq dictionary-server "localhost")))
 
-(defun my-life/init-wangyi-music-mode ()
-  (use-package wangyi-music-mode
-    :defer  t
+(defun my-life/init-netease-music ()
+  (use-package netease-music
+    :config
+    (setq netease-music-player "mpv")
     ))
 
 (defun my-life/init-csdn-api ()
