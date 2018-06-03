@@ -28,7 +28,6 @@
       dmenu
       start-menu
       clean-buffers
-      verify-url
       (pocket-mode :location (recipe
                               :fetcher github
                               :repo "lujun9972/pocket-mode"))
@@ -207,9 +206,7 @@
     (clean-buffers-turn-on-auto-clean-buffers)
     ))
 
-(defun my-misc/init-verify-url ()
-  (use-package verify-url
-    ))
+
 
 (defun my-misc/init-start-menu ()
   (use-package start-menu
