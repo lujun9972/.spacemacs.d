@@ -63,9 +63,10 @@
   (use-package verify-url
     ))
 
-(defun my-life/init-ego ()
+(defun my-edit/init-ego ()
   (with-eval-after-load 'org
     (use-package ego
+      :ensure t
       :config
       (ego-add-to-alist 'ego-project-config-alist
                `(("emacs-document" ; 站点工程的名字
@@ -122,7 +123,7 @@
                  ;; 你可以在此添加更多的站点设置
                  )))))
 
-(defun my-life/init-org2web ()
+(defun my-edit/init-org2web ()
   (with-eval-after-load 'org
     (use-package org2web
       :config
@@ -141,10 +142,10 @@
          :web-server-docroot "~/webRoot/lujun9972.github.io" ; 本地测试的目录
          :web-server-port 7654)))))
 
-(defun my-life/init-org2issue ()
+(defun my-edit/init-org2issue ()
   (with-eval-after-load 'org (use-package org2issue
                                :defer  t)))
-(defun my-life/init-dictionary ()
+(defun my-edit/init-dictionary ()
   (use-package dictionary
     :defer t
     :init
@@ -156,7 +157,7 @@
     ;; choose a dictionary server
     (setq dictionary-server "localhost")));;
 
-(defun my-life/init-mdx-dictionary ()
+(defun my-edit/init-mdx-dictionary ()
   (use-package mdx-dictionary
     :defer  t
     :config
@@ -179,7 +180,7 @@
 
     (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)))
 
-(defun my-life/init-org2blog ()
+(defun my-edit/init-org2blog ()
   (use-package org2blog
     :defer t
     :config
