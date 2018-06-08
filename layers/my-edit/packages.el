@@ -28,7 +28,10 @@
                                  :repo "lujun9972/mdx-dictionary.el"
                                  :files ("*")))
       ;; org2blog
+      (ispell :location built-in)
+      (flyspell :location built-in)
       artbollocks-mode
+      langtool
       ))
 
 ;; List of packages to exclude.
@@ -228,10 +231,45 @@
 (defun my-edit/init-artbollocks-mode ()
   "Initialize my package"
   (use-package artbollocks-mode
+    :ensure t
     :config
     (add-hook 'text-mode-hook 'artbollocks-mode)
+    (setq artbollocks-jargon-regex (concat "\\b" (regexp-opt
+                                                  '("u8s"
+                                                    "A/D"
+                                                    "A/B"
+                                                    "ADO") t)
+                                           "\\b"))))
 
-    :defer t))
+(defun my-edit/init-ispell ()
+  "Initialize my package"
+  (use-package ispell
+    :ensure t
+    :config
+    (setq ispell-dictionary "en")
+    (setq ispell-alternate-dictionary "/usr/share/dict/cracklib-small")))
+
+(defun my-edit/init-flyspell ()
+  "Initialize my package"
+  (use-package flyspell
+    :config
+    (add-hook 'text-mode-hook 'flyspell-mode)
+    (add-hook 'prog-mode-hook 'flyspell-prog-mode)))
+
+(defun my-edit/init-langtool ()
+  "Initialize my package"
+  (use-package langtool
+    :ensure t
+    :config
+    (setq langtool-language-tool-jar "~/Downloads/LanguageTool-4.1/languagetool-commandline.jar")
+    (setq langtool-default-language "en-US")
+    (setq langtool-mother-tongue "zh-CN")
+    (setq langtool-disabled-rules '("WHITESPACE_RULE"
+                                    "EN_UNPAIRED_BRACKETS"
+                                    "COMMA_PARENTHESIS_WHITESPACE"
+                                    "EN_QUOTES"))))
+
+
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
