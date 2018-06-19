@@ -59,8 +59,9 @@
                 edit-server-default-major-mode 'markdown-mode)
     :config (edit-server-start)))
 
-(defun my-misc/init-verify-url ()
+(defun my-edit/init-verify-url ()
   (use-package verify-url
+    :ensure t
     ))
 
 (defun my-edit/init-ego ()
