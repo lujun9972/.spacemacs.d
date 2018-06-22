@@ -32,6 +32,7 @@
       (flyspell :location built-in)
       artbollocks-mode
       langtool
+      powerthesaurus
       ))
 
 ;; List of packages to exclude.
@@ -269,6 +270,11 @@
                                     "EN_UNPAIRED_BRACKETS"
                                     "COMMA_PARENTHESIS_WHITESPACE"
                                     "EN_QUOTES"))))
+
+(defun my-edit/init-powerthesaurus ()
+  "Initalize powerthesaurus"
+  (use-package powerthesaurus
+    :ensure t))
 
 
 
