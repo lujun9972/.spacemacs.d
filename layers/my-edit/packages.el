@@ -33,6 +33,7 @@
       artbollocks-mode
       langtool
       powerthesaurus
+      define-word
       ))
 
 ;; List of packages to exclude.
@@ -275,6 +276,11 @@
 (defun my-edit/init-powerthesaurus ()
   "Initalize powerthesaurus"
   (use-package powerthesaurus
+    :ensure t))
+
+(defun my-edit/init-define-word ()
+  "Initalize powerthesaurus"
+  (use-package define-word
     :ensure t))
 
 
