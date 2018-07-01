@@ -52,3 +52,6 @@
     (setq last-fail-compilation-buffer nil)))
 
 (add-to-list 'compilation-finish-functions #'log-last-fail-compliation-buffer)
+
+;; 使用" #!/usr/bin/env 解析器" 的形式
+(setq executable-prefix-env t)
