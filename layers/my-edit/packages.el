@@ -235,7 +235,7 @@
   (use-package artbollocks-mode
     :ensure t
     :config
-    (add-hook 'text-mode-hook 'artbollocks-mode)
+    ;; (add-hook 'text-mode-hook 'artbollocks-mode)
     (setq artbollocks-jargon-regex (concat "\\b" (regexp-opt
                                                   '("u8s"
                                                     "A/D"
