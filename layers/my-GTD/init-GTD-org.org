@@ -1574,10 +1574,10 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
   * org-mobile-checksum-binary
 	MobileOrg只会同步签名值改变了的文件,这个变量配置了计算签名值的程序所在的地址(可以同时配置多个地址),电脑端Org会使用第一个可用的程序计算签名
 	#+BEGIN_SRC emacs-lisp
-	  (defcustom org-mobile-checksum-binary (or (executable-find "md5sum"))
-	   "Executable used for computing checksums of agenda files."
-	   :group 'org-mobile
-	   :type 'string)
+    ;; (defcustom org-mobile-checksum-binary (or (executable-find "md5sum"))
+    ;;  "Executable used for computing checksums of agenda files."
+    ;;  :group 'org-mobile
+    ;;  :type 'string)
 	#+END_SRC
 * provide feature
 #+BEGIN_SRC emacs-lisp
