@@ -71,10 +71,10 @@
         '(("n" "Notes" tags "NOTE"
            ((org-agenda-overriding-header "Notes")
             (org-tags-match-list-sublevels t)))
-          ("m" "Home" tags "HOME"
+          ("m" "Home" tags "LIFE"
            ((org-agenda-overriding-header "Home")
             (org-tags-match-list-sublevels t)))
-          ("o" "Office" tags "OFFICE"
+          ("o" "Office" tags "WORK"
            ((org-agenda-overriding-header "Office")
             (org-tags-match-list-sublevels t)))
           ("h" "Habits" tags-todo "STYLE=\"habit\""
@@ -150,9 +150,6 @@
   ;; 当搜索文本时,也从归档文件中查找
   (setq org-agenda-text-search-extra-files (quote (agenda-archives)))
 
-  ;; Show all future entries for repeating tasks
-  (setq org-agenda-repeating-timestamp-show-all t)
-
   ;; Show all agenda dates - even if they are empty
   (setq org-agenda-show-all-dates t)
 
@@ -200,19 +197,19 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
 
 
 ** Automatically removing context based tasks with / RET
-   / RET in the agenda is really useful. It removes tasks automatically by filtering based on a user-provided function. 
-   
-   在agenda中使用/ RET自动去掉处于状态处于hold状态的任务
-   #+BEGIN_SRC emacs-lisp
-     (defun bh/auto-exclude-function (tag)
-       "Automatic task exclusion in the agenda with / RET"
-       (and (cond
-             ((string= tag "hold")
-              t))
-            (concat "-" tag)))
+在agenda中按下 =/ RET= 能够使用自定义函数自动过滤任务
 
-     (setq org-agenda-auto-exclude-function 'bh/auto-exclude-function)
-   #+END_SRC
+在agenda中使用/ RET自动去掉处于状态处于hold状态的任务
+#+BEGIN_SRC emacs-lisp
+  (defun bh/auto-exclude-function (tag)
+    "Automatic task exclusion in the agenda with / RET"
+    (and (cond
+          ((string= tag "hold")
+           t))
+         (concat "-" tag)))
+
+  (setq org-agenda-auto-exclude-function 'bh/auto-exclude-function)
+#+END_SRC
 ** agenda View使用方法
    * C-c a a l
 
