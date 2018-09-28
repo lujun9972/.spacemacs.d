@@ -71,11 +71,11 @@
         '(("n" "Notes" tags "NOTE"
            ((org-agenda-overriding-header "Notes")
             (org-tags-match-list-sublevels t)))
-          ("m" "Home" tags "LIFE"
-           ((org-agenda-overriding-header "Home")
+          ("s" "超市" tags "超市"
+           ((org-agenda-overriding-header "超市")
             (org-tags-match-list-sublevels t)))
-          ("o" "Office" tags "WORK"
-           ((org-agenda-overriding-header "Office")
+          ("m" "会议" tags "会议"
+           ((org-agenda-overriding-header "会议")
             (org-tags-match-list-sublevels t)))
           ("h" "Habits" tags-todo "STYLE=\"habit\""
            ((org-agenda-overriding-header "Habits")
