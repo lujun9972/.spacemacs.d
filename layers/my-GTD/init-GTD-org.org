@@ -269,8 +269,7 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
      I put the project task on HOLD and work on something else. 
    #+BEGIN_SRC emacs-lisp
      (setq org-todo-keywords
-           (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-                   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+           (quote ((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
 
      (setq org-todo-keyword-faces
            (quote (("TODO" :foreground "red" :weight bold)
@@ -279,8 +278,7 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
                    ("WAITING" :foreground "orange" :weight bold)
                    ("HOLD" :foreground "magenta" :weight bold)
                    ("CANCELLED" :foreground "forest green" :weight bold)
-                   ("MEETING" :foreground "forest green" :weight bold)
-                   ("PHONE" :foreground "forest green" :weight bold))))
+                   ("SUSPEND" :foreground "forest green" :weight bold))))
 
    #+END_SRC
    
@@ -385,29 +383,39 @@ org-todo-state-tags-triggers的格式为`(state-change (tag . flag) .......)',�
 
 	 #+END_SRC
 ** Logging
-   * task完成后,自动记录完成时间
-	 #+BEGIN_SRC emacs-lisp
-       (setq org-log-done (quote time))
-	 #+END_SRC
++ task完成后,自动记录完成时间
+  #+BEGIN_SRC emacs-lisp
+      (setq org-log-done (quote time))
+  #+END_SRC
 
-   * 将log存入drawer中
-	 #+BEGIN_SRC emacs-lisp
-       (setq org-log-into-drawer t)
-	 #+END_SRC
++ 当修改了task的deadline时，记录下原deadline时间以及修改deadline的时间
+  #+BEGIN_SRC emacs-lisp
+      (setq org-log-redeadline (quote time))
+  #+END_SRC
 
-   * 设置log存放在task的哪个位置
-	 #+BEGIN_SRC emacs-lisp
-       (setq org-log-state-notes-insert-after-drawers nil)
-	 #+END_SRC
++ 当修改了task的schedule时，记录下原schedule时间以及修改schedule的时间
+  #+BEGIN_SRC emacs-lisp
+    (setq org-log-reschedule (quote time))
+  #+END_SRC
 
-   * todo keywords的定义也与log息息相关
-	 
-	 Each keyword may also specify if a timestamp or a note should be recorded when entering or leaving the state, by adding additional characters in the parenthesis after the keyword. 
-     This looks like this: "WAIT(w@/!)". 
-     "@" means to add a note (with time), 
-     "!" means to record only the time of the state change. 
-     With X and Y being either "@" or "!", "X/Y" means use X when entering the state, and use Y when leaving the state if and only if the *target* state does not define X. 
-     You may omit any of the fast-selection key or X or /Y, so WAIT(w@), WAIT(w/@) and WAIT(@/@) are all valid.
++ 将log存入drawer中
+  #+BEGIN_SRC emacs-lisp
+      (setq org-log-into-drawer t)
+  #+END_SRC
+
++ 设置log存放在task的哪个位置
+  #+BEGIN_SRC emacs-lisp
+      (setq org-log-state-notes-insert-after-drawers nil)
+  #+END_SRC
+
++ todo keywords的定义也与log息息相关
+
+Each keyword may also specify if a timestamp or a note should be recorded when entering or leaving the state, by adding additional characters in the parenthesis after the keyword. 
+  This looks like this: "WAIT(w@/!)". 
+  "@" means to add a note (with time), 
+  "!" means to record only the time of the state change. 
+  With X and Y being either "@" or "!", "X/Y" means use X when entering the state, and use Y when leaving the state if and only if the *target* state does not define X. 
+  You may omit any of the fast-selection key or X or /Y, so WAIT(w@), WAIT(w/@) and WAIT(@/@) are all valid.
 ** 评估任务的工作量
 
    通过为task增加`Effort'属性,可以为任务设置一个评估的工作量,若clock tracking的时间超过了这个评估的工作量,则会提出警告:
