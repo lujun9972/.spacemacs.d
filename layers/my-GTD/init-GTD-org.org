@@ -854,14 +854,7 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
                           ("@office" . ?o)
                           ("@home" . ?h)
                           ("@traffice" . ?t)
-                          ("@market" . ?m)
-                          (:endgroup)
-                          ("HOME" . ?H)
-                          ("OFFICE" . ?O)
-                          ("WAITING" . ?w)
-                          ("HOLD" . ?h)
-                          ("NOTE" . ?n)
-                          ("CANCELLED" . ?c)))
+                          (:endgroup)))
 
     ; Allow setting single tags without the menu
     ;; (setq org-fast-tag-selection-single-key (quote expert))
