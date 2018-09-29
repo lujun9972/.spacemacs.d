@@ -68,8 +68,8 @@
 
   ;; Custom agenda command definitions
   (setq org-agenda-custom-commands
-        '(("n" "Notes" tags "NOTE"
-           ((org-agenda-overriding-header "Notes")
+        '(("n" "Next" todo "NEXT"
+           ((org-agenda-overriding-header "NEXT")
             (org-tags-match-list-sublevels t)))
           ("s" "超市" tags "超市"
            ((org-agenda-overriding-header "超市")
