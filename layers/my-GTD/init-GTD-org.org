@@ -269,7 +269,7 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
      I put the project task on HOLD and work on something else. 
    #+BEGIN_SRC emacs-lisp
      (setq org-todo-keywords
-           (quote ((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
+           (quote ((type "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
 
      (setq org-todo-keyword-faces
            (quote (("TODO" :foreground "red" :weight bold)
@@ -353,35 +353,35 @@ org-todo-state-tags-triggers的格式为`(state-change (tag . flag) .......)',�
 #+END_SRC
 
 ** Org Task structure and presentation
-   * 隐藏headline前面多余的*
++ 隐藏headline前面多余的*
 
-	 #+BEGIN_SRC emacs-lisp
-       ;; 改为使用org-ident-mode隐藏
-       ;; (setq org-hide-leading-stars nil)
-	 #+END_SRC
+#+BEGIN_SRC emacs-lisp
+    ;; 改为使用org-ident-mode隐藏
+    ;; (setq org-hide-leading-stars nil)
+#+END_SRC
 
-   * 启用org-indent-mode
++ 启用org-indent-mode
 
-     It removes the indentation in the org-file but displays it as if it was indented while you are working on the org file buffer. 
+  It removes the indentation in the org-file but displays it as if it was indented while you are working on the org file buffer. 
 
-     #+BEGIN_SRC emacs-lisp
-       (setq org-startup-indented t)
-     #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+    (setq org-startup-indented t)
+  #+END_SRC
 
-   * 不显示headline之间的空白行
++ 不显示headline之间的空白行
 
-     #+BEGIN_SRC emacs-lisp
-       (setq org-cycle-separator-lines 0)
-     #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+    (setq org-cycle-separator-lines 0)
+  #+END_SRC
 
-   * 设置保持note的位置
++ 设置保持note的位置
 
-	 `C-c C-z'可以为task添加note,可以通过设置`org-reverse-note-order'来指定note保持在task的头部,还是尾部
-	 #+BEGIN_SRC emacs-lisp
-       ;; 将note放在task的首部显示
-       (setq org-reverse-note-order nil)
+`C-c C-z'可以为task添加note,可以通过设置`org-reverse-note-order'来指定note保持在task的头部,还是尾部
+#+BEGIN_SRC emacs-lisp
+    ;; 将note放在task的首部显示
+    (setq org-reverse-note-order nil)
 
-	 #+END_SRC
+#+END_SRC
 ** Logging
 + task完成后,自动记录完成时间
   #+BEGIN_SRC emacs-lisp
@@ -1039,42 +1039,42 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
 
    #+END_SRC
 * org-babel配置
-  #+BEGIN_SRC emacs-lisp
-        (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+#+BEGIN_SRC emacs-lisp
+      (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
-        ;; Make babel results blocks lowercase
-        ;; (setq org-babel-results-keyword "results")
+      ;; Make babel results blocks lowercase
+      ;; (setq org-babel-results-keyword "results")
 
-        (defun bh/display-inline-images ()
-          (condition-case nil
-              (org-display-inline-images)
-            (error nil)))
+      (defun bh/display-inline-images ()
+        (condition-case nil
+            (org-display-inline-images)
+          (error nil)))
 
-        ;; 设置可以load的代码块
-        (org-babel-do-load-languages
-         'org-babel-load-languages
-         '((emacs-lisp . t)
-           (dot . t)
-           (ditaa . t)
-           ;; (R . t)
-           (python . t)
-           (ruby . t)
-           (gnuplot . t)
-           (clojure . t)
-           (shell . t)
-           (ledger . t)
-           (org . t)
-           (plantuml . t)
-           (latex . t)
-           (elasticsearch . t)))
+      ;; 设置可以load的代码块
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+         (dot . t)
+         (ditaa . t)
+         ;; (R . t)
+         (python . t)
+         (ruby . t)
+         (gnuplot . t)
+         (clojure . t)
+         (shell . t)
+         (ledger . t)
+         (org . t)
+         (plantuml . t)
+         (latex . t)
+         (elasticsearch . t)))
 
-        ;; C-c C-c执行代码块时,不需要确认
-        (setq org-confirm-babel-evaluate nil)
+      ;; C-c C-c执行代码块时,不需要确认
+      (setq org-confirm-babel-evaluate nil)
 
-        ;; 当使用C-c'编辑sqC代码块时,使用c++ mode
-        (add-to-list 'org-src-lang-modes '("sqC" . c++))
+      ;; 当使用C-c'编辑sqC代码块时,使用c++ mode
+      (add-to-list 'org-src-lang-modes '("sqC" . c++))
 
-  #+END_SRC
+#+END_SRC
 
 * 关于加密 
 
@@ -1541,44 +1541,44 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
 #+END_SRC
 * 配置MobileOrg
   
+#+BEGIN_SRC emacs-lisp
+  (require 'org-mobile)
+#+END_SRC
+为了让MobileOrg与电脑端Org进行同步,还需要在电脑端对emacs进行一些必要的配置,这样电脑端的Org才知道需要同步哪些文件
+
+For changing tags and TODO states in MobileOrg, you should have set up the customization variables `org-todo-keywords' and `org-tag-alist' to cover all important tags and TODO keywords, even if individual files use only part of these. 
+
++ org-mobile-directory
+这个变量配置电脑端DropBox的同步目录的地址,需要同步的org文件会被emacs放到这个目录中,以便与MObileOrg进行同步
+需要注意的是,这些Org如果包含中文的话,需要将文件的编码转换为UTF-8的格式,否则在MobileOrg上会显示为乱码
+#+BEGIN_SRC emacs-lisp
+  (setq org-mobile-directory "~/mobileorg")
+#+END_SRC
++ org-mobile-files
+  这个变量告诉电脑端Org需要与MobileOrg同步哪些Org,默认情况下它的值跟变量org-agenda-files的值一样的
   #+BEGIN_SRC emacs-lisp
-    (require 'org-mobile)
+      ;; (setq org-mobile-files '("~/我的GTD/office.org"
+      ;;                              "~/我的GTD/home.org"
+      ;;                              ))
   #+END_SRC
-  为了让MobileOrg与电脑端Org进行同步,还需要在电脑端对emacs进行一些必要的配置,这样电脑端的Org才知道需要同步哪些文件
-
-  For changing tags and TODO states in MobileOrg, you should have set up the customization variables `org-todo-keywords' and `org-tag-alist' to cover all important tags and TODO keywords, even if individual files use only part of these. 
-
-  * org-mobile-directory
-	这个变量配置电脑端DropBox的同步目录的地址,需要同步的org文件会被emacs放到这个目录中,以便与MObileOrg进行同步
-	需要注意的是,这些Org如果包含中文的话,需要将文件的编码转换为UTF-8的格式,否则在MobileOrg上会显示为乱码
-	#+BEGIN_SRC emacs-lisp
-	  (setq org-mobile-directory "~/mobileorg")
-	#+END_SRC
-	* org-mobile-files
-	  这个变量告诉电脑端Org需要与MobileOrg同步哪些Org,默认情况下它的值跟变量org-agenda-files的值一样的
-	  #+BEGIN_SRC emacs-lisp
-        ;; (setq org-mobile-files '("~/我的GTD/office.org"
-        ;;                              "~/我的GTD/home.org"
-        ;;                              ))
-	  #+END_SRC
-  * org-directory
-	这个变量告诉电脑端Org,若org-mobile-files中配置的是相对路径,则表示的是相对于org-directory所代表的目录来说的
-	#+BEGIN_SRC emacs-lisp
-      (setq org-directory MY-GTD-PATH)
-	#+END_SRC
-  * org-mobile-inbox-for-pull
-	当要把MobileOrg所做的修改同步到电脑端Org时,电脑端Org会先把MobileOrg的修改动作记录到该变量指定的文件中,然后再根据该文件中所记录的操作对电脑端Org进行修改
-	#+BEGIN_SRC emacs-lisp
-      (setq org-mobile-inbox-for-pull (concat (file-name-as-directory MY-GTD-PATH) "from-mobile.org"))
-	#+END_SRC
-  * org-mobile-checksum-binary
-	MobileOrg只会同步签名值改变了的文件,这个变量配置了计算签名值的程序所在的地址(可以同时配置多个地址),电脑端Org会使用第一个可用的程序计算签名
-	#+BEGIN_SRC emacs-lisp
-    ;; (defcustom org-mobile-checksum-binary (or (executable-find "md5sum"))
-    ;;  "Executable used for computing checksums of agenda files."
-    ;;  :group 'org-mobile
-    ;;  :type 'string)
-	#+END_SRC
++ org-directory
+这个变量告诉电脑端Org,若org-mobile-files中配置的是相对路径,则表示的是相对于org-directory所代表的目录来说的
+#+BEGIN_SRC emacs-lisp
+    (setq org-directory MY-GTD-PATH)
+#+END_SRC
++ org-mobile-inbox-for-pull
+当要把MobileOrg所做的修改同步到电脑端Org时,电脑端Org会先把MobileOrg的修改动作记录到该变量指定的文件中,然后再根据该文件中所记录的操作对电脑端Org进行修改
+#+BEGIN_SRC emacs-lisp
+    (setq org-mobile-inbox-for-pull (concat (file-name-as-directory MY-GTD-PATH) "from-mobile.org"))
+#+END_SRC
++ org-mobile-checksum-binary
+MobileOrg只会同步签名值改变了的文件,这个变量配置了计算签名值的程序所在的地址(可以同时配置多个地址),电脑端Org会使用第一个可用的程序计算签名
+#+BEGIN_SRC emacs-lisp
+  ;; (defcustom org-mobile-checksum-binary (or (executable-find "md5sum"))
+  ;;  "Executable used for computing checksums of agenda files."
+  ;;  :group 'org-mobile
+  ;;  :type 'string)
+#+END_SRC
 * provide feature
 #+BEGIN_SRC emacs-lisp
   (provide 'init-GTD-org)
