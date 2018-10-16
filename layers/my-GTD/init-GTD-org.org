@@ -936,9 +936,9 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
       (setq org-archive-mark-done nil)
 	#+END_SRC
 
-  * 通过设置`org-archive-mark-done'可以指定归档的位置
+  * 通过设置`org-archive-location'可以指定归档的位置
 	#+BEGIN_SRC emacs-lisp
-      ;; (setq org-archive-location "%s_archive::* Archived Tasks")
+    (setq org-archive-location "%s_archive::datetree/")
 	#+END_SRC
 
   * 带有`Archive' tag的entry,默认情况下不会被展开,但可以使用`C-TAB'强制展开
