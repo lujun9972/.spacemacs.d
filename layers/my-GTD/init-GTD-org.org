@@ -67,10 +67,22 @@
   (setq org-agenda-compact-blocks t)
 
   ;; Custom agenda command definitions
+  (defun org/schedule-until (&optional time)
+    "List Agenda items that scheduled until TIME."
+    (let* ((time (or time (format-time-string "%Y-%m-%d 23:59:59")))
+           (next-headline (save-excursion (or (outline-next-heading) (point-max))))
+           (subtree-end (save-excursion (org-end-of-subtree t)))
+           (scheduled-time (org-get-scheduled-time (point)))
+           (time (apply #'encode-time (org-parse-time-string time)))
+           (subtree-valid (or (null scheduled-time) (time-less-p scheduled-time time))))
+      (when (not subtree-valid)
+        next-headline
+        )))
   (setq org-agenda-custom-commands
         '(("n" "Next" todo "NEXT"
            ((org-agenda-overriding-header "NEXT")
-            (org-tags-match-list-sublevels t)))
+            (org-tags-match-list-sublevels t)
+            (org-agenda-skip-function 'org/schedule-until)))
           ("s" "超市" tags "超市"
            ((org-agenda-overriding-header "超市")
             (org-tags-match-list-sublevels t)))
