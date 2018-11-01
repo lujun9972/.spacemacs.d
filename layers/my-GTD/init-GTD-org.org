@@ -53,9 +53,8 @@
    
    org-agenda-files中的元素还可以是目录,这时目录下的所有匹配`org-agenda-file-regexp'的文件都自动加入agenda
    #+BEGIN_SRC emacs-lisp
-     (setq org-agenda-files (list (concat MY-GTD-PATH "home.org")
-                                  (concat MY-GTD-PATH "office.org")
-                                  (concat MY-GTD-PATH "Note.org")))
+     (setq org-agenda-files MY-GTD-PATH)
+     (setq org-agenda-file-regexp "\\`[^.].*\\.org\\(_archive\\)?\\'") ;archive事项也纳入agenda显示
      (setq org-agenda-include-diary t)       ;将diary的事项也纳入agenda中显示
    #+END_SRC
 ** 配置agenda view
@@ -1581,7 +1580,7 @@ For changing tags and TODO states in MobileOrg, you should have set up the custo
 + org-mobile-inbox-for-pull
 当要把MobileOrg所做的修改同步到电脑端Org时,电脑端Org会先把MobileOrg的修改动作记录到该变量指定的文件中,然后再根据该文件中所记录的操作对电脑端Org进行修改
 #+BEGIN_SRC emacs-lisp
-    (setq org-mobile-inbox-for-pull (concat (file-name-as-directory MY-GTD-PATH) "from-mobile.org"))
+    (setq org-mobile-inbox-for-pull (concat (file-name-as-directory MY-GTD-PATH) ".from-mobile.org"))
 #+END_SRC
 + org-mobile-checksum-binary
 MobileOrg只会同步签名值改变了的文件,这个变量配置了计算签名值的程序所在的地址(可以同时配置多个地址),电脑端Org会使用第一个可用的程序计算签名
