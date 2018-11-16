@@ -171,7 +171,8 @@
     (setq mdx-dictionary-server-args '("-i"))
     (defun mdx-dictionary--save-to-anki (query content)
       (let* ((word (or (and (use-region-p) (buffer-substring-no-properties (region-beginning) (region-end)))
-                       (word-at-point)))
+                       (word-at-point)
+                       query))
              (sentence (replace-regexp-in-string "[\r\n]+" " " (or (sentence-at-point)
                                                                    (thing-at-point 'line)))) ;去掉句子中的断行
              (sentence (replace-regexp-in-string (regexp-quote word)
