@@ -23,6 +23,7 @@
           org-wl
           org-w3m
           org-eww
+          org-tempo
           ox-md
           ob-shell))
 #+END_SRC
@@ -53,7 +54,7 @@
    
    org-agenda-files中的元素还可以是目录,这时目录下的所有匹配`org-agenda-file-regexp'的文件都自动加入agenda
    #+BEGIN_SRC emacs-lisp
-     (setq org-agenda-files MY-GTD-PATH)
+     (setq org-agenda-files `(,MY-GTD-PATH))
      (setq org-agenda-file-regexp "\\`[^.].*\\.org\\(_archive\\)?\\'") ;archive事项也纳入agenda显示
      (setq org-agenda-include-diary t)       ;将diary的事项也纳入agenda中显示
    #+END_SRC
@@ -1510,7 +1511,7 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
 
 ** 配置org template
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'org-structure-template-alist '("se" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC" "<src lang=\"emacs-lisp\">\n?\n</src>"))
+  ;; (add-to-list 'org-structure-template-alist '("se" "src emacs-lisp" ))
 #+END_SRC
 
 ** 防止不小心编辑了省略部分的内容
