@@ -18,6 +18,9 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     yaml
+     php
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -338,11 +341,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-to-list 'load-path MY-LISP-PATH)
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
     (require (intern (file-name-base helper-package))))
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "/media/emacs_plugins/melpa/")
-          ("org-cn"   . "/media/emacs_plugins/org/")
-          ("gnu-cn"   . "/media/emacs_plugins/gnu/")
-          ("marmalade-cn"   . "/media/emacs_plugins//marmalade/"))))
+  ;; (setq configuration-layer--elpa-archives
+  ;;       '(("melpa-cn" . "/media/emacs_plugins/melpa/")
+  ;;         ("org-cn"   . "/media/emacs_plugins/org/")
+  ;;         ("gnu-cn"   . "/media/emacs_plugins/gnu/")
+  ;;         ("marmalade-cn"   . "/media/emacs_plugins//marmalade/")))
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -357,20 +361,7 @@ you should place your code here."
   (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-org.org")
   ;; (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-bbdb.org")
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
+  (setq interleave-disable-narrowing t)
   (when (file-exists-p custom-file)
     (load custom-file))
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (zeal-at-point yapfify yahoo-weather xterm-color ws-butler winum which-key wgrep w3m volatile-highlights vi-tilde-fringe verify-url uuidgen use-package unfill uimage typit mmt toc-org sx sudoku start-menu config-parser sql-indent spaceline smex smeargle smart-compile shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort podcaster plantuml-mode pip-requirements persp-mode pdf-tools tablist pcre2el paradox spinner pacmacs ox-reveal orgit org2web el2org org2issue ox-gfm org-tree-slide org-preview-html org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode md4rd tree-mode hierarchy markdown-toc markdown-mode magit-gitflow macrostep lua-mode lorem-ipsum live-py-mode lispy zoutline swiper ivy linum-relative link-hint keyfreq json-mode json-snatcher json-reformat interleave indent-guide ibuffer-vc hydra hy-mode dash-functional hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags fuzzy fullframe flycheck-pos-tip pos-tip flycheck pkg-info epl flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight ess-smart-equals ess-R-data-view ctable ess julia-mode eshell-z eshell-prompt-extras esh-help es-mode spark ereader xml+ erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks epresent emoji-cheat-sheet-plus emms elog elisp-slime-nav elfeed-web elfeed-org elfeed-goodies ace-jump-mode noflet powerline popwin elfeed ego simple-httpd htmlize mustache edit-server edit-indirect dumb-jump dmenu disaster diminish diff-hl deft define-word cython-mode company-statistics company-emoji company-c-headers company-anaconda company column-enforce-mode code-library gist gh marshal logito pcache ht cmake-mode clean-buffers clean-aindent-mode clang-format bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed anki-editor anaconda-mode pythonic all-the-icons-dired all-the-icons memoize aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete 2048-game wangyi-music-mode pocket-mode pocket-api mdx-dictionary request popup evil-unimpaired f s dash csdn-api))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
