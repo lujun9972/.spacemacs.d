@@ -558,6 +558,7 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
               "* %? %x %a"  :clock-in t :clock-resume t) 
              ("b" "Books" entry (file ,(concat MY-GTD-PATH "books.org" ))
               "** TODO %^{书籍名称？}  :book:"  :clock-in t :clock-resume t)))
+     (setq org-protocol-default-template-key "w")
    #+END_SRC
    
    通过设置`:clock-in t'使得在captre task时自动开始clock in. 设置`:clock-resume t'则使得capture task完成后,自动恢复原task的clock in.
