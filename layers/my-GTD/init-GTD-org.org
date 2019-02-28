@@ -1540,6 +1540,7 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
         (insert "#+TAGS: "  (get-category-from-path buffer-file-name)"\n")
         (insert "#+DATE: " (format-time-string "[%Y-%m-%d %a %H:%M]" (current-time)) "\n")
         (insert "#+LANGUAGE:  zh-CN\n")
+        (insert "#+STARTUP:  inlineimages\n")
         (insert "#+OPTIONS:  H:6 num:nil toc:t \\n:nil ::t |:t ^:nil -:nil f:t *:t <:nil")))
     (add-to-list 'find-file-not-found-hooks 'new-org-file-init)
 
