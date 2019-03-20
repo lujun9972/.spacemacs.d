@@ -399,11 +399,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-to-list 'load-path MY-LISP-PATH)
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
     (require (intern (file-name-base helper-package))))
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "/media/emacs_plugins/melpa/")
-          ("org-cn"   . "/media/emacs_plugins/org/")
-          ("gnu-cn"   . "/media/emacs_plugins/gnu/")
-          ("marmalade-cn"   . "/media/emacs_plugins//marmalade/"))))
+  ;; (setq configuration-layer--elpa-archives
+  ;;       '(("melpa-cn" . "/media/emacs_plugins/melpa/")
+  ;;         ("org-cn"   . "/media/emacs_plugins/org/")
+  ;;         ("gnu-cn"   . "/media/emacs_plugins/gnu/")
+  ;;         ("marmalade-cn"   . "/media/emacs_plugins//marmalade/")))
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -418,6 +419,7 @@ you should place your code here."
   (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-org.org")
   ;; (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-bbdb.org")
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
+  (setq interleave-disable-narrowing t)
   (when (file-exists-p custom-file)
     (load custom-file))
   )
