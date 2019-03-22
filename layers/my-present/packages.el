@@ -32,7 +32,7 @@
 (defconst my-present-packages
   '(epresent
     org-tree-slide
-    ox-reveal
+    ;; ox-reveal
     )
   "The list of Lisp packages required by the my-present layer.
 

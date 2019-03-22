@@ -143,7 +143,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(habitica)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -399,11 +399,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-to-list 'load-path MY-LISP-PATH)
   (dolist (helper-package (directory-files MY-LISP-PATH nil "helper\.el"))
     (require (intern (file-name-base helper-package))))
-  ;; (setq configuration-layer--elpa-archives
-  ;;       '(("melpa-cn" . "/media/emacs_plugins/melpa/")
-  ;;         ("org-cn"   . "/media/emacs_plugins/org/")
-  ;;         ("gnu-cn"   . "/media/emacs_plugins/gnu/")
-  ;;         ("marmalade-cn"   . "/media/emacs_plugins//marmalade/")))
+  (setq configuration-layer--elpa-archives
+        '(("melpa-cn" . "/media/emacs_plugins/melpa/")
+          ("org-cn"   . "/media/emacs_plugins/org/")
+          ("gnu-cn"   . "/media/emacs_plugins/gnu/")
+          ("marmalade-cn"   . "/media/emacs_plugins//marmalade/")))
   )
 
 (defun dotspacemacs/user-config ()
