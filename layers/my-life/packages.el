@@ -15,6 +15,7 @@
 (setq my-life-packages
     '(
       ;; package names go here
+      nov
       emms
       w3m
       sx
@@ -32,6 +33,17 @@
 
 ;; For each package, define a function my-life/init-<package-name>
 ;;
+(defun my-life/init-nov ()
+  "Initialize nov package"
+  (use-package nov
+    :bind
+    (("j" . next-line)
+     ("k" . previous-line)
+     ("h" . left-char)
+     ("l" . right-char))
+    :config
+    (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+    ))
 (defun my-life/init-emms ()
   "Initialize my package"
   (use-package emms
