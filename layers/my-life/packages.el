@@ -21,7 +21,6 @@
       yahoo-weather
       podcaster
       ;; (newsticker :location local)
-      netease-music
       (csdn-api :location (recipe
                            :fetcher github
                            :repo "lujun9972/csdn-api.el"))
@@ -165,12 +164,6 @@
     (setq newsticker-retrieval-method 'intern)
     (setq newsticker-show-all-news-elements t)))
 
-
-(defun my-life/init-netease-music ()
-  (use-package netease-music
-    :config
-    (setq netease-music-player "mpv")
-    ))
 
 (defun my-life/init-csdn-api ()
   (use-package csdn-api
