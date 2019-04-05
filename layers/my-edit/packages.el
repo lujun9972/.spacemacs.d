@@ -30,7 +30,7 @@
                                  :fetcher github
                                  :repo "lujun9972/mdx-dictionary.el"
                                  :files ("*")))
-      ;; org2blog
+      org2blog
       (ispell :location built-in)
       (flyspell :location built-in)
       artbollocks-mode
@@ -195,8 +195,8 @@
     (require 'org2blog-autoloads)
 
     (setq org2blog/wp-blog-alist
-          `(("DarkSun.1kapp.com"
-             :url "http://darksun.1kapp.com/xmlrpc.php"
+          `(("web.lujun9972.win"
+             :url "http://web.lujun9972.win/wordpress/xmlrpc.php"
              :username "lujun9972"
              :default-categories ("Emacs")
              :keep-new-lines t

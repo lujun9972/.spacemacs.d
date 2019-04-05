@@ -25,6 +25,12 @@
       (csdn-api :location (recipe
                            :fetcher github
                            :repo "lujun9972/csdn-api.el"))
+      (AnkiConnect :location (recipe
+                                  :fetcher github
+                                  :repo "lujun9972/AnkiConnect.el"))
+      (pdf-anki-helper :location (recipe
+                                  :fetcher github
+                                  :repo "lujun9972/pdf-anki-helper.el"))
       ))
 
 ;; List of packages to exclude.
@@ -36,7 +42,8 @@
   "Initialize nov package"
   (use-package nov
     :bind
-    (("j" . next-line)
+    (:map nov-mode-map
+     ("j" . next-line)
      ("k" . previous-line)
      ("h" . left-char)
      ("l" . right-char))
@@ -185,6 +192,23 @@
 (defun my-life/init-podcaster ()
   (use-package podcaster
     :defer  t
+    ))
+
+(defun my-life/init-AnkiConnect ()
+  (use-package AnkiConnect
+    :defer  t
+    ))
+
+(defun my-life/init-pdf-anki-helper ()
+  (use-package pdf-anki-helper
+    :defer  t
+    :config
+    (setq pah-deck-name "我的生词本")
+    (setq pah-model-name "语义本")
+    (setq pah-field-alist '(("翻译例句" . translation)
+                            ("原文例句" . sentence)
+                            ("意义" . glossary)
+                            ("拼写" . expression)))
     ))
 ;;
 ;; Often the body of an initialize function uses `use-package'

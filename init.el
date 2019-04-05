@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      html
      yaml
      ;; ----------------------------------------------------------------
@@ -423,8 +424,3 @@ you should place your code here."
   (when (file-exists-p custom-file)
     (load custom-file))
   )
-
-
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.

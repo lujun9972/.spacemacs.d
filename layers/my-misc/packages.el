@@ -15,7 +15,7 @@
 (setq my-misc-packages
     '(
       ;; package names go here
-      (ido :location built-in)
+      ;; (ido :location built-in)
       ;; smex
       (desktop :location built-in)
       ;; tabbar
@@ -41,41 +41,41 @@
 ;;
 
 ;; 开启ido-mode
-(defun my-misc/post-init-ido ()
-  (use-package ido
-    :config
-    (ido-mode 'both)
-    (setq ido-enable-prefix nil
-          ido-enable-flex-matching t 
-          ido-everywhere t
-          ido-max-directory-size 100000
-          ido-create-new-buffer 'always
-          ;; Use the current window when visiting files and buffers with ido
-          ido-default-file-method 'selected-window
-          ido-default-buffer-method 'selected-window
-          ido-use-filename-at-point nil
-          ido-auto-merge-work-directories-length 0
-          ido-use-virtual-buffers t)
-    (add-to-list 'ido-ignore-directories "\\`\\.git/")
-    (add-to-list 'ido-ignore-files "\\~\\`")
-    (add-to-list 'ido-ignore-files "\\.doc\\`")
-    ;; 若打开文件没有权限,自动使用sudo方式打开
-    (defun alternate-current-file-as-root (&rest args)
-      "以sudo方式打开当前buffer文件"
-      (interactive)
-      (let ((file (buffer-file-name)))
-        (when (and file
-                   (not (file-writable-p file))
-                   (not (file-remote-p file))
-                   (y-or-n-p-with-timeout "是否使用sudo方式打开当前文件" 10 "n"))
-          (find-alternate-file (concat "/sudo::" file)))))
-    (advice-add 'ido-find-file :after #'alternate-current-file-as-root)))
+;; (defun my-misc/post-init-ido ()
+;;   (use-package ido
+;;     :config
+;;     (ido-mode 'both)
+;;     (setq ido-enable-prefix nil
+;;           ido-enable-flex-matching t 
+;;           ido-everywhere t
+;;           ido-max-directory-size 100000
+;;           ido-create-new-buffer 'always
+;;           ;; Use the current window when visiting files and buffers with ido
+;;           ido-default-file-method 'selected-window
+;;           ido-default-buffer-method 'selected-window
+;;           ido-use-filename-at-point nil
+;;           ido-auto-merge-work-directories-length 0
+;;           ido-use-virtual-buffers t)
+;;     (add-to-list 'ido-ignore-directories "\\`\\.git/")
+;;     (add-to-list 'ido-ignore-files "\\~\\`")
+;;     (add-to-list 'ido-ignore-files "\\.doc\\`")
+;;     ;; 若打开文件没有权限,自动使用sudo方式打开
+;;     (defun alternate-current-file-as-root (&rest args)
+;;       "以sudo方式打开当前buffer文件"
+;;       (interactive)
+;;       (let ((file (buffer-file-name)))
+;;         (when (and file
+;;                    (not (file-writable-p file))
+;;                    (not (file-remote-p file))
+;;                    (y-or-n-p-with-timeout "是否使用sudo方式打开当前文件" 10 "n"))
+;;           (find-alternate-file (concat "/sudo::" file)))))
+;;     (advice-add 'ido-find-file :after #'alternate-current-file-as-root)))
 
-(defun my-misc/init-ido-ubiquitous ()
-    (use-package ido-ubiquitous
-      :ensure t
-      :config
-      (ido-ubiquitous-mode t)))
+;; (defun my-misc/init-ido-ubiquitous ()
+;;     (use-package ido-ubiquitous
+;;       :ensure t
+;;       :config
+;;       (ido-ubiquitous-mode t)))
 
 ;; (defun my-misc/init-smex ()
 ;;   (use-package smex
@@ -93,7 +93,7 @@
     ;; 为每个不同的系统定义不同的保存名称,这是为了使得同一台机器上不同环境间互补干扰
     (setq desktop-base-file-name (file-name-nondirectory (format "%s.emacs.desktop" system-type)))
     (setq desktop-auto-save-timeout 600)	;10分钟保存一次
-    (desktop-save-mode 1)
+    ;; (desktop-save-mode 1)
     (toggle-save-place-globally 1)			;保存各buffer的光标位置
     (savehist-mode t)						;保存minibuffer的history
     ))
