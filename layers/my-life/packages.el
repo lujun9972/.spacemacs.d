@@ -28,9 +28,9 @@
       (AnkiConnect :location (recipe
                                   :fetcher github
                                   :repo "lujun9972/AnkiConnect.el"))
-      (pdf-anki-helper :location (recipe
-                                  :fetcher github
-                                  :repo "lujun9972/pdf-anki-helper.el"))
+      (anki-helper :location (recipe
+                              :fetcher github
+                              :repo "lujun9972/anki-helper.el"))
       ))
 
 ;; List of packages to exclude.
@@ -199,16 +199,17 @@
     :defer  t
     ))
 
-(defun my-life/init-pdf-anki-helper ()
-  (use-package pdf-anki-helper
+(defun my-life/init-anki-helper ()
+  (use-package anki-helper
     :defer  t
     :config
-    (setq pah-deck-name "我的生词本")
-    (setq pah-model-name "语义本")
-    (setq pah-field-alist '(("翻译例句" . translation)
-                            ("原文例句" . sentence)
-                            ("意义" . glossary)
-                            ("拼写" . expression)))
+    (setq anki-helper-deck-name "我的生词本")
+    (setq anki-helper-model-name "语义本")
+    (setq anki-helper-field-alist '(("翻译例句" . translation)
+                                    ("原文例句" . sentence_bold)
+                                    ("意义" . glossary)
+                                    ("拼写" . expression)
+                                    ("读音" . us-phonetic)))
     ))
 ;;
 ;; Often the body of an initialize function uses `use-package'
