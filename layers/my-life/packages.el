@@ -205,12 +205,11 @@
     :config
     (setq anki-helper-deck-name "我的生词本")
     (setq anki-helper-model-name "语义本")
-    (setq anki-helper-field-alist '(("翻译例句" . translation)
-                                    ("原文例句" . sentence_bold)
-                                    ("意义" . glossary)
-                                    ("拼写" . expression)
-                                    ("读音" . us-phonetic)))
-    ))
+    (setq anki-helper-field-alist '(("翻译例句" . "${翻译例句}")
+                                    ("读音" . "${美式音标}")
+                                    ("意义" . "${释义}")
+                                    ("拼写" . "${单词}")
+                                    ("原文例句" . "${标粗的原文例句}")))))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
