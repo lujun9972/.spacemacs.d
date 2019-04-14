@@ -15,8 +15,8 @@
 (setq my-file-packages
     '(
       ;; package names go here
-      (dired :location local)
-      dired-sort
+      ;; (dired :location local)
+      (wdired :location local)
       ))
 
 ;; List of packages to exclude.
@@ -65,13 +65,15 @@
    delete-by-moving-to-trash nil          ; 删除时不放入回收站中 
    dired-x-hands-off-my-keys nil ;使用dired-x-find-file系列命令替代find-file命令,替代后,使用C-u C-x C-f会自动用光标所在的文本作为猜测的文件名
    )
+  ))
+
+(defun my-file/init-wdired ()
   (use-package wdired
     :defer t
     :config
-    (setq wdired-allow-to-change-permissions t)   ; allow to edit permission bits
-    (setq wdired-allow-to-redirect-links nil)     ; allow to edit symlinks
-    )))
-
+    (setq wdired-allow-to-change-permissions t) ; allow to edit permission bits
+    (setq wdired-allow-to-redirect-links nil)   ; allow to edit symlinks
+    ))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'
