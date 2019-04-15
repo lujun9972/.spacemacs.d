@@ -23,7 +23,6 @@
                       :fetcher github
                       :repo "lujun9972/EGO"
                       :files ("*")))
-      org2web
       org2issue
       ;; dictionary
       (mdx-dictionary :location (recipe
@@ -90,8 +89,8 @@
                  ;; ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
                  :ignore-file-name-regexp
                  "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
-                 :web-server-docroot "~/webRoot/emacs-document.github.io" ; 本地测试的目录
-                 :web-server-port 5432) ; 本地测试的端口
+                 :store-dir "~/webRoot/emacs-document.github.io" ; 本地测试的目录
+                 ) ; 本地测试的端口
                  ("Emacs公众号文章" ; 站点工程的名字
                  :repository-directory "~/github/emacsist" ; 站点的本地目录
                  :site-domain "https://emacs-china.github.io/emacsist" ; 站点的网址
@@ -107,8 +106,8 @@
                  ;; ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
                  :ignore-file-name-regexp
                  "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
-                 :web-server-docroot "~/webRoot/emacs-china.github.io/emacsist" ; 本地测试的目录
-                 :web-server-port 5432)
+                 :store-dir "~/webRoot/emacs-china.github.io/emacsist" ; 本地测试的目录
+                 )
                  ("lujun9972.github.com" ; 站点工程的名字
                   :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
                   :site-domain "https://lujun9972.github.io/" ; 站点的网址
@@ -125,29 +124,10 @@
                   ;; ;; :confound-email nil ; 是否保护邮件名称呢？t 是保护，nil 是不保护，默认是保护
                   :ignore-file-name-regexp
                   "README.org" ; 有些不想发布成 html 的 org 文件（但是又想被导入 git 进行管理），可以用这种正则表达的方式排除
-                  :web-server-docroot "~/webRoot/lujun9972.github.io" ; 本地测试的目录
-                  :web-server-port 5432)
+                  :store-dir "~/webRoot/lujun9972.github.io" ; 本地测试的目录
+                  )
                  ;; 你可以在此添加更多的站点设置
                  )))))
-
-(defun my-edit/init-org2web ()
-  (with-eval-after-load 'org
-    (use-package org2web
-      :config
-      (org2web-add-project
-       '("lujun9972.github.com" ; 站点工程的名字
-         :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
-         :remote (git "https://github.com/lujun9972/lujun9972.github.com.git" "master")
-         ;; you can use `rclone` with `:remote (rclone "remote-name" "/remote/path/location")` instead.
-         :site-domain "https://lujun9972.github.io/" ; 站点的网址
-         :site-main-title "暗无天日"      ; 站点的标题
-         :site-sub-title "=============>随便,谢谢" ; 站点的副标题
-         :theme (worg)
-         :source-browse-url ("Github" "https://github.com/lujun9972/lujun9972.github.com") ; 你的工程源代码所在的位置
-         ;; :personal-avatar "/media/img/horse.jpg"
-         :personal-disqus-shortname "lujun9972" ; 使用 disqus 评论功能的话，它的短名称
-         :web-server-docroot "~/webRoot/lujun9972.github.io" ; 本地测试的目录
-         :web-server-port 7654)))))
 
 (defun my-edit/init-org2issue ()
   (with-eval-after-load 'org (use-package org2issue
