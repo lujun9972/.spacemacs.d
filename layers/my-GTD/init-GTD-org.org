@@ -476,6 +476,11 @@ Each keyword may also specify if a timestamp or a note should be recorded when e
 #+BEGIN_SRC emacs-lisp
   (setq org-export-with-timestamps nil)
 #+END_SRC
+
+导出时不执行代码块
+#+begin_src emacs-lisp
+  (setq org-export-use-babel nil)
+#+end_src
 ** 当克隆subtree时,去掉对应的id属性
 #+BEGIN_SRC emacs-lisp
   (setq org-clone-delete-id t)
@@ -1145,9 +1150,8 @@ I use C-c M-o to start an email message with the details filled in from the curr
 I use this for repeating reminder tasks where I need to send an email to someone else.
 The email contents are already contained in the org-mode subtree and all I need to do is C-c M-o and any minor edits before sending it off.
 ** Using orgstruct mode for mail
-orgstruct++-mode is enabled in Gnus message buffers to aid in creating structured email messages. 
+orgstruct-mode is enabled in Gnus message buffers to aid in creating structured email messages. 
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'message-mode-hook 'orgstruct++-mode 'append)
   (add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
   ;; (add-hook 'message-mode-hook 'bbdb-define-all-aliases 'append)
   (add-hook 'message-mode-hook 'orgtbl-mode 'append)
