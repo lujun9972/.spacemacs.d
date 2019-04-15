@@ -1139,10 +1139,6 @@ mail link的格式类似=<mailto:arthur@galaxy.org::this subject>=
 #+BEGIN_SRC emacs-lisp
   (setq org-link-mailto-program '(compose-mail "%a" "%s"))
 #+END_SRC
-** Using org-mime to email
-#+BEGIN_SRC emacs-lisp
-  (require 'org-mime nil t)
-#+END_SRC
 ** Composing mail from org mode subtrees
 
 It's possible to create mail from an org-mode subtree.
