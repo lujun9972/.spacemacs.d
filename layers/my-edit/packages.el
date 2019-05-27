@@ -317,8 +317,8 @@
   (setq pyim-page-length 5)
 
   :bind
-  (("S-M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
-   ("S-C-;" . pyim-delete-word-from-personal-buffer))))
+  (("C-M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
+   ("C-;" . pyim-delete-word-from-personal-buffer))))
 
 ;; (defun my-edit/init-define-word ()
 ;;   "Initalize powerthesaurus"
