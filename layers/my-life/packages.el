@@ -213,7 +213,7 @@
                                     ("意义" . "${释义}")
                                     ("拼写" . "${单词}")
                                     ("原文例句" . "${标粗的原文例句}")))
-    (setq anki-helper-audio-fileds t)))
+    (setq anki-helper-audio-fileds "读音")))
 
 (defun my-life/init-leetcode ()
   (use-package leetcode
@@ -222,7 +222,7 @@
     (setq leetcode-account "lujun9972")
     (setq leetcode-prefer-language "python3")
     ))
-    (setq anki-helper-audio-fileds "读音")))
+    
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
