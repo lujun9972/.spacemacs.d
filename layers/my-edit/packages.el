@@ -29,6 +29,10 @@
                                  :fetcher github
                                  :repo "lujun9972/mdx-dictionary.el"
                                  :files ("*")))
+      (smms :location (recipe
+                                 :fetcher github
+                                 :repo "lujun9972/smms.el"
+                                 :files ("*.el")))
       org2blog
       (ispell :location built-in)
       (flyspell :location built-in)
@@ -175,14 +179,14 @@
     (require 'org2blog-autoloads)
 
     (setq org2blog/wp-blog-alist
-          `(("web.lujun9972.win"
-             :url "http://web.lujun9972.win/wordpress/xmlrpc.php"
+          `(("baby.lujun9972.win"
+             :url "http://baby.lujun9972.win/baby/xmlrpc.php"
              :username "lujun9972"
-             :default-categories ("Emacs")
+             :default-categories ("Baby")
              :keep-new-lines t
              :confirm t
              :wp-code nil
-             :tags-as-categories nil)
+             :tags-as-categories t)
             ("DarkSun.blog.51cto.com"
              :url "http://darksun.blog.51cto.com/xmlrpc.php"
              :username "lujun9972"
@@ -199,7 +203,7 @@
       (format buffer-template
               ;; TITLE
               (or (plist-get (cdr org2blog/wp-blog) :default-title)
-                  org2blog/wp-default-title
+                  ;; org2blog/wp-default-title
                   (read-string "请输入POST标题:"))
               ;; AUTHOR
               user-login-name
@@ -213,7 +217,8 @@
                ", ")
               ))
 
-    (setq org2blog/wp-buffer-format-function 'org2blog/wp-format-buffer-with-author)))
+    (setq org2blog/wp-buffer-format-function 'org2blog/wp-format-buffer-with-author)
+    (setq org2blog/wp-show-post-in-browser 'ask)))
 
 ;; artbollocks-mode.el is an Emacs minor mode for avoiding cliches and bad grammar when writing about art (or other topics).
 
@@ -261,6 +266,11 @@
 (defun my-edit/init-powerthesaurus ()
   "Initalize powerthesaurus"
   (use-package powerthesaurus
+    :ensure t))
+
+(defun my-edit/init-smms ()
+  "Initalize smms"
+  (use-package smms
     :ensure t))
 
 ;; (defun my-edit/init-define-word ()

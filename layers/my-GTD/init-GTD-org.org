@@ -819,6 +819,12 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
     ;; If there is more than one, they won't work right.
    '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
 #+END_SRC
+
+** 使用最后clocke-out时间作为任务完成时间
+#+begin_src emacs-lisp
+  (setq org-use-last-clock-out-time-as-effective-time t)
+#+end_src
+
 * Time Reporting and Tracking   
   *当生成Time Report时,若有未完结的clock time,则这段时间被认为是0*
 
@@ -1138,10 +1144,6 @@ mail link的格式类似=<mailto:arthur@galaxy.org::this subject>=
 
 #+BEGIN_SRC emacs-lisp
   (setq org-link-mailto-program '(compose-mail "%a" "%s"))
-#+END_SRC
-** Using org-mime to email
-#+BEGIN_SRC emacs-lisp
-  (require 'org-mime nil t)
 #+END_SRC
 ** Composing mail from org mode subtrees
 
