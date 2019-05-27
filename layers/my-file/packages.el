@@ -17,6 +17,8 @@
       ;; package names go here
       ;; (dired :location local)
       (wdired :location local)
+      dired-subtree
+      dired-avfs
       ))
 
 ;; List of packages to exclude.
@@ -73,6 +75,16 @@
     :config
     (setq wdired-allow-to-change-permissions t) ; allow to edit permission bits
     (setq wdired-allow-to-redirect-links nil)   ; allow to edit symlinks
+    ))
+
+(defun my-file/init-dired-subtree ()
+  (use-package dired-subtree
+    :defer t
+    :bind (:map dired-mode-map
+           ("TAB" . dired-subtree-cycle))))
+
+(defun my-file/init-dired-avfs ()
+  (use-package dired-avfs
     ))
 
 ;;

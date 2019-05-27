@@ -222,6 +222,7 @@
     (setq leetcode-account "lujun9972")
     (setq leetcode-prefer-language "python3")
     ))
+    (setq anki-helper-audio-fileds "读音")))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
