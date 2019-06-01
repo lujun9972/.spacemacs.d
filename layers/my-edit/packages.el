@@ -181,7 +181,7 @@
 
     (setq org2blog/wp-blog-alist
           `(("baby.lujun9972.win"
-             :url "http://baby.lujun9972.win/baby/xmlrpc.php"
+             :url "https://baby.lujun9972.win/baby/xmlrpc.php"
              :username "lujun9972"
              :default-categories ("Baby")
              :keep-new-lines t
@@ -189,7 +189,7 @@
              :wp-code nil
              :tags-as-categories t)
             ("DarkSun.blog.51cto.com"
-             :url "http://darksun.blog.51cto.com/xmlrpc.php"
+             :url "https://darksun.blog.51cto.com/xmlrpc.php"
              :username "lujun9972"
              :default-categories ("Emacs")
              :keep-new-lines t
