@@ -31,6 +31,9 @@
       (anki-helper :location (recipe
                               :fetcher github
                               :repo "lujun9972/anki-helper.el"))
+      (leetcode :location (recipe
+                              :fetcher github
+                              :repo "kaiwk/leetcode.el"))
       ))
 
 ;; List of packages to exclude.
@@ -211,6 +214,15 @@
                                     ("拼写" . "${单词}")
                                     ("原文例句" . "${标粗的原文例句}")))
     (setq anki-helper-audio-fileds "读音")))
+
+(defun my-life/init-leetcode ()
+  (use-package leetcode
+    :defer  t
+    :config
+    (setq leetcode-account "lujun9972")
+    (setq leetcode-prefer-language "python3")
+    ))
+    
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
