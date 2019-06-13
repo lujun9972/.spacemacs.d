@@ -83,6 +83,10 @@
            ((org-agenda-overriding-header "NEXT")
             (org-tags-match-list-sublevels t)
             (org-agenda-skip-function 'org/schedule-until)))
+          ("t" "Today" todo "TODAY"
+           ((org-agenda-overriding-header "TODAY")
+            (org-tags-match-list-sublevels t)
+            (org-agenda-skip-function 'org/schedule-until)))
           ("s" "超市" tags "超市"
            ((org-agenda-overriding-header "超市")
             (org-tags-match-list-sublevels t)))
@@ -281,11 +285,12 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
      I put the project task on HOLD and work on something else. 
    #+BEGIN_SRC emacs-lisp
      (setq org-todo-keywords
-           (quote ((type "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
+           (quote ((type "TODO(t)" "NEXT(n)" "TODAY(t)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
 
      (setq org-todo-keyword-faces
-           (quote (("TODO" :foreground "red" :weight bold)
+           (quote (("TODO" :foreground "blue" :weight bold)
                    ("NEXT" :foreground "blue" :weight bold)
+                   ("TODAY" :foreground "red" :weight bold)
                    ("DONE" :foreground "forest green" :weight bold)
                    ("WAITING" :foreground "orange" :weight bold)
                    ("HOLD" :foreground "magenta" :weight bold)
@@ -336,6 +341,7 @@ org-todo-state-tags-triggers的格式为`(state-change (tag . flag) .......)',�
                 (done ("WAITING") ("HOLD"))
                 ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
                 ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+                ("TODAY" ("WAITING") ("CANCELLED") ("HOLD"))
                 ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
   ;; * Moving a task to CANCELLED adds a CANCELLED tag
@@ -347,9 +353,9 @@ org-todo-state-tags-triggers的格式为`(state-change (tag . flag) .......)',�
   ;; * Moving a task to DONE removes WAITING, CANCELLED, and HOLD tags
 #+END_SRC
 
-*** 当task变为project时,自动将NEXT状态改为TODO状态
+*** 当task变为project时,自动将NEXT或TODAY状态改为TODO状态
 
-由于NEXT只给具体的task使用,而不是给project使用的,因此当一个subtask添加了todo标志或开始clock in时,自动将其父task状态由NEXT改为TODO,因为这时它已经成为一个project了
+由于NEXT只给具体的task使用,而不是给project使用的,因此当一个subtask添加了todo标志或开始clock in时,自动将其父task状态由NEXT或TODAY改为TODO,因为这时它已经成为一个project了
 #+BEGIN_SRC emacs-lisp
    (defun bh/mark-next-parent-tasks-todo ()
     "Visit each parent task and change NEXT states to TODO"
@@ -357,7 +363,7 @@ org-todo-state-tags-triggers的格式为`(state-change (tag . flag) .......)',�
       (when mystate
         (save-excursion
           (while (org-up-heading-safe)
-            (when (member (nth 2 (org-heading-components)) (list "NEXT"))
+            (when (member (nth 2 (org-heading-components)) (list "NEXT" "TODAY"))
               (org-todo "TODO")))))))
 
   (add-hook 'org-after-todo-state-change-hook 'bh/mark-next-parent-tasks-todo 'append)
@@ -663,13 +669,13 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
      (defun bh/clock-in-to-next (kw)
        "Switch a task from TODO to NEXT when clocking in.
      Skips capture tasks, projects, and subprojects.
-     Switch projects and subprojects from NEXT back to TODO"
+     Switch projects and subprojects from NEXT/TODAY back to TODO"
        (when (not (and (boundp 'org-capture-mode) org-capture-mode))
          (cond
           ((and (member (org-get-todo-state) (list "TODO"))
                 (bh/is-task-p))
            "NEXT")
-          ((and (member (org-get-todo-state) (list "NEXT"))
+          ((and (member (org-get-todo-state) (list "NEXT" "TODAY"))
                 (bh/is-project-p))
            "TODO"))))
 
