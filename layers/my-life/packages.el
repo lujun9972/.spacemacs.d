@@ -28,6 +28,9 @@
       (AnkiConnect :location (recipe
                                   :fetcher github
                                   :repo "lujun9972/AnkiConnect.el"))
+      (youdao-dictionary :location (recipe
+                              :fetcher github
+                              :repo "nicehiro/youdao-dictionary.el"))
       (anki-helper :location (recipe
                               :fetcher github
                               :repo "lujun9972/anki-helper.el"))
