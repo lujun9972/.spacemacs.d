@@ -285,7 +285,7 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
      I put the project task on HOLD and work on something else. 
    #+BEGIN_SRC emacs-lisp
      (setq org-todo-keywords
-           (quote ((type "TODO(t)" "NEXT(n)" "TODAY(t)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
+           (quote ((type "TODO(t)" "NEXT(n)" "TODAY(T)" "WAITING(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)" "SUSPEND(s@/!)"))))
 
      (setq org-todo-keyword-faces
            (quote (("TODO" :foreground "blue" :weight bold)
