@@ -1086,6 +1086,7 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
        '((emacs-lisp . t)
          (dot . t)
          (ditaa . t)
+         (calc . t)
          ;; (R . t)
          (python . t)
          (ruby . t)
