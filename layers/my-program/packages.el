@@ -23,6 +23,7 @@
       smart-compile
       elog
       code-library
+      company-tabnine
       ))
 
 ;; List of packages to exclude.
@@ -169,6 +170,19 @@
 
 (defun my-program/init-code-library ()
   (use-package code-library))
+
+(defun my-program/init-company-tabnine ()
+  (use-package company-tabnine
+    :ensure t
+    :config
+    (add-to-list 'company-backends #'company-tabnine)
+    ;; Trigger completion immediately.
+    (setq company-idle-delay 0)
+
+    ;; Number the candidates (use M-1, M-2 etc to select completions).
+    (setq company-show-numbers t)
+
+    ))
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package

@@ -311,11 +311,20 @@
   ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
   ;; 手动安装 posframe 包。
-  (setq pyim-page-tooltip 'popup)
+  (use-package posframe
+    :ensure t)
+  (setq pyim-page-tooltip 'posframe)
 
-  ;; 选词框显示5个候选词
-  (setq pyim-page-length 5)
+  ;; 选词框显示9个候选词
+  (setq pyim-page-length 9)
 
+  ;; 使用liberime
+  (when (file-exists-p "~/.emacs.d/liberime.so")
+    (setq load-path (cons (file-truename "~/.emacs.d/") load-path))
+    (require 'liberime)
+    (liberime-start "/usr/share/rime-data/" (file-truename "~/.emacs.d/pyim/rime/"))
+    (liberime-select-schema "luna_pinyin_simp")
+    (setq pyim-default-scheme 'rime-quanpin))
   :bind
   (("M-J" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer))))
