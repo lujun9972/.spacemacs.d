@@ -120,7 +120,7 @@
                   :site-sub-title "=============>随便,谢谢"   ; 站点的副标题
                   ;; :repository-org-branch "master"
                   ;; :repository-html-branch "gh-pages"
-                  :theme (emacs_love)         ; 使用的主题
+                  :theme (DarkSun)         ; 使用的主题
                   :summary (("years" :year :updates 10) ("authors" :authors) ("tags" :tags)) ; 导航栏的设置，有 category 和 summary 两种
                   :source-browse-url ("Github" "https://github.com/lujun9972/lujun9972.github.com") ; 你的工程源代码所在的位置
                   :personal-disqus-shortname "lujun9972" ; 使用 disqus 评论功能的话，它的短名称
