@@ -52,7 +52,9 @@
      ("j" . next-line)
      ("k" . previous-line)
      ("h" . left-char)
-     ("l" . right-char))
+     ("l" . right-char)
+     ("w" . forward-word)
+     ("W" . backward-word))
     :config
     (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
     ))
