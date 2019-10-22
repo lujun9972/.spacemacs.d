@@ -32,7 +32,6 @@
 (defconst reading-packages
   '(interleave
     ;; pdf-tools
-    ereader
     )
   "The list of Lisp packages required by the reading layer.
 
@@ -76,9 +75,5 @@ Each entry is either:
                 ("k" . pdf-view-previous-line-or-previous-page)
                 ("K" . image-kill-buffer)
                 ("G" . pdf-view-goto-page))))
-
-(defun reading/init-ereader ()
-  (use-package ereader
-    ))
 
 ;;; packages.el ends here
