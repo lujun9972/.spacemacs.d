@@ -21,6 +21,7 @@
       sx
       yahoo-weather
       podcaster
+      youdao-dictionary
       ;; (newsticker :location local)
       (csdn-api :location (recipe
                            :fetcher github
@@ -28,9 +29,6 @@
       (AnkiConnect :location (recipe
                                   :fetcher github
                                   :repo "lujun9972/AnkiConnect.el"))
-      (youdao-dictionary :location (recipe
-                              :fetcher github
-                              :repo "nicehiro/youdao-dictionary.el"))
       (anki-helper :location (recipe
                               :fetcher github
                               :repo "lujun9972/anki-helper.el"))
@@ -231,7 +229,14 @@
     (setq leetcode-account "lujun9972")
     (setq leetcode-prefer-language "python3")
     ))
-    
+
+(defun my-life/init-youdao-dictionary ()
+  (use-package youdao-dictionary
+    :defer  t
+    :config
+    (setq youdao-dictionary-secret-key "atY68WyfGGoVE5WBc09ihdc2lxZP9sUR")
+    (setq youdao-dictionary-app-key "72c03449033eb239")
+    ))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
