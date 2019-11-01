@@ -24,6 +24,7 @@
       elog
       code-library
       company-tabnine
+      package-lint
       ))
 
 ;; List of packages to exclude.
@@ -170,6 +171,9 @@
 
 (defun my-program/init-code-library ()
   (use-package code-library))
+
+(defun my-program/init-package-lint ()
+  (use-package package-lint))
 
 (defun my-program/init-company-tabnine ()
   (use-package company-tabnine
