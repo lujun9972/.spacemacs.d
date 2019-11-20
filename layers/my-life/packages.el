@@ -29,9 +29,9 @@
       (AnkiConnect :location (recipe
                                   :fetcher github
                                   :repo "lujun9972/AnkiConnect.el"))
-      (anki-helper :location (recipe
+      (anki-vocabulary :location (recipe
                               :fetcher github
-                              :repo "lujun9972/anki-helper.el"))
+                              :repo "lujun9972/anki-vocabulary.el"))
       (leetcode :location (recipe
                               :fetcher github
                               :repo "kaiwk/leetcode.el"))
@@ -210,18 +210,18 @@
     :defer  t
     ))
 
-(defun my-life/init-anki-helper ()
-  (use-package anki-helper
+(defun my-life/init-anki-vocabulary ()
+  (use-package anki-vocabulary
     :defer  t
     :config
-    (setq anki-helper-deck-name "我的生词本")
-    (setq anki-helper-model-name "语义本")
-    (setq anki-helper-field-alist '(("翻译例句" . "${翻译例句}")
+    (setq anki-vocabulary-deck-name "我的生词本")
+    (setq anki-vocabulary-model-name "语义本")
+    (setq anki-vocabulary-field-alist '(("翻译例句" . "${翻译例句}")
                                     ("读音" . "${美式音标}")
                                     ("意义" . "${释义}")
                                     ("拼写" . "${单词}")
                                     ("原文例句" . "${标粗的原文例句}")))
-    (setq anki-helper-audio-fileds "读音")))
+    (setq anki-vocabulary-audio-fileds "读音")))
 
 (defun my-life/init-leetcode ()
   (use-package leetcode
