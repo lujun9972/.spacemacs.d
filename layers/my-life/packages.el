@@ -52,7 +52,7 @@
      ("h" . left-char)
      ("l" . right-char)
      ("w" . forward-word)
-     ("W" . backward-word))
+     ("b" . backward-word))
     :config
     ;; (defun my-nov-font-setup ()
     ;;   (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
