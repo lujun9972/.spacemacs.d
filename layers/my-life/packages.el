@@ -26,9 +26,9 @@
       (csdn-api :location (recipe
                            :fetcher github
                            :repo "lujun9972/csdn-api.el"))
-      (AnkiConnect :location (recipe
+      (anki-connect :location (recipe
                                   :fetcher github
-                                  :repo "lujun9972/AnkiConnect.el"))
+                                  :repo "lujun9972/anki-connect.el"))
       (anki-vocabulary :location (recipe
                               :fetcher github
                               :repo "lujun9972/anki-vocabulary.el"))
@@ -205,8 +205,8 @@
     :defer  t
     ))
 
-(defun my-life/init-AnkiConnect ()
-  (use-package AnkiConnect
+(defun my-life/init-anki-connect ()
+  (use-package anki-connect
     :defer  t
     ))
 
