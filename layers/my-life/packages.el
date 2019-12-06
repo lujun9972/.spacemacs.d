@@ -214,11 +214,16 @@
     (setq anki-vocabulary-deck-name "我的生词本")
     (setq anki-vocabulary-model-name "语义本")
     (setq anki-vocabulary-field-alist '(("翻译例句" . "${翻译例句}")
-                                    ("读音" . "${美式音标}")
-                                    ("意义" . "${释义}")
-                                    ("拼写" . "${单词}")
-                                    ("原文例句" . "${标粗的原文例句}")))
-    (setq anki-vocabulary-audio-fileds "读音")))
+                                        ("读音" . "${美式音标}")
+                                        ("意义" . "${释义}")
+                                        ("拼写" . "${单词}")
+                                        ("原文例句" . "${标粗的原文例句}")))
+    (setq anki-vocabulary-audio-fileds "读音")
+    (when (featurep 'mdx-dictionary)
+      (setq anki-vocabulary-word-searcher (lambda (word)
+                                            (if mdx-dictionary-server-process
+                                                (mdx-dictionary-searcher word)
+                                              (anki-vocabulary--word-searcher-youdao word)))))))
 
 (defun my-life/init-leetcode ()
   (use-package leetcode
