@@ -19,16 +19,13 @@
       emms
       w3m
       sx
-      yahoo-weather
       podcaster
       youdao-dictionary
       ;; (newsticker :location local)
       (csdn-api :location (recipe
                            :fetcher github
                            :repo "lujun9972/csdn-api.el"))
-      (anki-connect :location (recipe
-                                  :fetcher github
-                                  :repo "lujun9972/anki-connect.el"))
+      anki-connect
       (anki-vocabulary :location (recipe
                               :fetcher github
                               :repo "lujun9972/anki-vocabulary.el"))
@@ -164,10 +161,6 @@
 
 (defun my-life/init-sx ()
   (use-package sx
-    :defer  t))
-
-(defun my-life/init-yahoo-weather ()
-  (use-package yahoo-weather
     :defer  t))
 
 (defun my-life/init-newsticker ()
