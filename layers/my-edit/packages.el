@@ -25,10 +25,6 @@
                       :files ("*")))
       org2issue
       ;; dictionary
-      (mdx-dictionary :location (recipe
-                                 :fetcher github
-                                 :repo "lujun9972/mdx-dictionary.el"
-                                 :files ("*")))
       (smms :location (recipe
                                  :fetcher github
                                  :repo "lujun9972/smms.el"
@@ -149,29 +145,6 @@
     ;; choose a dictionary server
     (setq dictionary-server "localhost")));;
 
-(defun my-edit/init-mdx-dictionary ()
-  (use-package mdx-dictionary
-    :defer  t
-    :config
-    (setq mdx-dictionary-server-args '("-i"))
-    (defun mdx-dictionary--save-to-anki (query content)
-      (let* ((word (or (and (use-region-p) (buffer-substring-no-properties (region-beginning) (region-end)))
-                       (word-at-point)
-                       query))
-             (sentence (replace-regexp-in-string "[\r\n]+" " " (or (sentence-at-point)
-                                                                   (thing-at-point 'line)))) ;去掉句子中的断行
-             (sentence (replace-regexp-in-string (regexp-quote word)
-                                                 (lambda (word)
-                                                   (format "<b>%s</b>" word))
-                                                 sentence)) ;高亮句子中的单词
-             (content (replace-regexp-in-string "[\r\n]+" "<br>" content))
-             (anki-file  "~/mdx-dictionary-for-anki.txt"))
-        (with-temp-file anki-file
-          (when (file-readable-p anki-file)
-            (insert-file-contents anki-file))
-          (insert (format "%s|%s|%s\n" query content sentence)))))
-
-    (add-hook 'mdx-dictionary-display-before-functions #'mdx-dictionary--save-to-anki)))
 
 (defun my-edit/init-org2blog ()
   (use-package org2blog

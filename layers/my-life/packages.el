@@ -21,6 +21,10 @@
       sx
       podcaster
       youdao-dictionary
+      (mdx-dictionary :location (recipe
+                                 :fetcher github
+                                 :repo "lujun9972/mdx-dictionary.el"
+                                 :files ("*")))
       ;; (newsticker :location local)
       (csdn-api :location (recipe
                            :fetcher github
@@ -230,6 +234,14 @@
     :config
     (setq youdao-dictionary-secret-key "atY68WyfGGoVE5WBc09ihdc2lxZP9sUR")
     (setq youdao-dictionary-app-key "72c03449033eb239")
+    ))
+
+(defun my-life/init-mdx-dictionary ()
+  (use-package mdx-dictionary
+    :defer  t
+    :config
+    (setq mdx-dictionary-server-args '("-i"))
+    (setq mdx-dictionary-parser #'mdx-dictionary--21世纪大英汉词典-parser)
     ))
 ;;
 ;; Often the body of an initialize function uses `use-package'
