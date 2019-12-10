@@ -423,16 +423,3 @@ you should place your code here."
   (when (file-exists-p custom-file)
     (load custom-file))
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(xr metaweblog anki-connect anki-vocabulary zeal-at-point yapfify yaml-mode yahoo-weather xterm-color ws-butler winum which-key wgrep web-mode web-beautify w3m volatile-highlights vi-tilde-fringe verify-url uuidgen use-package unfill uimage typit toc-org tagedit sx sudoku start-menu sql-indent spaceline smms smex smeargle smart-compile slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyim pyenv-mode py-isort pug-mode powerthesaurus posframe podcaster pocket-mode plantuml-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs package-lint orgit org2issue org2blog org-tree-slide org-preview-html org-bullets open-junk-file nov neotree mwim multi-term move-text mmm-mode mdx-dictionary markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode lispy linum-relative link-hint leetcode langtool keyfreq js2-refactor js-doc interleave indent-guide ibuffer-vc hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag habitica google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy fullframe flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-data-view eshell-z eshell-prompt-extras esh-help es-mode erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks epresent emoji-cheat-sheet-plus emms emmet-mode elog elisp-slime-nav elfeed-web elfeed-org elfeed-goodies ego edit-server dumb-jump dockerfile-mode docker dmenu disaster dired-subtree dired-avfs diminish diff-hl deft define-word cython-mode csdn-api company-web company-tern company-tabnine company-statistics company-emoji company-c-headers company-anaconda column-enforce-mode coffee-mode code-library cmake-mode clean-buffers clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile artbollocks-mode anki-helper aggressive-indent adaptive-wrap ace-link ace-jump-helm-line ac-ispell 2048-game)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
