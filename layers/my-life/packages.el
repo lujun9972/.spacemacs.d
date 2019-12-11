@@ -219,7 +219,7 @@
                                         ("拼写" . "${expression:单词}")
                                         ("原文例句" . "${sentence_bold:标粗的原文例句}")))
     (setq anki-vocabulary-audio-fileds "读音")
-    (when (featurep 'mdx-dictionary)
+    (when (package-installed-p 'mdx-dictionary)
       (setq anki-vocabulary-word-searcher (lambda (word)
                                             (if mdx-dictionary-server-process
                                                 (mdx-dictionary-request word)
