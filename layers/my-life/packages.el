@@ -30,9 +30,7 @@
                            :fetcher github
                            :repo "lujun9972/csdn-api.el"))
       anki-connect
-      (anki-vocabulary :location (recipe
-                              :fetcher github
-                              :repo "lujun9972/anki-vocabulary.el"))
+      anki-vocabulary
       (leetcode :location (recipe
                               :fetcher github
                               :repo "kaiwk/leetcode.el"))
