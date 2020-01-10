@@ -219,9 +219,9 @@
     (setq anki-vocabulary-audio-fileds "读音")
     (when (package-installed-p 'mdx-dictionary)
       (setq anki-vocabulary-word-searcher (lambda (word)
-                                            (if mdx-dictionary-server-process
-                                                (mdx-dictionary-request word)
-                                              (anki-vocabulary--word-searcher-youdao word)))))))
+                                            (or (when (and (boundp 'mdx-dictionary-server-process) mdx-dictionary-server-process) 
+                                                  (mdx-dictionary-request word))
+                                                (anki-vocabulary--word-searcher-youdao word)))))))
 
 (defun my-life/init-leetcode ()
   (use-package leetcode

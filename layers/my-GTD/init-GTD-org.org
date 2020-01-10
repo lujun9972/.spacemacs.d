@@ -1571,6 +1571,32 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
   ;; (require 'org-realtime-preview)         ;写笔记时,可以开启实时预览
   (require 'org-helper)
 #+END_SRC
+
+** 增加video link，用于为html生成video tag
+#+begin_src elisp :results raw
+  (defun org-video-link-export (path desc backend)
+    (let ((ext (file-name-extension path)))
+      (cond
+       ((eq 'html backend)
+        (format "<video preload='metadata' controls='controls'><source type='video/%s' src='%s' /></video>" ext path))
+       ;; fall-through case for everything else
+       (t
+        path))))
+
+  (defun org-video-link-follow (path)
+    (let* ((player (or (executable-find "mpv")
+                       (executable-find "vlc")
+                       (executable-find "smplayer")
+                       (executable-find "mplayer")))
+           (command (format "%s '%s'" player path)))
+      (async-shell-command command)))
+
+  (org-link-set-parameters "video" :export 'org-video-link-export :follow 'org-video-link-follow)
+#+end_src
+
+#+RESULTS:
+(:export org-video-link-export :follow org-video-link-follow)
+
 * 配置MobileOrg
   
 #+BEGIN_SRC emacs-lisp
