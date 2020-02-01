@@ -32,6 +32,7 @@
       org2blog
       (ispell :location built-in)
       (flyspell :location built-in)
+      (delim-col :location built-in)
       artbollocks-mode
       langtool
       powerthesaurus
@@ -224,6 +225,72 @@
     (add-hook 'text-mode-hook 'flyspell-mode)
     (add-hook 'prog-mode-hook 'flyspell-prog-mode)))
 
+(defun my-edit/init-delim-col ()
+  "Initialize my package"
+  (use-package delim-col
+    :config
+    (defun my-delimits-column-region (orig-fun &rest args)
+      (let
+          ((delimit-columns-separator
+            (read-regexp
+             (format "%s (%s): " "Specify the regexp which separates each column" delimit-columns-separator)
+             (list delimit-columns-separator)))
+           (delimit-columns-before
+            (read-string
+             (format "%s (%s): " "Specify a string to be inserted before each column" delimit-columns-before)
+             nil nil delimit-columns-before))
+           (delimit-columns-after
+            (read-string
+             (format "%s (%s): " "Specify a string to be inserted after each column" delimit-columns-after)
+             nil nil delimit-columns-after))
+           (delimit-columns-str-separator
+            (read-string
+             (format "%s (%s): " "Specify a string to be inserted between each column" delimit-columns-str-separator)
+             nil nil delimit-columns-str-separator))
+           (delimit-columns-str-before
+            (read-string
+             (format "%s (%s): " "Specify a string to be inserted before the first column" delimit-columns-str-before)
+             nil nil delimit-columns-str-before))
+           (delimit-columns-str-after
+            (read-string
+             (format "%s (%s): " "Specify a string to be inserted after the last column" delimit-columns-str-after)
+             nil nil delimit-columns-str-after))
+           (delimit-columns-format
+            (let*
+                ((choices
+                  '(("Align Columns" . t)
+                    ("No Formatting")
+                    ("Align Separators" . separator)
+                    ("Pad Columns" . padding)))
+                 (default-choice
+                   (car
+                    (rassoc delimit-columns-format choices)))
+                 (choice
+                  (completing-read
+                   (format "%s (%s): " "Specify how to format columns" default-choice)
+                   choices nil t nil nil default-choice)))
+              (message "%s" choice)
+              (assoc-default choice choices))))
+        (apply orig-fun args)))
+
+    (advice-add 'delimit-columns-region :around #'my-delimits-column-region)
+    (advice-add 'delimit-columns-rectangle :around #'my-delimits-column-region)
+
+    (define-key-after global-map
+      [menu-bar extra-tools]
+      (cons "Extra Tools"
+            (easy-menu-create-menu "Extra Tools" nil))
+      'tools)
+
+    (easy-menu-define my-delim-col-menu nil "Menu for Delim Col"
+      '("Delimit Columns in ..."
+        ["Region" delimit-columns-region :help "Prettify all columns in a text region"]
+        ["Rectangle" delimit-columns-rectangle :help "Prettify all columns in a text rectangle"]
+        "---"
+        ["Customize" delimit-columns-customize :help "Customization of `columns' group"]))
+
+    (easy-menu-add-item (current-global-map) '("menu-bar" "extra-tools") my-delim-col-menu)))
+
 (defun my-edit/init-langtool ()
   "Initialize my package"
   (use-package langtool
@@ -249,58 +316,58 @@
 
 (defun my-edit/init-pyim ()
   "Initalize pyim"
-(use-package pyim
-  :ensure t
-  :demand t
-  :config
-  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-  (use-package pyim-basedict
+  (use-package pyim
     :ensure t
-    :config (pyim-basedict-enable))
+    :demand t
+    :config
+    ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
+    (use-package pyim-basedict
+      :ensure t
+      :config (pyim-basedict-enable))
 
-  (setq default-input-method "pyim")
+    (setq default-input-method "pyim")
 
-  ;; 我使用全拼
-  (setq pyim-default-scheme 'quanpin)
+    ;; 我使用全拼
+    (setq pyim-default-scheme 'quanpin)
 
-  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-  ;; 我自己使用的中英文动态切换规则是：
-  ;; 1. 光标只有在注释里面时，才可以输入中文。
-  ;; 2. 光标前是汉字字符时，才能输入中文。
-  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-dynamic-english
-                  pyim-probe-isearch-mode
-                  pyim-probe-program-mode
-                  pyim-probe-org-structure-template))
+    ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
+    ;; 我自己使用的中英文动态切换规则是：
+    ;; 1. 光标只有在注释里面时，才可以输入中文。
+    ;; 2. 光标前是汉字字符时，才能输入中文。
+    ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+    (setq-default pyim-english-input-switch-functions
+                  '(pyim-probe-dynamic-english
+                    pyim-probe-isearch-mode
+                    pyim-probe-program-mode
+                    pyim-probe-org-structure-template))
 
-  (setq-default pyim-punctuation-half-width-functions
-                '(pyim-probe-punctuation-line-beginning
-                  pyim-probe-punctuation-after-punctuation))
+    (setq-default pyim-punctuation-half-width-functions
+                  '(pyim-probe-punctuation-line-beginning
+                    pyim-probe-punctuation-after-punctuation))
 
-  ;; 开启拼音搜索功能
-  (pyim-isearch-mode 1)
+    ;; 开启拼音搜索功能
+    (pyim-isearch-mode 1)
 
-  ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
-  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
-  ;; 手动安装 posframe 包。
-  (use-package posframe
-    :ensure t)
-  (setq pyim-page-tooltip 'posframe)
+    ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
+    ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+    ;; 手动安装 posframe 包。
+    (use-package posframe
+      :ensure t)
+    (setq pyim-page-tooltip 'posframe)
 
-  ;; 选词框显示9个候选词
-  (setq pyim-page-length 9)
+    ;; 选词框显示9个候选词
+    (setq pyim-page-length 9)
 
-  ;; 使用liberime
-  (when (file-exists-p "~/.emacs.d/liberime.so")
-    (setq load-path (cons (file-truename "~/.emacs.d/") load-path))
-    (require 'liberime)
-    (liberime-start "/usr/share/rime-data/" (file-truename "~/.emacs.d/pyim/rime/"))
-    (liberime-select-schema "luna_pinyin_simp")
-    (setq pyim-default-scheme 'rime-quanpin))
-  :bind
-  (("M-J" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
-   ("C-;" . pyim-delete-word-from-personal-buffer))))
+    ;; 使用liberime
+    (when (file-exists-p "~/.emacs.d/liberime.so")
+      (setq load-path (cons (file-truename "~/.emacs.d/") load-path))
+      (require 'liberime)
+      (liberime-start "/usr/share/rime-data/" (file-truename "~/.emacs.d/pyim/rime/"))
+      (liberime-select-schema "luna_pinyin_simp")
+      (setq pyim-default-scheme 'rime-quanpin))
+    :bind
+    (("M-J" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
+     ("C-;" . pyim-delete-word-from-personal-buffer))))
 
 ;; (defun my-edit/init-define-word ()
 ;;   "Initalize powerthesaurus"
