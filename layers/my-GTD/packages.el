@@ -28,11 +28,22 @@
 (defun my-GTD/init-appt ()
   (use-package appt
     :config
-    (appt-activate 1)                       ;开启提醒appointment功能
-    (setq appt-audible t)                   ;开启appointment的声音提醒
-    (setq appt-display-mode-line t)         ;在mode-line上显示appointment的倒计时
+    (appt-activate 1)                   ;开启提醒appointment功能
+    (setq appt-audible t)               ;开启appointment的声音提醒
+    (setq appt-display-mode-line t)     ;在mode-line上显示appointment的倒计时
+    (setq appt-message-warning-time 30) ;提前半个小时提醒
     (add-hook 'diary-hook 'appt-make-list)
-    (setq appt-issue-message t)))
+    ;; 设置使用桌面通知提醒
+    (require 'notifications)
+    (defun appt-disp-window-and-notification (min-to-appt current-time appt-msg)
+      "自定义的appt通知函数，会使用notifications发送桌面通知"
+      (let ((title (format "%s分钟内有新的任务" min-to-appt)))
+        (notifications-notify :timeout 0    ;不自动消失
+                              :title title
+                              :body appt-msg)
+        (appt-disp-window min-to-appt current-time appt-msg))) ;同时也调用原有的提醒函数
+    (setq appt-display-format 'window) ;; 只有这样才能使用自定义的通知函数
+    (setq appt-disp-window-function #'appt-disp-window-and-notification)))
 
 (defun my-GTD/init-diary-lib ()
   (use-package diary-lib

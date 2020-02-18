@@ -272,6 +272,15 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
 #+END_SRC
 
 当开启了该特性后,会在mode-line上显示"{+SomeTag}"样式,以方便你快捷地知道现在的过滤条件为何.
+
+** 同步agenda信息到appt
+#+begin_src emacs-lisp
+  ;; 每小时同步一次appt,并且现在就开始同步
+  (run-at-time nil 3600 'org-agenda-to-appt)
+  ;; 更新agenda时，同步appt
+  (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+#+end_src
+
 * Entry and States 
 ** TODO关键字设置
    * A NEXT task 
