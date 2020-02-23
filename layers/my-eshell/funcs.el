@@ -1,9 +1,23 @@
+(require 'cl-lib)
 ;; 定义clear函数
-(defun eshell/clear ()  
-  "clear the eshell buffer."  
-  (interactive)  
-  (let ((inhibit-read-only t))  
-    (erase-buffer)))  
+;; (defun eshell/clear ()  
+;;   "clear the eshell buffer."  
+;;   (interactive)  
+;;   (let ((inhibit-read-only t))  
+;;     (erase-buffer)))
+
+;; 定义switch函数切换eshell
+(defun eshell/switch (&optional buf)
+  (let* ((buffers (buffer-list))
+         (eshell-buffers (cl-remove-if-not (lambda (buf)
+                                             (eq (buffer-local-value 'major-mode buf)
+                                                 'eshell-mode)) buffers))
+         (eshell-buffer-names (mapcar #'buffer-name eshell-buffers))
+         (buf (or buf (completing-read "switch to: " eshell-buffer-names))))
+    (if (member buf eshell-buffer-names)
+        (switch-to-buffer buf)
+      (eshell t)
+      (rename-buffer buf))))
 
 ;; 定义find-files一次打开多个文件
 (defun eshell/find-files (&rest args)
