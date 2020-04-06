@@ -112,7 +112,7 @@
                  )
                  ("lujun9972.github.com" ; 站点工程的名字
                   :repository-directory "~/github/lujun9972.github.com" ; 站点的本地目录
-                  :site-domain "https://lujun9972.github.io/" ; 站点的网址
+                  :site-domain "https://www.lujun9972.win/" ; 站点的网址
                   :site-main-title "暗无天日"                 ; 站点的标题
                   :site-sub-title "=============>随便,谢谢"   ; 站点的副标题
                   ;; :repository-org-branch "master"
