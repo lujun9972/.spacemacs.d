@@ -38,7 +38,8 @@
     (require 'notifications)
     (defun appt-disp-window-and-notification (min-to-appt current-time appt-msg)
       "自定义的appt通知函数，会使用notifications发送桌面通知"
-      (let ((title (format "%s分钟内有新的任务" min-to-appt)))
+      (let ((title (format "%s分钟内有新的任务" min-to-appt))
+            (appt-msg (format "%s" appt-msg)))
         (notifications-notify :timeout (* appt-display-interval 60000) ;超时时间为下一次提醒的时间
                               :title title
                               :body appt-msg)

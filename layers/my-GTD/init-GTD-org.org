@@ -97,6 +97,8 @@
            ((org-agenda-overriding-header "Habits")
             (org-agenda-sorting-strategy
              '(todo-state-down effort-up category-keep))))
+          ("r" "季度报告" ((agenda "" ((org-agenda-span 90)
+                                       (org-agenda-start-day "-90d")))))
           (" " "Agenda"
            ((agenda "" nil)
             (tags "REFILE"
