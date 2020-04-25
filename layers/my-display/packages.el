@@ -16,6 +16,10 @@
     '(
       ;; package names go here
       fullframe
+      (shrface :location (recipe
+                           :fetcher github
+                           :repo "chenyanming/shrface"))
+      shr-tag-pre-highlight
       ))
 
 ;; List of packages to exclude.
@@ -30,6 +34,36 @@
     :config
     (fullframe list-packages quit-window)	;执行list-packages命令会全屏显示,执行quit-window后会自动还原原window配置信息.
     (fullframe magit-status magit-mode-quit-window nil)))
+
+(defun my-display/init-shrface ()
+  "Initialize my package"
+  (use-package shrface
+    :after shr
+    :config
+    (with-eval-after-load 'shr
+      (require 'shrface)
+      (shrface-basic) ; enable shrfaces, must be called before loading eww/dash-docs/nov.el
+      (shrface-trial)) ; enable shrface experimental face(s), must be called before loading eww/dash-docs/nov.el
+    (with-eval-after-load 'eww
+      (add-hook 'eww-after-render-hook 'shrface-mode)) ; this will affect eww and dash-docs
+    (with-eval-after-load 'nov
+      (setq nov-shr-rendering-functions (append nov-shr-rendering-functions shr-external-rendering-functions))
+      (add-hook 'nov-mode-hook 'shrface-mode))
+    ))
+
+(defun my-display/init-shr-tag-pre-highlight ()
+  "Initialize my package"
+  (use-package shr-tag-pre-highlight
+    :ensure t
+    :after shr
+    :config
+    (add-to-list 'shr-external-rendering-functions
+                 '(pre . shr-tag-pre-highlight))
+    (when (version< emacs-version "26")
+      (with-eval-after-load 'eww
+        (advice-add 'eww-display-html :around
+                    'eww-display-html--override-shr-external-rendering-functions)))))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
