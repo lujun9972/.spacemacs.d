@@ -288,11 +288,41 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
   ;; 摘自https://emacs-china.org/t/org-agenda/8679
   ;; 30分钟以下都用正常的一行显示，30分钟以上按比例扩展行高，
   ;; TODO 改成font-size
+  ;; (defun my/org-agenda-time-grid-spacing ()
+  ;;   "Set different line spacing w.r.t. time duration."
+  ;;   (save-excursion
+  ;;     (let* ((background-color (alist-get 'background-color (frame-parameters)))
+  ;;            (alphas '(100 99))
+  ;;            pos
+  ;;            duration)
+  ;;       (nconc alphas alphas)
+  ;;       (goto-char (point-min))
+  ;;       (while (setq pos (next-single-property-change (point) 'duration))
+  ;;         (goto-char pos)
+  ;;         (when (and (not (equal pos (point-at-eol)))
+  ;;                    (setq duration (org-get-at-bol 'duration)))
+  ;;           (let* ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
+  ;;                  (ov (make-overlay (point-at-bol) (1+ (point-at-eol))))
+  ;;                  (alpha (car alphas)))
+  ;;             ;; (overlay-put ov 'face `(:underline t))
+  ;;             ;; (overlay-put ov 'alpha alpha)
+  ;;             (overlay-put ov 'face `(:background ,(color-lighten-name background-color alpha)))
+  ;;             (setq alphas (cdr alphas))
+  ;;             (overlay-put ov 'line-height line-height)
+  ;;             (overlay-put ov 'line-spacing (1- line-height))))))))
+
   (defun my/org-agenda-time-grid-spacing ()
     "Set different line spacing w.r.t. time duration."
     (save-excursion
-      (let* (pos
+      (let* ((background (alist-get 'background-mode (frame-parameters)))
+             (background-color (alist-get 'background-color (frame-parameters)))
+             (background-dark-p (string= background "dark"))
+             (colors (if background-dark-p
+                         (list background-color "DarkSlateGray")
+                       (list background-color "#F6B1C3" "#FFFF9D" "#BEEB9F" "#ADD5F7")))
+             pos
              duration)
+        (nconc colors colors)
         (goto-char (point-min))
         (while (setq pos (next-single-property-change (point) 'duration))
           (goto-char pos)
@@ -300,33 +330,10 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
                      (setq duration (org-get-at-bol 'duration)))
             (let ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
                   (ov (make-overlay (point-at-bol) (1+ (point-at-eol)))))
+              (overlay-put ov 'face `(:background ,(car colors)))
+              (setq colors (cdr colors))
               (overlay-put ov 'line-height line-height)
               (overlay-put ov 'line-spacing (1- line-height))))))))
-
-  ;; (defun my/org-agenda-time-grid-spacing ()
-  ;;   "Set different line spacing w.r.t. time duration."
-  ;;   (save-excursion
-  ;;     (let* ((background (alist-get 'background-mode (frame-parameters)))
-  ;;            (background-dark-p (string= background "dark"))
-  ;;            (colors (if background-dark-p
-  ;;                        (list "#aa557f" "DarkGreen" "DarkSlateGray" "DarkSlateBlue")
-  ;;                      (list "#F6B1C3" "#FFFF9D" "#BEEB9F" "#ADD5F7")))
-  ;;            pos
-  ;;            duration)
-  ;;       (nconc colors colors)
-  ;;       (goto-char (point-min))
-  ;;       (while (setq pos (next-single-property-change (point) 'duration))
-  ;;         (goto-char pos)
-  ;;         (when (and (not (equal pos (point-at-eol)))
-  ;;                    (setq duration (org-get-at-bol 'duration)))
-  ;;           (let ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
-  ;;                 (ov (make-overlay (point-at-bol) (1+ (point-at-eol)))))
-  ;;             (overlay-put ov 'face `(:background ,(car colors)
-  ;;                                                 :foreground
-  ;;                                                 ,(if background-dark-p "black" "white")))
-  ;;             (setq colors (cdr colors))
-  ;;             (overlay-put ov 'line-height line-height)
-  ;;             (overlay-put ov 'line-spacing (1- line-height))))))))
 
   (add-hook 'org-agenda-finalize-hook #'my/org-agenda-time-grid-spacing)
 #+end_src
