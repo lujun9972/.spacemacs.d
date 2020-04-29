@@ -38,6 +38,8 @@
       powerthesaurus
       pyim
       ;; define-word
+      (org-roam :location
+                (recipe :fetcher github :repo "jethrokuan/org-roam" :branch "develop"))
       ))
 
 ;; List of packages to exclude.
@@ -368,6 +370,30 @@
     :bind
     (("M-J" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
      ("C-;" . pyim-delete-word-from-personal-buffer))))
+
+(defun my-edit/init-org-roam ()
+  (use-package org-roam
+    :hook
+    (after-init . org-roam-mode)
+    :custom
+    (org-roam-directory MY-NOTE-PATH)
+    :init
+    (progn
+      (spacemacs/declare-prefix "ar" "org-roam")
+      (spacemacs/set-leader-keys
+        "arl" 'org-roam
+        "art" 'org-roam-today
+        "arf" 'org-roam-find-file
+        "arg" 'org-roam-show-graph)
+
+      (spacemacs/declare-prefix-for-mode 'org-mode "mr" "org-roam")
+      (spacemacs/set-leader-keys-for-major-mode 'org-mode
+        "rl" 'org-roam
+        "rt" 'org-roam-today
+        "rb" 'org-roam-switch-to-buffer
+        "rf" 'org-roam-find-file
+        "ri" 'org-roam-insert
+        "rg" 'org-roam-show-graph))))
 
 ;; (defun my-edit/init-define-word ()
 ;;   "Initalize powerthesaurus"
