@@ -38,8 +38,7 @@
       powerthesaurus
       pyim
       ;; define-word
-      (org-roam :location
-                (recipe :fetcher github :repo "jethrokuan/org-roam" :branch "develop"))
+      org-roam
       ))
 
 ;; List of packages to exclude.
