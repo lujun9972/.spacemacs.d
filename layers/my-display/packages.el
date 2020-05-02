@@ -16,9 +16,7 @@
     '(
       ;; package names go here
       fullframe
-      (shrface :location (recipe
-                           :fetcher github
-                           :repo "chenyanming/shrface"))
+      shrface
       shr-tag-pre-highlight
       ))
 

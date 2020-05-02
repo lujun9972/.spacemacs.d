@@ -87,6 +87,10 @@
            ((org-agenda-overriding-header "TODAY")
             (org-tags-match-list-sublevels t)
             (org-agenda-skip-function 'org/schedule-until)))
+          ("w" "Wait" todo "WAITING"
+           ((org-agenda-overriding-header "WAITING")
+            (org-tags-match-list-sublevels t)
+            (org-agenda-skip-function 'org/schedule-until)))
           ("s" "超市" tags "超市"
            ((org-agenda-overriding-header "超市")
             (org-tags-match-list-sublevels t)))
@@ -280,9 +284,62 @@ Sticky agendas 允许你同时产生多个agenda view. You can quickly switch to
   ;; 每小时同步一次appt,并且现在就开始同步
   (run-at-time nil 3600 'org-agenda-to-appt)
   ;; 更新agenda时，同步appt
-  (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+  (add-hook 'org-agenda-finalize-hook 'org-agenda-to-appt)
 #+end_src
 
+** 根据事项耗时在agenda中显示不同的高度
+#+begin_src emacs-lisp
+  ;; 摘自https://emacs-china.org/t/org-agenda/8679
+  ;; 30分钟以下都用正常的一行显示，30分钟以上按比例扩展行高，
+  ;; (defun my/org-agenda-time-grid-spacing ()
+  ;;   "Set different line spacing w.r.t. time duration."
+  ;;   (save-excursion
+  ;;     (let* ((background-color (alist-get 'background-color (frame-parameters)))
+  ;;            (alphas '(100 99))
+  ;;            pos
+  ;;            duration)
+  ;;       (nconc alphas alphas)
+  ;;       (goto-char (point-min))
+  ;;       (while (setq pos (next-single-property-change (point) 'duration))
+  ;;         (goto-char pos)
+  ;;         (when (and (not (equal pos (point-at-eol)))
+  ;;                    (setq duration (org-get-at-bol 'duration)))
+  ;;           (let* ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
+  ;;                  (ov (make-overlay (point-at-bol) (1+ (point-at-eol))))
+  ;;                  (alpha (car alphas)))
+  ;;             ;; (overlay-put ov 'face `(:underline t))
+  ;;             ;; (overlay-put ov 'alpha alpha)
+  ;;             (overlay-put ov 'face `(:background ,(color-lighten-name background-color alpha)))
+  ;;             (setq alphas (cdr alphas))
+  ;;             (overlay-put ov 'line-height line-height)
+  ;;             (overlay-put ov 'line-spacing (1- line-height))))))))
+
+  (defun my/org-agenda-time-grid-spacing ()
+    "Set different line spacing w.r.t. time duration."
+    (save-excursion
+      (let* ((background (alist-get 'background-mode (frame-parameters)))
+             (background-color (alist-get 'background-color (frame-parameters)))
+             (background-dark-p (string= background "dark"))
+             (colors (if background-dark-p
+                         (list background-color "DarkSlateGray")
+                       (list background-color "#F6B1C3" "#FFFF9D" "#BEEB9F" "#ADD5F7")))
+             pos
+             duration)
+        (nconc colors colors)
+        (goto-char (point-min))
+        (while (setq pos (next-single-property-change (point) 'duration))
+          (goto-char pos)
+          (when (and (not (equal pos (point-at-eol)))
+                     (setq duration (org-get-at-bol 'duration)))
+            (let ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
+                  (ov (make-overlay (point-at-bol) (1+ (point-at-eol)))))
+              (overlay-put ov 'face `(:background ,(car colors)))
+              (setq colors (cdr colors))
+              (overlay-put ov 'line-height line-height)
+              (overlay-put ov 'line-spacing (1- line-height))))))))
+
+  (add-hook 'org-agenda-finalize-hook #'my/org-agenda-time-grid-spacing)
+#+end_src
 * Entry and States 
 ** TODO关键字设置
    * A NEXT task 
@@ -1575,14 +1632,6 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
   (setq org-ellipsis "⤵")
 #+end_src
 
-** 其他
-#+BEGIN_SRC emacs-lisp
-  ;; 设置org笔记时的缩进
-  ;; (setq org-description-max-ident 5)
-  ;; (require 'org-realtime-preview)         ;写笔记时,可以开启实时预览
-  (require 'org-helper)
-#+END_SRC
-
 ** 增加video link，用于为html生成video tag
 #+begin_src elisp :results raw
   (defun org-video-link-export (path desc backend)
@@ -1607,6 +1656,14 @@ I have org-mode show the hierarchy of tasks above the matched entries and also t
 
 #+RESULTS:
 (:export org-video-link-export :follow org-video-link-follow)
+
+** 其他
+#+BEGIN_SRC emacs-lisp
+  ;; 设置org笔记时的缩进
+  ;; (setq org-description-max-ident 5)
+  ;; (require 'org-realtime-preview)         ;写笔记时,可以开启实时预览
+  (require 'org-helper)
+#+END_SRC
 
 * 配置MobileOrg
   
