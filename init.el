@@ -140,6 +140,15 @@ values."
       reading
       pdf-tools
       docker
+      (exwm :variables
+            exwm-enable-systray t
+            exwm-locking-command "xscreensaver-command -lock"
+            exwm-install-logind-lock-handler t
+            exwm-terminal-command "urxvt"
+            ;; exwm-autostart-xdg-applications t
+            ;; exwm-custom-init (lambda() (exwm/autostart-process "Dunst OSD" "dunst"))
+            )
+      ;; )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -413,7 +422,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar")
+  (setq org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
   ;; (require 'helm-bookmark)
                                         ;fix #9549 
   (org-babel-load-file "~/.spacemacs.d/layers/my-GTD/init-GTD-org.org")
