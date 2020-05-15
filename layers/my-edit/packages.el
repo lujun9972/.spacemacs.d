@@ -39,6 +39,7 @@
       pyim
       ;; define-word
       org-roam
+      org-special-block-extras
       ))
 
 ;; List of packages to exclude.
@@ -399,7 +400,10 @@
 ;;   (use-package define-word
 ;;     :ensure t))
 
-
+(defun my-GTD/init-org-specail-block-extras ()
+  (use-package org-special-block-extras
+    :ensure t
+    :hook (org-mode . org-special-block-extras-mode)))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
