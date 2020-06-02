@@ -400,7 +400,7 @@
 ;;   (use-package define-word
 ;;     :ensure t))
 
-(defun my-GTD/init-org-specail-block-extras ()
+(defun my-edit/init-org-special-block-extras ()
   (use-package org-special-block-extras
     :ensure t
     :hook (org-mode . org-special-block-extras-mode)))

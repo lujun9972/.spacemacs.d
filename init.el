@@ -141,6 +141,15 @@ values."
       reading
       pdf-tools
       docker
+      (exwm :variables
+            exwm-enable-systray t
+            exwm-locking-command "xscreensaver-command -lock"
+            exwm-install-logind-lock-handler t
+            exwm-terminal-command "urxvt"
+            ;; exwm-autostart-xdg-applications t
+            exwm-custom-init (lambda() (exwm/autostart-process "Dunst OSD" "dunst"))
+            )
+      ;; )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -422,5 +431,4 @@ you should place your code here."
   (setq custom-file "~/.spacemacs.d/.emacs-custom.el")
   (setq interleave-disable-narrowing t)
   (when (file-exists-p custom-file)
-    (load custom-file))
-  )
+    (load custom-file)))
