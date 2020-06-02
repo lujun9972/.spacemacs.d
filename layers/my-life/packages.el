@@ -198,6 +198,8 @@
 (defun my-life/init-podcaster ()
   (use-package podcaster
     :defer  t
+    :config
+    (setq podcaster-feeds-urls '("https://openlanguage.com/ez/podcast/learn-english/pj"))
     ))
 
 (defun my-life/init-anki-connect ()
