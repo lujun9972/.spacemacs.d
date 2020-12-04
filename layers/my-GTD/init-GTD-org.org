@@ -97,12 +97,16 @@
           ("m" "会议" tags "会议"
            ((org-agenda-overriding-header "会议")
             (org-tags-match-list-sublevels t)))
+          ("o" "OFFICE" tags "WORK"
+           ((org-agenda-overriding-header "WORK")
+            (org-tags-match-list-sublevels t)))
           ("h" "Habits" tags-todo "STYLE=\"habit\""
            ((org-agenda-overriding-header "Habits")
             (org-agenda-sorting-strategy
              '(todo-state-down effort-up category-keep))))
-          ("r" "季度报告" ((agenda "" ((org-agenda-span 90)
-                                       (org-agenda-start-day "-90d")))))
+          ("r" "季度报告"
+           ((agenda "" ((org-agenda-span 90)
+                        (org-agenda-start-day "-90d")))))
           (" " "Agenda"
            ((agenda "" nil)
             (tags "REFILE"
@@ -176,7 +180,7 @@
   (setq org-agenda-show-all-dates t)
 
   ;; Sorting order for tasks on the agenda
-  ;; (setq org-agenda-sorting-strategy
+  ;; (setq org-agenda-sorting-strategyq
   ;;       '((agenda habit-down time-up user-defined-up effort-up category-keep)
   ;;      (todo category-up effort-up)
   ;;      (tags category-up effort-up)
