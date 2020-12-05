@@ -141,21 +141,21 @@ values."
       reading
       pdf-tools
       docker
-      (exwm :variables
-            exwm-enable-systray t
-            exwm-locking-command "xscreensaver-command -lock"
-            exwm-install-logind-lock-handler t
-            exwm-terminal-command "urxvt"
-            ;; exwm-autostart-xdg-applications t
-            exwm-custom-init (lambda() (exwm/autostart-process "Dunst OSD" "dunst"))
-            )
+      ;; (exwm :variables
+      ;;       exwm-enable-systray t
+      ;;       exwm-locking-command "xscreensaver-command -lock"
+      ;;       exwm-install-logind-lock-handler t
+      ;;       exwm-terminal-command "urxvt"
+      ;;       ;; exwm-autostart-xdg-applications t
+      ;;       exwm-custom-init (lambda() (exwm/autostart-process "Dunst OSD" "dunst"))
+      ;;       )
       ;; )
-     )
+      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(habitica posframe gnuplot anki-editor)
+   dotspacemacs-additional-packages '(habitica posframe gnuplot anki-editor literate-calc-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
