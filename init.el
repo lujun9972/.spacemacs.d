@@ -61,7 +61,7 @@ values."
       sql
       ess
       (plantuml :variables
-                org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+                org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
       ;; ansible
       ;; (gnus :variables
       ;;       gnus-secondary-select-methods
@@ -155,7 +155,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(habitica posframe gnuplot anki-editor literate-calc-mode)
+   dotspacemacs-additional-packages '(habitica posframe gnuplot anki-editor literate-calc-mode ox-report)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
