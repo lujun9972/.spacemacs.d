@@ -83,7 +83,7 @@
            ((org-agenda-overriding-header "NEXT")
             (org-tags-match-list-sublevels t)
             (org-agenda-skip-function 'org/schedule-until)))
-          ("t" "Today" todo "TODAY"
+          ("t" "Today" todo "TODAY|PROG"
            ((org-agenda-overriding-header "TODAY")
             (org-tags-match-list-sublevels t)
             (org-agenda-skip-function 'org/schedule-until)))
