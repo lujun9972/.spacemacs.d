@@ -131,14 +131,14 @@ This function should only modify configuration layer settings."
       my-display
       my-misc
       my-edit
+      my-life
       my-GTD
       my-file
       my-eshell
       my-program
-      my-life
       my-present
       reading
-      pdf-tools
+      ;; pdf-tools
       docker
       ;; (exwm :variables
       ;;       exwm-enable-systray t
@@ -158,7 +158,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(habitica posframe gnuplot anki-editor literate-calc-mode ox-report)
+   dotspacemacs-additional-packages '(habitica posframe gnuplot literate-calc-mode ox-report)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -327,7 +327,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+                               :size 20.0
                                :weight normal
                                :width normal)
 

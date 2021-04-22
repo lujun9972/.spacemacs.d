@@ -31,6 +31,7 @@
                            :repo "lujun9972/csdn-api.el"))
       anki-connect
       anki-vocabulary
+      anki-editor
       (leetcode :location (recipe
                               :fetcher github
                               :repo "kaiwk/leetcode.el"))
@@ -224,6 +225,11 @@
                                             (or (when (and (boundp 'mdx-dictionary-server-process) mdx-dictionary-server-process) 
                                                   (mdx-dictionary-request word))
                                                 (anki-vocabulary--word-searcher-youdao word)))))))
+
+(defun my-life/init-anki-editor ()
+  (use-package anki-editor
+    :defer  t))
+
 
 (defun my-life/init-leetcode ()
   (use-package leetcode
