@@ -614,61 +614,100 @@ The following setting creates a unique task ID for the heading in the PROPERTY d
     (require 'org-capture)
   #+END_SRC
 ** Capure模板  
-   所有caputre的task都先暂存入refile.org中,再refile到各个org文件中
+所有caputre的task都先暂存入refile.org中,再refile到各个org文件中
 
-   我们将task划分为一下几类:
-   * A phone call(p) 
-   * A meeting (m) 
-   * An email I need to respond to (r) 
-   * A new task (t) 
-   * A new note (n) 
-   * An interruption (j) 
-   * A new habit (h) 
-	 
-   #+BEGIN_SRC emacs-lisp
-     (setq org-default-notes-file (concat MY-GTD-PATH "refile.org"))
-     (setq org-capture-templates
-           `(("t" "TODO" entry (file ,(concat MY-GTD-PATH "refile.org" ))
-              "* TODO %? \n%U\n%a\n" :clock-in t :clock-resume t) 
-             ("r" "respond" entry (file ,(concat MY-GTD-PATH "refile.org" ))
-              "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
-             ("R" "Regular" entry (file+datetree ,(concat MY-GTD-PATH "regular.org" ))
-              "* %?" :clock-in t :clock-resume t)
-             ("n" "Note" entry (file+headline ,(concat MY-GTD-PATH "Note.org" ) "Notes")
-              "* %? %x %^g" :clock-in t :clock-resume t)
-             ("d" "diary" entry (file+datetree ,(concat MY-GTD-PATH "diary.org" ))
-              "* %?\n" :clock-in t :clock-resume t)
-             ("j" "interuption" entry (file+datetree ,(concat MY-GTD-PATH "refile.org" ))
-              "* %?\n" :clock-in t :clock-resume t)
-             ("w" "org-protocol" entry (file ,(concat MY-GTD-PATH "refile.org" ))
-              "* TODO Review %a\n%U\n:initial\n" :immediate-finish t)
-             ("m" "Meeting" entry (file ,(concat MY-GTD-PATH "refile.org"))
-              "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-             ("p" "Phone call" entry (file ,(concat MY-GTD-PATH "refile.org"))
-              "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-             ("h" "Habit" entry (file ,(concat MY-GTD-PATH "refile.org"))
-              "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
-             ("i" "Idea" entry (file ,(concat MY-GTD-PATH "refile.org" ))
-              "* %? %x %a"  :clock-in t :clock-resume t) 
-             ("b" "Books" entry (file ,(concat MY-GTD-PATH "books.org" ))
-              "** TODO %^{书籍名称？}  :book:"  :clock-in t :clock-resume t)))
-     (setq org-protocol-default-template-key "w")
-   #+END_SRC
+我们将task划分为一下几类:
++ A phone call(p) 
++ A meeting (m) 
++ An email I need to respond to (r) 
++ A new task (t) 
++ A new note (n) 
++ An interruption (j) 
++ A new habit (h) 
+
+  #+BEGIN_SRC emacs-lisp
+    (setq org-default-notes-file (concat MY-GTD-PATH "refile.org"))
+    (setq org-capture-templates
+          `(("t" "TODO" entry (file ,(concat MY-GTD-PATH "refile.org" ))
+             "* TODO %? \n%U\n%a\n" :clock-in t :clock-resume t) 
+            ("r" "respond" entry (file ,(concat MY-GTD-PATH "refile.org" ))
+             "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
+            ("R" "Regular" entry (file+datetree ,(concat MY-GTD-PATH "regular.org" ))
+             "* %?" :clock-in t :clock-resume t)
+            ("n" "Note" entry (file+headline ,(concat MY-GTD-PATH "Note.org" ) "Notes")
+             "* %? %x %^g" :clock-in t :clock-resume t)
+            ("d" "diary" entry (file+datetree ,(concat MY-GTD-PATH "diary.org" ))
+             "* %?\n" :clock-in t :clock-resume t)
+            ("j" "interuption" entry (file+datetree ,(concat MY-GTD-PATH "refile.org" ))
+             "* %?\n" :clock-in t :clock-resume t)
+            ("w" "org-protocol" entry (file ,(concat MY-GTD-PATH "refile.org" ))
+             "* TODO Review %a\n%U\n:initial\n" :immediate-finish t)
+            ("m" "Meeting" entry (file ,(concat MY-GTD-PATH "refile.org"))
+             "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+            ("p" "Phone call" entry (file ,(concat MY-GTD-PATH "refile.org"))
+             "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
+            ("h" "Habit" entry (file ,(concat MY-GTD-PATH "refile.org"))
+             "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
+            ("i" "Idea" entry (file ,(concat MY-GTD-PATH "refile.org" ))
+             "* %? %x %a"  :clock-in t :clock-resume t) 
+            ("b" "Books" entry (file ,(concat MY-GTD-PATH "books.org" ))
+             "** TODO %^{书籍名称？}  :book:"  :clock-in t :clock-resume t)))
+    (setq org-protocol-default-template-key "w")
+  #+END_SRC
+
+若安装了 anki-editor 则添加“卡片”的抓取快捷键
+#+begin_src emacs-lisp
+  (when (package-installed-p 'anki-editor)
+    (require 'anki-editor)
+    (defun get-anki-address ()
+      "Get anki listening address using DISPLAY environment variable"
+      (let* ((DISPLAY (getenv "DISPLAY"))
+             (host (nth 0 (split-string DISPLAY ":"))))
+        (if (string-empty-p host)
+            "127.0.0.1"
+          host)))
+    (setq anki-editor-anki-connect-listening-address (get-anki-address))
+    (defun generate-anki-note-body ()
+      (interactive)
+      (message "Fetching note types...")
+      (let ((note-types (sort (anki-editor-note-types) #'string-lessp))
+            (decks (sort (anki-editor-deck-names) #'string-lessp))
+            deck note-type fields)
+        (setq deck (completing-read "Choose a deck: " decks))
+        (setq note-type (completing-read "Choose a note type: " note-types))
+        (message "Fetching note fields...")
+        (setq fields (anki-editor--anki-connect-invoke-result "modelFieldNames" `((modelName . ,note-type))))
+        (concat "  :PROPERTIES:\n"
+                "  :ANKI_DECK: " deck "\n"
+                "  :ANKI_NOTE_TYPE: " note-type "\n"
+                "  :END:\n\n"
+                (mapconcat (lambda (str) (concat "** " str))
+                           fields
+                           "\n\n"))))
+    (add-to-list 'org-capture-templates
+                 '("c" "Cards"))
+    (add-to-list 'org-capture-templates
+                 `("cp" "Person"
+                   entry (file+headline ,(expand-file-name "cards.org" MY-NOTE-PATH) "Person")
+                   ,(concat "* %^{heading|Item} :note:\n"
+                            "%(generate-anki-note-body)\n"
+                            ))))
+#+end_src
    
-   通过设置`:clock-in t'使得在captre task时自动开始clock in. 设置`:clock-resume t'则使得capture task完成后,自动恢复原task的clock in.
-   但这就会产生一个问题,若capture task的时间小于1分钟,则可能有大量的计时为0:00的记录存在,这些记录需要清理
+通过设置`:clock-in t'使得在captre task时自动开始clock in. 设置`:clock-resume t'则使得capture task完成后,自动恢复原task的clock in.
+但这就会产生一个问题,若capture task的时间小于1分钟,则可能有大量的计时为0:00的记录存在,这些记录需要清理
    
-   #+BEGIN_SRC emacs-lisp
-     ;; Remove empty LOGBOOK drawers on clock out
-     ;; (defun bh/remove-empty-drawer-on-clock-out ()
-     ;;   (interactive)
-     ;;   (save-excursion
-     ;;     (beginning-of-line 0)
-     ;;     (org-remove-empty-drawer-at (point))))
+#+BEGIN_SRC emacs-lisp
+  ;; Remove empty LOGBOOK drawers on clock out
+  ;; (defun bh/remove-empty-drawer-on-clock-out ()
+  ;;   (interactive)
+  ;;   (save-excursion
+  ;;     (beginning-of-line 0)
+  ;;     (org-remove-empty-drawer-at (point))))
 
-     ;; (add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
+  ;; (add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
 
-   #+END_SRC
+#+END_SRC
 * Refile Task   
   #+BEGIN_SRC emacs-lisp
     ;; 可以refile到`org-agenda-files'中的文件和当前文件中. 最多9层深度

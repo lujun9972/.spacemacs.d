@@ -16,7 +16,7 @@
     '(
       ;; package names go here
       fullframe
-      shrface
+      ;; shrface
       shr-tag-pre-highlight
       ))
 
