@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst reading-packages
-  '(interleave
+  '(org-noter
     ;; pdf-tools
     )
   "The list of Lisp packages required by the reading layer.
@@ -60,12 +60,11 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun reading/init-interleave ()
-  (use-package interleave
+(defun reading/init-org-noter ()
+  (use-package org-noter
     :config
-    (setq interleave-org-notes-dir-list
-          (cons MY-NOTE-PATH
-                (delete-if-not #'file-directory-p (directory-files-recursively MY-NOTE-PATH "" t))))))
+    (setq org-noter-set-auto-save-last-location t)
+    (setq org-noter-notes-search-path MY-NOTE-PATH)))
 
 (defun reading/init-pdf-tools ()
   (use-package pdf-tools
