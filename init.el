@@ -602,7 +602,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (defconst CODE-LIBRARY-PATH  "~/CodeLibrary/elisp.org")
   (defconst MY-GTD-PATH "~/我的GTD/")
   (defconst MY-NOTE-PATH "~/我的笔记/")
-  (setq configuration-layer--elpa-archives
+  (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
