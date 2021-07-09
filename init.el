@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(javascript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -125,20 +125,21 @@ This function should only modify configuration layer settings."
              shell-default-term-shell "/bin/bash"
              shell-default-height 30
              shell-default-position 'bottom)
+      spell-checking
       syntax-checking
       version-control
       ;;latex
       my-display
       my-misc
       my-edit
+      my-life
       my-GTD
       my-file
       my-eshell
       my-program
-      my-life
       my-present
       reading
-      pdf-tools
+      ;; pdf-tools
       docker
       ;; (exwm :variables
       ;;       exwm-enable-systray t
@@ -158,7 +159,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(habitica posframe gnuplot anki-editor literate-calc-mode ox-report)
+   dotspacemacs-additional-packages '(habitica posframe gnuplot literate-calc-mode ox-report pyim-basedict)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -327,7 +328,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+                               :size 12.0
                                :weight normal
                                :width normal)
 
